@@ -1,6 +1,7 @@
 using Microsoft.AspNetCore.Mvc;
 using NeatAPI.Models;
 using System.Collections.Generic;
+using System.Linq;
 
 // For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 
@@ -42,10 +43,18 @@ namespace NeatAPI.Controllers
     }
 
     // POST api/<NeatController>
-    //[HttpPost]
-    //public void Post([FromBody] string value)
-    //{
-    //}
+    [HttpPost]
+    public ActionResult<Neat> Post([FromBody] Neat neatBooking)
+    {
+      if(neatBooking == null)
+      {
+        return BadRequest("Invalid data; refer to schema");
+      }
+
+      _repo.Add(neatBooking);
+
+      return CreatedAtAction(nameof(GetClientEmail), new { clientEmail = neatBooking.ClientEmail }, neatBooking);
+    }
 
     // PUT api/<NeatController>/5
     //[HttpPut("{id}")]
