@@ -3,7 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.6.33815.320
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NeatAPI", "NeatAPI\NeatAPI.csproj", "{B8C6D2FE-CB2D-4974-9F4D-74E6FDEFA95A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "NeatAPI", "NeatAPI\NeatAPI.csproj", "{B8C6D2FE-CB2D-4974-9F4D-74E6FDEFA95A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NeatTestProject", "NeatTestProject\NeatTestProject.csproj", "{5BBA4740-7ABF-4126-AF21-363D52AFF76F}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +17,10 @@ Global
 		{B8C6D2FE-CB2D-4974-9F4D-74E6FDEFA95A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B8C6D2FE-CB2D-4974-9F4D-74E6FDEFA95A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B8C6D2FE-CB2D-4974-9F4D-74E6FDEFA95A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5BBA4740-7ABF-4126-AF21-363D52AFF76F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5BBA4740-7ABF-4126-AF21-363D52AFF76F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5BBA4740-7ABF-4126-AF21-363D52AFF76F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5BBA4740-7ABF-4126-AF21-363D52AFF76F}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

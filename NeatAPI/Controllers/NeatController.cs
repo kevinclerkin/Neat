@@ -26,12 +26,20 @@ namespace NeatAPI.Controllers
       return Ok(neatList);
     }
 
-    // GET api/<NeatController>/5
-    //[HttpGet("{id}")]
-    //public string Get(int id)
-    //{
-      //return "value";
-    //}
+    //GET api/<NeatController>/5
+    [HttpGet("{clientEmail}")]
+    public ActionResult<IEnumerable<Neat>> GetClientEmail(string clientEmail)
+    {
+      var neatBooking = _repo.GetAll().FirstOrDefault(e=> e.ClientEmail == clientEmail);
+
+      if(neatBooking == null)
+      {
+        return NotFound();
+      }
+
+      return Ok(neatBooking);
+      
+    }
 
     // POST api/<NeatController>
     //[HttpPost]

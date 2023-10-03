@@ -1,15 +1,21 @@
+using System.ComponentModel.DataAnnotations;
+
 namespace NeatAPI.Models
 {
     public class Neat
     {
         public int Id { get; set; }
+        [Required]
         public String Service { get; set; }
-
+        [Required]
         public String Available { get; set; }
 
         public DateTime DateTime { get; set; }
-
+        [Required]
         public String ClientName { get; set; }
+
+        [Required]
+        [EmailAddress]
 
         public String ClientEmail { get; set; }
     }

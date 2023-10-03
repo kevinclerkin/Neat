@@ -22,4 +22,8 @@
     </PackageReference>
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\NeatAPI\NeatAPI.csproj" />
+  </ItemGroup>
+
 </Project>
