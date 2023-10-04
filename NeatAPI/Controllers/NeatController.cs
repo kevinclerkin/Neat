@@ -52,6 +52,7 @@ namespace NeatAPI.Controllers
       }
 
       _repo.Add(neatBooking);
+      
 
       return CreatedAtAction(nameof(GetClientEmail), new { clientEmail = neatBooking.ClientEmail }, neatBooking);
     }
