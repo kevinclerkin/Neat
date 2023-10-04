@@ -1,9 +1,10 @@
 {
   "version": 2,
-  "dgSpecHash": "MrIXGaloqKlMaz0fAqcwLgCS7kQu3r2BrVkVqVftwGfNxgITE+2SOpZ20FozvsOi4NQnDmH4KODdkankp7I4xA==",
+  "dgSpecHash": "tFE0LF3gzi4WPeccNXtzh75OvXgUm2pYHwxHw5qWwu1jQKsutKGw0KuUCz8Kzc6o540thO5NY0fGp4FNCXUfyw==",
   "success": true,
   "projectFilePath": "C:\\Users\\Kevin\\Desktop\\Neat\\NeatAPI\\NeatTestProject\\NeatTestProject.csproj",
   "expectedPackageFiles": [
+    "C:\\Users\\Kevin\\.nuget\\packages\\bcrypt.net-core\\1.6.0\\bcrypt.net-core.1.6.0.nupkg.sha512",
     "C:\\Users\\Kevin\\.nuget\\packages\\coverlet.collector\\3.2.0\\coverlet.collector.3.2.0.nupkg.sha512",
     "C:\\Users\\Kevin\\.nuget\\packages\\microsoft.codecoverage\\17.5.0\\microsoft.codecoverage.17.5.0.nupkg.sha512",
     "C:\\Users\\Kevin\\.nuget\\packages\\microsoft.extensions.apidescription.server\\3.0.0\\microsoft.extensions.apidescription.server.3.0.0.nupkg.sha512",

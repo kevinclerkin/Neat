@@ -30,3 +30,4 @@ C:\Users\Kevin\Desktop\Neat\NeatAPI\NeatAPI\obj\Debug\net6.0\refint\NeatAPI.dll
 C:\Users\Kevin\Desktop\Neat\NeatAPI\NeatAPI\obj\Debug\net6.0\NeatAPI.pdb
 C:\Users\Kevin\Desktop\Neat\NeatAPI\NeatAPI\obj\Debug\net6.0\NeatAPI.genruntimeconfig.cache
 C:\Users\Kevin\Desktop\Neat\NeatAPI\NeatAPI\obj\Debug\net6.0\ref\NeatAPI.dll
+C:\Users\Kevin\Desktop\Neat\NeatAPI\NeatAPI\bin\Debug\net6.0\BCrypt.Net-Core.dll

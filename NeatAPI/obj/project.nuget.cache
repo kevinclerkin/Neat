@@ -1,9 +1,10 @@
 {
   "version": 2,
-  "dgSpecHash": "aLhe8+s20NO9A65xDPgXYRhSQrQaP6fBht0Z0WOLXLNttU2dhI/LtPDp2cl1T55dAig2QjLtmaTVq6l0NwyALw==",
+  "dgSpecHash": "7hFbM+EJ29QP0wzVkBAdC3InTIJ4fAQPttyLr77GjIwQKO/OZxxmzy6U8qPWYXkOeVbd9ArXjsKwjNJ9IIgbMg==",
   "success": true,
   "projectFilePath": "C:\\Users\\Kevin\\Desktop\\Neat\\NeatAPI\\NeatAPI\\NeatAPI.csproj",
   "expectedPackageFiles": [
+    "C:\\Users\\Kevin\\.nuget\\packages\\bcrypt.net-core\\1.6.0\\bcrypt.net-core.1.6.0.nupkg.sha512",
     "C:\\Users\\Kevin\\.nuget\\packages\\microsoft.extensions.apidescription.server\\3.0.0\\microsoft.extensions.apidescription.server.3.0.0.nupkg.sha512",
     "C:\\Users\\Kevin\\.nuget\\packages\\microsoft.openapi\\1.2.3\\microsoft.openapi.1.2.3.nupkg.sha512",
     "C:\\Users\\Kevin\\.nuget\\packages\\swashbuckle.aspnetcore\\6.2.3\\swashbuckle.aspnetcore.6.2.3.nupkg.sha512",
