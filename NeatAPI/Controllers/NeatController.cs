@@ -1,3 +1,4 @@
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using NeatAPI.Models;
 using System.Collections.Generic;
@@ -7,6 +8,7 @@ using System.Linq;
 
 namespace NeatAPI.Controllers
 {
+  
   [Route("api/[controller]")]
   [ApiController]
   public class NeatController : ControllerBase
