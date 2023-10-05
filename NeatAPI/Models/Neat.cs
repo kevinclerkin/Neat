@@ -43,6 +43,16 @@ namespace NeatAPI.Models
       _neatList.Add(neatbooking);
     }
 
+    public void Delete(int id)
+    {
+      var removeBooking = _neatList.FirstOrDefault(b => b.Id == id);
+
+      if (removeBooking != null)
+      {
+        _neatList.Remove(removeBooking);
+      }
+    }
+
 
 
   }

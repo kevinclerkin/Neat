@@ -65,10 +65,20 @@ namespace NeatAPI.Controllers
     //{
     //}
 
-    // DELETE api/<NeatController>/5
-    //[HttpDelete("{id}")]
-    //public void Delete(int id)
-    //{
-    //}
+    //DELETE api/<NeatController>/5
+    [HttpDelete("id")]
+    public ActionResult Delete(int id)
+    {
+      var existingBooking = _repo.GetAll().FirstOrDefault(b=> b.Id == id);
+
+      if(existingBooking == null)
+      {
+        return NotFound();
+      }
+
+      _repo.Delete(id);
+
+      return NoContent();
+    }
   }
 }
