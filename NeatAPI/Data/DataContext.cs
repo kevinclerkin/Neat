@@ -8,6 +8,6 @@ namespace NeatAPI.Data
   {
     public DataContext(DbContextOptions<DataContext> options) : base(options) { }
 
-    public DbSet<Neat> NeatBookings { get; set; }
+    public DbSet<NeatBooking> NeatBookings { get; set; }
   }
 }

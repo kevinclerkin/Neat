@@ -3,8 +3,10 @@ using Microsoft.AspNetCore.Mvc;
 using NeatAPI.Models;
 using System.Collections.Generic;
 using System.Linq;
+using Microsoft.EntityFrameworkCore;
+using NeatAPI.Data;
 
-// For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+
 
 namespace NeatAPI.Controllers
 {
@@ -13,27 +15,27 @@ namespace NeatAPI.Controllers
   [ApiController]
   public class NeatController : ControllerBase
   {
-    private readonly NeatRepo _repo;
+    private readonly DataContext _dataContext;
 
-    public NeatController(NeatRepo repo)
+    public NeatController(DataContext context)
     {
-      _repo = repo;
+      _dataContext = context;
     }
 
 
     // GET: api/<NeatController>
     [HttpGet]
-    public ActionResult<IEnumerable<Neat>> Get()
+    public ActionResult<IEnumerable<NeatBooking>> Get()
     {
-      var neatList = _repo.GetAll();
-      return Ok(neatList);
+      var allBookings = _dataContext.NeatBookings.ToList();
+      return Ok(allBookings);
     }
 
-    //GET api/<NeatController>/5
+    //GET api/<NeatController>/
     [HttpGet("{clientEmail}")]
-    public ActionResult<IEnumerable<Neat>> GetClientEmail(string clientEmail)
+    public ActionResult<IEnumerable<NeatBooking>> GetClientEmail(string clientEmail)
     {
-      var neatBooking = _repo.GetAll().FirstOrDefault(e=> e.ClientEmail == clientEmail);
+      var neatBooking = _dataContext.NeatBookings.FirstOrDefault(b=> b.ClientEmail == clientEmail);
 
       if(neatBooking == null)
       {
@@ -44,41 +46,43 @@ namespace NeatAPI.Controllers
       
     }
 
-    // POST api/<NeatController>
+    // POST api/<NeatController>/
     [HttpPost]
-    public ActionResult<Neat> Post([FromBody] Neat neatBooking)
+    public ActionResult<NeatBooking> Post([FromBody] NeatBooking neatBooking)
     {
       if(neatBooking == null)
       {
         return BadRequest("Invalid data; refer to schema");
       }
 
-      _repo.Add(neatBooking);
-      
+      _dataContext.Add(neatBooking);
+      _dataContext.SaveChanges();
 
-      return CreatedAtAction(nameof(GetClientEmail), new { clientEmail = neatBooking.ClientEmail }, neatBooking);
+
+      return Ok(_dataContext.NeatBookings.ToList());
     }
 
-    // PUT api/<NeatController>/5
+    // PUT api/<NeatController>/
     //[HttpPut("{id}")]
     //public void Put(int id, [FromBody] string value)
     //{
     //}
 
-    //DELETE api/<NeatController>/5
+    //DELETE api/<NeatController>/
     [HttpDelete("id")]
     public ActionResult Delete(int id)
     {
-      var existingBooking = _repo.GetAll().FirstOrDefault(b=> b.Id == id);
+      var existingBooking = _dataContext.NeatBookings.FirstOrDefault(b=> b.Id == id);
 
       if(existingBooking == null)
       {
         return NotFound();
       }
 
-      _repo.Delete(id);
+      _dataContext.NeatBookings.Remove(existingBooking);
+      _dataContext.SaveChanges();
 
-      return NoContent();
+      return Ok(_dataContext.NeatBookings.ToList());
     }
   }
 }
