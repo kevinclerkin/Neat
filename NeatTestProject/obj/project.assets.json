@@ -8036,11 +8036,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Kevin\\Desktop\\Neat\\NeatAPI\\NeatTestProject\\NeatTestProject.csproj",
+      "projectUniqueName": "C:\\Users\\Kevin\\Desktop\\Neat\\NeatApp\\NeatTestProject\\NeatTestProject.csproj",
       "projectName": "NeatTestProject",
-      "projectPath": "C:\\Users\\Kevin\\Desktop\\Neat\\NeatAPI\\NeatTestProject\\NeatTestProject.csproj",
+      "projectPath": "C:\\Users\\Kevin\\Desktop\\Neat\\NeatApp\\NeatTestProject\\NeatTestProject.csproj",
       "packagesPath": "C:\\Users\\Kevin\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Kevin\\Desktop\\Neat\\NeatAPI\\NeatTestProject\\obj\\",
+      "outputPath": "C:\\Users\\Kevin\\Desktop\\Neat\\NeatApp\\NeatTestProject\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\Kevin\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -8057,8 +8057,8 @@
         "net6.0": {
           "targetAlias": "net6.0",
           "projectReferences": {
-            "C:\\Users\\Kevin\\Desktop\\Neat\\NeatAPI\\NeatAPI\\NeatAPI.csproj": {
-              "projectPath": "C:\\Users\\Kevin\\Desktop\\Neat\\NeatAPI\\NeatAPI\\NeatAPI.csproj"
+            "C:\\Users\\Kevin\\Desktop\\Neat\\NeatApp\\NeatAPI\\NeatAPI.csproj": {
+              "projectPath": "C:\\Users\\Kevin\\Desktop\\Neat\\NeatApp\\NeatAPI\\NeatAPI.csproj"
             }
           }
         }

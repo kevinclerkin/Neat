@@ -7540,11 +7540,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Kevin\\Desktop\\Neat\\NeatAPI\\NeatAPI\\NeatAPI.csproj",
+      "projectUniqueName": "C:\\Users\\Kevin\\Desktop\\Neat\\NeatApp\\NeatAPI\\NeatAPI.csproj",
       "projectName": "NeatAPI",
-      "projectPath": "C:\\Users\\Kevin\\Desktop\\Neat\\NeatAPI\\NeatAPI\\NeatAPI.csproj",
+      "projectPath": "C:\\Users\\Kevin\\Desktop\\Neat\\NeatApp\\NeatAPI\\NeatAPI.csproj",
       "packagesPath": "C:\\Users\\Kevin\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Kevin\\Desktop\\Neat\\NeatAPI\\NeatAPI\\obj\\",
+      "outputPath": "C:\\Users\\Kevin\\Desktop\\Neat\\NeatApp\\NeatAPI\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\Kevin\\AppData\\Roaming\\NuGet\\NuGet.Config",

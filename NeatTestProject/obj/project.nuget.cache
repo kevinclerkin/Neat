@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "J7URIjvTlXSwXNfyYYu3K224VqGuKpHuvrQ8T3vlB/cmVsg2TFMh/3dAVRNlpdmFqDXU2P4olo/UlUvA+PIbpg==",
+  "dgSpecHash": "hAJY0rJ2djRhGRHvqPc0u0vL5lWUnJ5TXqtmvsCvXu6+mK6iwB0f0WTmEc7KrB9iIru1x+523TawL8ZgID8EyQ==",
   "success": false,
-  "projectFilePath": "C:\\Users\\Kevin\\Desktop\\Neat\\NeatAPI\\NeatTestProject\\NeatTestProject.csproj",
+  "projectFilePath": "C:\\Users\\Kevin\\Desktop\\Neat\\NeatApp\\NeatTestProject\\NeatTestProject.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Kevin\\.nuget\\packages\\azure.core\\1.25.0\\azure.core.1.25.0.nupkg.sha512",
     "C:\\Users\\Kevin\\.nuget\\packages\\azure.identity\\1.7.0\\azure.identity.1.7.0.nupkg.sha512",
