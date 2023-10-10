@@ -1,0 +1,23 @@
+<form *ngIf="showAddBooking" class="add-form" (ngSubmit)="onSubmit()">
+    <div class="form-control">
+        <label for="service">Service</label>
+        <input type="text" name="service" id="service" placeholder="Choose Service"/>
+    </div>
+    <div class="form-control">
+        <label for="available">Day & Time</label>
+        <input type="text" name="available"  id="available" placeholder="Choose a team member"/>
+    </div>
+    <div class="form-control form-control-check">
+        <label for="dateTime">Date & Time</label>
+        <input type="date" name="dateTime" id="dateTime"/>
+    </div>
+    <div class="form-control">
+        <label for="clientName">Day & Time</label>
+        <input type="text" name="clientName" id="clientName" placeholder="Name"/>
+    </div>
+    <div class="form-control">
+        <label for="clientEmail">Day & Time</label>
+        <input type="text" name="clientEmail" id="clientEmail" placeholder="Email"/>
+    </div>
+    <input type="submit" value="Save Booking" class="btn btn-block"/>
+    </form>
