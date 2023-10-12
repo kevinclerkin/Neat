@@ -7,6 +7,8 @@ import { HeaderComponent } from './components/header/header.component';
 import { BookingsComponent } from './components/bookings/bookings.component';
 import { AddBookingComponent } from './components/add-booking/add-booking.component';
 import { BookingItemComponent } from './components/booking-item/booking-item.component';
+import { FormsModule } from '@angular/forms';
+import { ButtonComponent } from './components/button/button.component';
 
 @NgModule({
   declarations: [
@@ -14,11 +16,13 @@ import { BookingItemComponent } from './components/booking-item/booking-item.com
     HeaderComponent,
     BookingsComponent,
     AddBookingComponent,
-    BookingItemComponent
+    BookingItemComponent,
+    ButtonComponent
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

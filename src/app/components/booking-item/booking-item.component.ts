@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Booking } from 'src/app/Booking';
 
 @Component({
   selector: 'app-booking-item',
