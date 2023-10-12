@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { Booking } from 'src/app/Booking';
 
 @Component({
@@ -6,6 +6,14 @@ import { Booking } from 'src/app/Booking';
   templateUrl: './booking-item.component.html',
   styleUrls: ['./booking-item.component.css']
 })
-export class BookingItemComponent {
+export class BookingItemComponent implements OnInit {
+
+  @Input() booking!: Booking;
+  
+  constructor(){}
+
+  ngOnInit(): void {
+    
+  }
 
 }

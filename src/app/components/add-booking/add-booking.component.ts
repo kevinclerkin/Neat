@@ -42,7 +42,7 @@ export class AddBookingComponent implements OnInit {
 
     this.service = '';
     this.available = '';
-    this.dateTime = ''
+    this.dateTime = '';
     this.clientEmail = '';
     this.clientName = '';
   }
