@@ -10,7 +10,7 @@ import { BookingService } from 'src/app/services/booking.service';
 })
 export class BookingsComponent implements OnInit {
 
- bookings: Booking[] = []
+ bookings: Booking[] = [];
 
  constructor(private bookingService: BookingService){}
 

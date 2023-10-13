@@ -1,16 +1,17 @@
 import { Injectable } from '@angular/core';
 import { Booking } from '../Booking';
-import { Observable, of } from 'rxjs';
+import { Observable, from, of } from 'rxjs';
+import {HttpClient, HttpHeaders} from '@angular/common/http';
 
 @Injectable({
   providedIn: 'root'
 })
 export class BookingService {
+  private apiUrl = '';
 
-  constructor() { }
+  constructor(private http: HttpClient) { }
 
   getBookings(): Observable<Booking[]>{
-    const bookings = of([]);
-    return bookings;
+    return this.http.get<Booking[]>(this.apiUrl);
   }
 }
