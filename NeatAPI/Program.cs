@@ -1,4 +1,3 @@
-using NeatAPI.Models;
 using Microsoft.EntityFrameworkCore;
 using NeatAPI.Data;
 

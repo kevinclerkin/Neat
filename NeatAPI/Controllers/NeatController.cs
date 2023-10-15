@@ -25,9 +25,9 @@ namespace NeatAPI.Controllers
 
     // GET: api/<NeatController>
     [HttpGet]
-    public ActionResult<IEnumerable<NeatBooking>> Get()
+    public async Task<ActionResult<IEnumerable<NeatBooking>>> Get()
     {
-      var allBookings = _dataContext.NeatBookings.ToList();
+      var allBookings = await _dataContext.NeatBookings.ToListAsync();
       return Ok(allBookings);
     }
 
