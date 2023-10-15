@@ -15,7 +15,7 @@ export class AddBookingComponent implements OnInit {
   dateTime!: string;
   clientName!: string;
   clientEmail!: string;
-  showAddBooking: boolean = true;
+  showAddBooking: boolean = false;
   subscription!: Subscription;
 
   constructor(){}
