@@ -1,5 +1,6 @@
 import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { Booking } from 'src/app/Booking';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-add-booking',
@@ -12,9 +13,12 @@ export class AddBookingComponent implements OnInit {
   service!: string;
   available!: string;
   dateTime!: string;
-  clientEmail!: string;
   clientName!: string;
+  clientEmail!: string;
   showAddBooking: boolean = true;
+  subscription!: Subscription;
+
+  constructor(){}
   
   
 
@@ -32,9 +36,10 @@ export class AddBookingComponent implements OnInit {
     const newBooking = {
       service: this.service,
       available: this.available,
-      clientEmail: this.clientEmail,
+      dateTime: this.dateTime,
       clientName: this.clientName,
-      dateTime: this.dateTime
+      clientEmail: this.clientEmail
+      
 
     };
 
@@ -43,8 +48,8 @@ export class AddBookingComponent implements OnInit {
     this.service = '';
     this.available = '';
     this.dateTime = '';
-    this.clientEmail = '';
     this.clientName = '';
+    this.clientEmail = '';
   }
 
 

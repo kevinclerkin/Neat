@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Booking } from '../Booking';
-import { Observable, from, of } from 'rxjs';
+import { Observable} from 'rxjs';
 import {HttpClient, HttpHeaders} from '@angular/common/http';
 
 const httpOptions = {

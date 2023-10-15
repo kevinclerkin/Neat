@@ -1,23 +1,23 @@
 <form class="add-form" (ngSubmit)="onSubmit()">
     <div class="form-control">
         <label for="service">Service</label>
-        <input type="text" name="service" id="service" placeholder="Choose Service"/>
+        <input type="text" name="service" [(ngModel)]="service" id="service" placeholder="Choose Service"/>
     </div>
     <div class="form-control">
         <label for="available">Available</label>
-        <input type="text" name="available"  id="available" placeholder="Choose a team member"/>
+        <input type="text" name="available" [(ngModel)]="available" id="available" placeholder="Choose a team member"/>
     </div>
     <div class="form-control form-control-check">
         <label for="dateTime">Date & Time</label>
-        <input type="datetime-local" name="dateTime" id="dateTime"/>
+        <input type="datetime-local" name="dateTime" [(ngModel)]="dateTime" id="dateTime"/>
     </div>
     <div class="form-control">
         <label for="clientName">Name</label>
-        <input type="text" name="clientName" id="clientName" placeholder="Name"/>
+        <input type="text" name="clientName" [(ngModel)]="clientName" id="clientName" placeholder="Name"/>
     </div>
     <div class="form-control">
         <label for="clientEmail">Email</label>
-        <input type="text" name="clientEmail" id="clientEmail" placeholder="Email"/>
+        <input type="text" name="clientEmail"  [(ngModel)]="clientEmail" id="clientEmail" placeholder="Email"/>
     </div>
     <input type="submit" value="Save Booking" class="btn btn-block"/>
     </form>

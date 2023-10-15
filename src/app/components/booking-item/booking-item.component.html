@@ -1,1 +1,8 @@
+<div [ngClass]="{clientEmail: booking.clientEmail}" class="booking" (dblclick)="onToggle(booking)">
+    <h3>{{booking.service}} <fa-icon (click)="onDelete(booking)" [ngStyle]="{'color': 'red'}" [icon]="faTimes"></fa-icon></h3>
+    <p>{{booking.available}}</p>
+    <p>{{booking.dateTime}}</p>
+    <p>{{booking.clientName}}</p>
+    <p>{{booking.clientEmail}}</p>
 
+</div>
