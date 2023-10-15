@@ -15,10 +15,12 @@ export class BookingsComponent implements OnInit {
  constructor(private bookingService: BookingService){}
 
  ngOnInit(): void {
-   this.bookingService.getBookings().subscribe();
+   this.bookingService.getBookings().subscribe((bookings) => (this.bookings = bookings));
  }
 
- addBooking(booking: Booking){}
+ addBooking(booking: Booking){
+  this.bookingService.addBooking(booking).subscribe((booking) => (this.bookings.push(booking)));
+ }
 
  deleteBooking(booking: Booking){}
 
