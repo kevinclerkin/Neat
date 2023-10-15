@@ -22,8 +22,18 @@ export class BookingService {
     return this.http.get<Booking[]>(this.apiUrl);
   }
 
+  getBookingByClientEmail(booking: Booking): Observable<Booking>{
+    const url = `${this.apiUrl}/${booking.clientEmail}`;
+    return this.http.get<Booking>(url);
+  }
+
   addBooking(booking: Booking): Observable<Booking>{
     return this.http.post<Booking>(this.apiUrl, booking, httpOptions);
 
+  }
+
+  deleteBooking(booking: Booking): Observable<Booking>{
+    const url = `${this.apiUrl}/${booking.id}`;
+    return this.http.delete<Booking>(url);
   }
 }

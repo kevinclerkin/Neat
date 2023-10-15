@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { Booking } from 'src/app/Booking';
 import { faTimes } from '@fortawesome/free-solid-svg-icons';
 
@@ -11,6 +11,8 @@ import { faTimes } from '@fortawesome/free-solid-svg-icons';
 export class BookingItemComponent implements OnInit {
 
   @Input() booking!: Booking;
+  @Output() onDeleteBooking: EventEmitter<Booking> = new EventEmitter();
+  @Output() onToggleReminder: EventEmitter<Booking> = new EventEmitter();
 
   faTimes = faTimes;
   
@@ -20,8 +22,12 @@ export class BookingItemComponent implements OnInit {
     
   }
 
-  onDelete(booking: Booking){}
+  onDelete(booking: Booking){
+    this.onDeleteBooking.emit(booking);
+  }
 
-  onToggle(booking: Booking){}
+  onToggle(booking: Booking){
+
+  }
 
 }

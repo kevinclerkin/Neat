@@ -1,6 +1,7 @@
 import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { Booking } from 'src/app/Booking';
 import { Subscription } from 'rxjs';
+import { UiService } from 'src/app/services/ui.service';
 
 @Component({
   selector: 'app-add-booking',
@@ -18,7 +19,9 @@ export class AddBookingComponent implements OnInit {
   showAddBooking: boolean = false;
   subscription!: Subscription;
 
-  constructor(){}
+  constructor(private uiService:UiService){
+    this.subscription = this.uiService.onToggle().subscribe((value:any) => (this.showAddBooking = value));
+  }
   
   
 

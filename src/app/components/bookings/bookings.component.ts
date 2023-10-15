@@ -22,7 +22,9 @@ export class BookingsComponent implements OnInit {
   this.bookingService.addBooking(booking).subscribe((booking) => (this.bookings.push(booking)));
  }
 
- deleteBooking(booking: Booking){}
+ deleteBooking(booking: Booking){
+  this.bookingService.deleteBooking(booking).subscribe(() => (this.bookings = this.bookings.filter(t=> t.id !== booking.id)));
+ }
 
 }
 
