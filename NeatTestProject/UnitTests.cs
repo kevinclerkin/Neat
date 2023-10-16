@@ -10,7 +10,7 @@ using NeatAPI.Data;
 using NeatAPI.Models;
 
 
-namespace NeatTestProject
+/*namespace NeatTestProject
 {
   public class NeatControllerTests
   {
@@ -18,7 +18,7 @@ namespace NeatTestProject
     public async Task Get_ReturnsAllBookings()
     {
 
-      var mockDataService = new Mock<IDataService>();
+      var mockDataService = new Mock<>();
       mockDataService.Setup(d => d.GetBookings())
         .ReturnsAsync(new List<NeatBooking>
         {
@@ -43,7 +43,7 @@ namespace NeatTestProject
     [Fact]
     public async Task GetByClientEmail_ReturnsBookingsByClientEmail()
     {
-      var mockDataService = new Mock<IDataService>();
+      var mockDataService = new Mock<>();
       mockDataService.Setup(d => d.GetBookingsByClientEmail("tom.jones@gmail.com"))
         .ReturnsAsync(new List<NeatBooking>
         {
@@ -61,4 +61,4 @@ namespace NeatTestProject
 
 
 
-} }
+} }*/

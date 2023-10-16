@@ -15,11 +15,11 @@ namespace NeatAPI.Controllers
   [ApiController]
   public class NeatController : ControllerBase
   {
-    private readonly IDataService _dataService;
+    private readonly DataContext _dataContext;
 
-    public NeatController(IDataService dataService)
+    public NeatController(DataContext context)
     {
-      _dataService = dataService;
+      _dataContext = context;
     }
 
     
@@ -29,7 +29,7 @@ namespace NeatAPI.Controllers
     [HttpGet]
     public async Task<ActionResult<IEnumerable<NeatBooking>>> Get()
     {
-      var allBookings = await _dataService.NeatBookings.ToListAsync();
+      var allBookings = await _dataContext.NeatBookings.ToListAsync();
       return Ok(allBookings);
     }
 
@@ -37,7 +37,7 @@ namespace NeatAPI.Controllers
     [HttpGet("{clientEmail}")]
     public async Task<ActionResult<IEnumerable<NeatBooking>>> GetByClientEmail(string clientEmail)
     {
-      var neatBookings = await _dataService.NeatBookings.Where(b=> b.ClientEmail == clientEmail).ToListAsync();
+      var neatBookings = await _dataContext.NeatBookings.Where(b=> b.ClientEmail == clientEmail).ToListAsync();
 
       if(neatBookings == null)
       {
@@ -57,11 +57,11 @@ namespace NeatAPI.Controllers
         return BadRequest("Invalid data; refer to schema");
       }
 
-      _dataService.Add(neatBooking);
-      _dataService.SaveChanges();
+      _dataContext.Add(neatBooking);
+      _dataContext.SaveChanges();
 
 
-      return Ok(_dataService.NeatBookings.ToList());
+      return Ok(_dataContext.NeatBookings.ToList());
     }
 
     // PUT api/<NeatController>/
@@ -74,17 +74,17 @@ namespace NeatAPI.Controllers
     [HttpDelete("id")]
     public ActionResult Delete(int id)
     {
-      var existingBooking = _dataService.NeatBookings.FirstOrDefault(b=> b.Id == id);
+      var existingBooking = _dataContext.NeatBookings.FirstOrDefault(b=> b.Id == id);
 
       if(existingBooking == null)
       {
         return NotFound();
       }
 
-      _dataService.NeatBookings.Remove(existingBooking);
-      _dataService.SaveChanges();
+      _dataContext.NeatBookings.Remove(existingBooking);
+      _dataContext.SaveChanges();
 
-      return Ok(_dataService.NeatBookings.ToList());
+      return Ok(_dataContext.NeatBookings.ToList());
     }
   }
 }
