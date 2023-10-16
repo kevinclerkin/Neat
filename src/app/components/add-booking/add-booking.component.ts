@@ -11,13 +11,16 @@ import { UiService } from 'src/app/services/ui.service';
 export class AddBookingComponent implements OnInit {
   @Output() onAddBooking: EventEmitter<Booking> = new EventEmitter();
   
-  service!: string;
-  available!: string;
+  selectedService: string = '';
+  available: string = '';
   dateTime!: string;
   clientName!: string;
   clientEmail!: string;
   showAddBooking: boolean = false;
   subscription!: Subscription;
+
+  services: string[] = ["Dry Cut", "Wash, Cut & Style", "Hot Towel Shave", "Beard Trim"];
+  teamMembers: string[] = ["Alan", "John", "Rob"];
 
   constructor(private uiService:UiService){
     this.subscription = this.uiService.onToggle().subscribe((value:any) => (this.showAddBooking = value));
@@ -31,13 +34,13 @@ export class AddBookingComponent implements OnInit {
   }
 
   onSubmit(){
-    if(!this.service){
-      alert('Make a booking!');
+    if(!this.selectedService || !this.available || !this.dateTime || !this.clientName || !this.clientEmail){
+      alert('Complete all fields to make a booking!');
       return;
     }
 
     const newBooking = {
-      service: this.service,
+      service: this.selectedService,
       available: this.available,
       dateTime: this.dateTime,
       clientName: this.clientName,
@@ -48,7 +51,7 @@ export class AddBookingComponent implements OnInit {
 
     this.onAddBooking.emit(newBooking);
 
-    this.service = '';
+    this.selectedService = '';
     this.available = '';
     this.dateTime = '';
     this.clientName = '';

@@ -26,6 +26,7 @@ export class BookingItemComponent implements OnInit {
     this.onDeleteBooking.emit(booking);
   }
 
+  
   onToggle(booking: Booking){
 
   }
