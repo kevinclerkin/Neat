@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "WvHu1LqeZRWmvvAOhpylvCJ9k0i68Huy4/zdo8PYpilPuLM5gIyfQvMXd5wzGOCy+kiPBUMV7AeAO9gVyBZdiw==",
+  "dgSpecHash": "LId1XMe6Dln3DpJdMdg+QpbjHDwfiv/Jr15VWwRxo3cPKJq76e2FAs7+JBC5xcL9B1eSCm23RfYmoCh93QTsEg==",
   "success": true,
   "projectFilePath": "C:\\Users\\Kevin\\Desktop\\Neat\\NeatApp\\NeatAPI\\NeatAPI.csproj",
   "expectedPackageFiles": [
@@ -143,7 +143,8 @@
     "C:\\Users\\Kevin\\.nuget\\packages\\xunit.assert\\2.5.1\\xunit.assert.2.5.1.nupkg.sha512",
     "C:\\Users\\Kevin\\.nuget\\packages\\xunit.core\\2.5.1\\xunit.core.2.5.1.nupkg.sha512",
     "C:\\Users\\Kevin\\.nuget\\packages\\xunit.extensibility.core\\2.5.1\\xunit.extensibility.core.2.5.1.nupkg.sha512",
-    "C:\\Users\\Kevin\\.nuget\\packages\\xunit.extensibility.execution\\2.5.1\\xunit.extensibility.execution.2.5.1.nupkg.sha512"
+    "C:\\Users\\Kevin\\.nuget\\packages\\xunit.extensibility.execution\\2.5.1\\xunit.extensibility.execution.2.5.1.nupkg.sha512",
+    "C:\\Users\\Kevin\\.nuget\\packages\\xunit.runner.visualstudio\\2.5.1\\xunit.runner.visualstudio.2.5.1.nupkg.sha512"
   ],
   "logs": []
 }
