@@ -33,16 +33,16 @@ namespace NeatAPI.Controllers
 
     //GET api/<NeatController>/
     [HttpGet("{clientEmail}")]
-    public ActionResult<IEnumerable<NeatBooking>> GetClientEmail(string clientEmail)
+    public async Task<ActionResult<IEnumerable<NeatBooking>>> GetByClientEmail(string clientEmail)
     {
-      var neatBooking = _dataContext.NeatBookings.FirstOrDefault(b=> b.ClientEmail == clientEmail);
+      var neatBookings = await _dataContext.NeatBookings.Where(b=> b.ClientEmail == clientEmail).ToListAsync();
 
-      if(neatBooking == null)
+      if(neatBookings == null)
       {
         return NotFound();
       }
 
-      return Ok(neatBooking);
+      return Ok(neatBookings);
       
     }
 

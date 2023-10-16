@@ -22,8 +22,11 @@ export class AddBookingComponent implements OnInit {
   services: string[] = ["Dry Cut", "Wash, Cut & Style", "Hot Towel Shave", "Beard Trim"];
   teamMembers: string[] = ["Alan", "John", "Rob"];
 
+  
+
   constructor(private uiService:UiService){
     this.subscription = this.uiService.onToggle().subscribe((value:any) => (this.showAddBooking = value));
+    
   }
   
   
