@@ -166,4 +166,5 @@ C:\Users\Kevin\Desktop\Neat\NeatApp\NeatTestProject\bin\Debug\net6.0\System.Text
 C:\Users\Kevin\Desktop\Neat\NeatApp\NeatTestProject\bin\Debug\net6.0\System.Text.Json.dll
 C:\Users\Kevin\Desktop\Neat\NeatApp\NeatTestProject\bin\Debug\net6.0\runtimes\browser\lib\net6.0\System.Text.Encodings.Web.dll
 C:\Users\Kevin\Desktop\Neat\NeatApp\NeatTestProject\bin\Debug\net6.0\Castle.Core.dll
-C:\Users\Kevin\Desktop\Neat\NeatApp\NeatTestProject\bin\Debug\net6.0\Moq.dll
+C:\Users\Kevin\Desktop\Neat\NeatApp\NeatTestProject\bin\Debug\net6.0\FakeItEasy.dll
+C:\Users\Kevin\Desktop\Neat\NeatApp\NeatTestProject\bin\Debug\net6.0\FluentAssertions.dll
