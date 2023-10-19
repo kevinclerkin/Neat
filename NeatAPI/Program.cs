@@ -1,5 +1,7 @@
 using Microsoft.EntityFrameworkCore;
 using NeatAPI.Data;
+using NeatAPI.Interfaces;
+using NeatAPI.Repositories;
 
 var builder = WebApplication.CreateBuilder(args);
 var connectionString = builder.Configuration.GetConnectionString("DataContextConnection") ?? throw new InvalidOperationException("Connection string: 'DataContextConnection' Not Found!");
@@ -7,6 +9,7 @@ var connectionString = builder.Configuration.GetConnectionString("DataContextCon
 // Add services to the container.
 
 builder.Services.AddControllers();
+builder.Services.AddScoped<INeatBookingRepository, NeatBookingRepository>();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
