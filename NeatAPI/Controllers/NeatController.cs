@@ -15,6 +15,7 @@ namespace NeatAPI.Controllers
   public class NeatController : ControllerBase
   {
     private readonly INeatBookingRepository _neatBookingRepository;
+    
 
     public NeatController(INeatBookingRepository neatBookingRepository)
     {

@@ -1,7 +1,9 @@
 using FakeItEasy;
 using FluentAssertions;
+using Microsoft.AspNetCore.Mvc;
 using NeatAPI.Controllers;
 using NeatAPI.Data;
+using NeatAPI.Interfaces;
 using NeatAPI.Models;
 using System;
 using System.Collections.Generic;
@@ -13,26 +15,28 @@ namespace NeatTestProject.Controller
 {
   public class NeatControllerTests
   {
-    private readonly DataContext _dataContext;
+    private readonly INeatBookingRepository _neatBookingRepository;
     public NeatControllerTests()
     {
-      _dataContext = A.Fake<DataContext>();
+      _neatBookingRepository = A.Fake<INeatBookingRepository>();
     }
 
     [Fact]
-    public async Task NeatController_GetAllBookings_ReturnOK()
+    public void NeatController_GetBookings_ReturnOK()
     {
       //Arrange
 
-      var bookings = A.Fake<List<NeatBooking>>();
-      var controller = new NeatController(_dataContext);
+      //var bookings = A.Fake<ICollection<NeatBooking>>();
+      //var bookingList = A.Fake<List<NeatBooking>>();
+      var controller = new NeatController(_neatBookingRepository);
 
       //Act
 
-      var result = await controller.GetAllBookings();
+      var result = controller.GetBookings();
 
       //Assert
       result.Should().NotBeNull();
+      result.Should().BeOfType(typeof(OkObjectResult));
 
     }
   }
