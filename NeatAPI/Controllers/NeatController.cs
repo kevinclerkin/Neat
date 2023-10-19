@@ -5,36 +5,43 @@ using System.Collections.Generic;
 using System.Linq;
 using Microsoft.EntityFrameworkCore;
 using NeatAPI.Data;
-
-
+using NeatAPI.Interfaces;
 
 namespace NeatAPI.Controllers
 {
-  
+
   [Route("api/[controller]")]
   [ApiController]
   public class NeatController : ControllerBase
   {
-    private readonly DataContext _dataContext;
+    private readonly INeatBookingRepository _neatBookingRepository;
 
-    public NeatController(DataContext context)
+    public NeatController(INeatBookingRepository neatBookingRepository)
     {
-      _dataContext = context;
+      _neatBookingRepository = neatBookingRepository;
     }
 
-    
+
 
 
     // GET: api/<NeatController>
     [HttpGet]
-    public async Task<ActionResult<IEnumerable<NeatBooking>>> GetAllBookings()
+    [ProducesResponseType(typeof(IEnumerable<NeatBooking>), 200)]
+    public IActionResult GetBookings()
     {
-      var allBookings = await _dataContext.NeatBookings.ToListAsync();
+      var allBookings = _neatBookingRepository.GetBookings();
+
+      if (!ModelState.IsValid)
+      {
+        return BadRequest(ModelState);
+      }
+
       return Ok(allBookings);
     }
-
+  }
+}
     //GET api/<NeatController>/
-    [HttpGet("{clientEmail}")]
+    /*[HttpGet("{clientEmail}")]
     public async Task<ActionResult<IEnumerable<NeatBooking>>> GetByClientEmail(string clientEmail)
     {
       var neatBookings = await _dataContext.NeatBookings.Where(b=> b.ClientEmail == clientEmail).ToListAsync();
@@ -87,4 +94,4 @@ namespace NeatAPI.Controllers
       return Ok(_dataContext.NeatBookings.ToList());
     }
   }
-}
+}*/
