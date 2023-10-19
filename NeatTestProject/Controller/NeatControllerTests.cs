@@ -27,7 +27,8 @@ namespace NeatTestProject.Controller
       //Arrange
 
       //var bookings = A.Fake<ICollection<NeatBooking>>();
-      //var bookingList = A.Fake<List<NeatBooking>>();
+      var bookingList = A.Fake<List<NeatBooking>>();
+      A.CallTo(() => _neatBookingRepository.GetBookings()).Returns(bookingList);
       var controller = new NeatController(_neatBookingRepository);
 
       //Act
@@ -37,6 +38,7 @@ namespace NeatTestProject.Controller
       //Assert
       result.Should().NotBeNull();
       result.Should().BeOfType(typeof(OkObjectResult));
+      
 
     }
   }
