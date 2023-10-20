@@ -39,25 +39,26 @@ namespace NeatAPI.Controllers
 
       return Ok(allBookings);
     }
-  }
-}
-    //GET api/<NeatController>/
-    /*[HttpGet("{clientEmail}")]
-    public async Task<ActionResult<IEnumerable<NeatBooking>>> GetByClientEmail(string clientEmail)
-    {
-      var neatBookings = await _dataContext.NeatBookings.Where(b=> b.ClientEmail == clientEmail).ToListAsync();
+  
 
-      if(neatBookings == null)
+    //GET api/<NeatController>/
+    [HttpGet("{clientEmail}")]
+    [ProducesResponseType(typeof(IEnumerable<NeatBooking>), 200)]
+    public IActionResult GetBookingsByClientEmail(string clientEmail)
+    {
+      var bookingsByEmail = _neatBookingRepository.GetBookingsByClientEmail(clientEmail);
+
+      if(!ModelState.IsValid)
       {
-        return NotFound();
+        return BadRequest(ModelState);
       }
 
-      return Ok(neatBookings);
+      return Ok(bookingsByEmail);
       
     }
 
     // POST api/<NeatController>/
-    [HttpPost]
+    /*[HttpPost]
     public ActionResult<NeatBooking> Post([FromBody] NeatBooking neatBooking)
     {
       if(neatBooking == null)
@@ -70,7 +71,7 @@ namespace NeatAPI.Controllers
 
 
       return Ok(_dataContext.NeatBookings.ToList());
-    }
+    }*/
 
     // PUT api/<NeatController>/
     //[HttpPut("{id}")]
@@ -79,7 +80,7 @@ namespace NeatAPI.Controllers
     //}
 
     //DELETE api/<NeatController>/
-    [HttpDelete("id")]
+    /*[HttpDelete("id")]
     public ActionResult Delete(int id)
     {
       var existingBooking = _dataContext.NeatBookings.FirstOrDefault(b=> b.Id == id);
@@ -93,6 +94,6 @@ namespace NeatAPI.Controllers
       _dataContext.SaveChanges();
 
       return Ok(_dataContext.NeatBookings.ToList());
-    }
+    }*/
   }
-}*/
+}
