@@ -62,5 +62,24 @@ namespace NeatTestProject.Controller
       result.Should().NotBeNull();
       result.Should().BeOfType(typeof(OkObjectResult));
     }
+
+    [Fact]
+    public void NeatController_CreateBooking_ReturnsOK()
+    {
+      //Arrange
+
+      var newBooking = A.Fake<NeatBooking>();
+      A.CallTo(() => _neatBookingRepository.CreateBooking(newBooking)).Returns(newBooking);
+      var controller = new NeatController(_neatBookingRepository);
+
+      //Act
+
+      var result = controller.CreateBooking(newBooking);
+
+      //Assert
+
+      result.Should().NotBeNull();
+      result.Should().BeOfType(typeof(OkObjectResult));
+    }
   }
 }
