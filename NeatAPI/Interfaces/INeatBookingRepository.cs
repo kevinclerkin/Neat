@@ -7,5 +7,7 @@ namespace NeatAPI.Interfaces
     ICollection<NeatBooking> GetBookings();
 
     ICollection<NeatBooking> GetBookingsByClientEmail(string clientEmail);
+
+    NeatBooking CreateBooking(NeatBooking neatBooking);
   }
 }

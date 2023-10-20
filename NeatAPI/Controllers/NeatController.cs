@@ -58,20 +58,18 @@ namespace NeatAPI.Controllers
     }
 
     // POST api/<NeatController>/
-    /*[HttpPost]
-    public ActionResult<NeatBooking> Post([FromBody] NeatBooking neatBooking)
+    [HttpPost]
+    [ProducesResponseType(typeof(NeatBooking), 200)]
+    public IActionResult CreateBooking([FromBody] NeatBooking neatBooking)
     {
-      if(neatBooking == null)
+      if(neatBooking == null || !ModelState.IsValid)
       {
         return BadRequest("Invalid data; refer to schema");
       }
 
-      _dataContext.Add(neatBooking);
-      _dataContext.SaveChanges();
-
-
-      return Ok(_dataContext.NeatBookings.ToList());
-    }*/
+      _neatBookingRepository.CreateBooking(neatBooking);
+      return Ok(neatBooking);
+    }
 
     // PUT api/<NeatController>/
     //[HttpPut("{id}")]
