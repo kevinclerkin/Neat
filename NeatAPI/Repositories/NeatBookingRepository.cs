@@ -17,5 +17,10 @@ namespace NeatAPI.Repositories
     {
       return _context.NeatBookings.OrderBy(i => i.Id).ToList();
     }
+
+    public ICollection<NeatBooking> GetBookingsByClientEmail(string clientEmail)
+    {
+      return _context.NeatBookings.Where(e=> e.ClientEmail == clientEmail).ToList();
+    }
   }
 }
