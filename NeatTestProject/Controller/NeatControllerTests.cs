@@ -41,5 +41,26 @@ namespace NeatTestProject.Controller
       
 
     }
+
+    
+    [Theory]
+    [InlineData(null)]
+    public void NeatController_GetBookingsByEmail_ReturnsOK(string clientEmail)
+    {
+      //Arrange
+
+      var bookingsByEmail = A.Fake<List<NeatBooking>>();
+      A.CallTo(() => _neatBookingRepository.GetBookingsByClientEmail(clientEmail)).Returns(bookingsByEmail);
+      var controller = new NeatController(_neatBookingRepository);
+
+      //Act
+
+      var result = controller.GetBookingsByClientEmail(clientEmail);
+
+      //Assert
+
+      result.Should().NotBeNull();
+      result.Should().BeOfType(typeof(OkObjectResult));
+    }
   }
 }
