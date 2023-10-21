@@ -1,6 +1,8 @@
+using Microsoft.AspNetCore.Mvc;
 using NeatAPI.Data;
 using NeatAPI.Interfaces;
 using NeatAPI.Models;
+using System.Collections.Generic;
 
 namespace NeatAPI.Repositories
 {
@@ -28,6 +30,18 @@ namespace NeatAPI.Repositories
       _context.NeatBookings.Add(newBooking);
       _context.SaveChanges();
       return newBooking;
+    }
+
+    public IEnumerable<NeatBooking> DeleteBooking(int id)
+    {
+      var deleteBooking = _context.NeatBookings.FirstOrDefault(b =>  b.Id == id);
+
+      _context.NeatBookings.Remove(deleteBooking);
+      _context.SaveChanges();
+      return _context.NeatBookings;
+     
+      
+      
     }
   }
 }

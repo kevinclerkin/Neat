@@ -9,5 +9,7 @@ namespace NeatAPI.Interfaces
     ICollection<NeatBooking> GetBookingsByClientEmail(string clientEmail);
 
     NeatBooking CreateBooking(NeatBooking neatBooking);
+
+    IEnumerable<NeatBooking> DeleteBooking(int id);
   }
 }

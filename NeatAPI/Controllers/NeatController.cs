@@ -78,20 +78,17 @@ namespace NeatAPI.Controllers
     //}
 
     //DELETE api/<NeatController>/
-    /*[HttpDelete("id")]
-    public ActionResult Delete(int id)
+    [HttpDelete("id")]
+    public IActionResult DeleteBooking(int id)
     {
-      var existingBooking = _dataContext.NeatBookings.FirstOrDefault(b=> b.Id == id);
+      var deleteBooking = _neatBookingRepository.DeleteBooking(id);
 
-      if(existingBooking == null)
+      if(deleteBooking == null)
       {
-        return NotFound();
+        return BadRequest();
       }
 
-      _dataContext.NeatBookings.Remove(existingBooking);
-      _dataContext.SaveChanges();
-
-      return Ok(_dataContext.NeatBookings.ToList());
-    }*/
+      return Ok(deleteBooking);
+    }
   }
 }
