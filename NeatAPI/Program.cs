@@ -1,9 +1,11 @@
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
+using Microsoft.OpenApi.Models;
 using NeatAPI.Data;
 using NeatAPI.Interfaces;
 using NeatAPI.Repositories;
+using Swashbuckle.AspNetCore.Filters;
 using System.Text;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -15,7 +17,19 @@ builder.Services.AddControllers();
 builder.Services.AddScoped<INeatBookingRepository, NeatBookingRepository>();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
-builder.Services.AddSwaggerGen();
+builder.Services.AddSwaggerGen(options =>
+{
+  options.AddSecurityDefinition("oauth2", new OpenApiSecurityScheme
+  {
+    Description = "Standard Authorization Header Using The Bearer Scheme (\"bearer {token}\")",
+    In = ParameterLocation.Header,
+    Name = "Authorization",
+    Type = SecuritySchemeType.ApiKey
+
+  });
+
+  options.OperationFilter<SecurityRequirementsOperationFilter>();
+});
 builder.Services.AddDbContext<DataContext>(options =>
 
 options.UseSqlServer(connectionString));

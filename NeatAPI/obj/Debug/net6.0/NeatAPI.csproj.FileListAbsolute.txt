@@ -179,3 +179,6 @@ C:\Users\Kevin\Desktop\Neat\NeatApp\NeatAPI\obj\Debug\net6.0\NeatAPI.pdb
 C:\Users\Kevin\Desktop\Neat\NeatApp\NeatAPI\obj\Debug\net6.0\NeatAPI.genruntimeconfig.cache
 C:\Users\Kevin\Desktop\Neat\NeatApp\NeatAPI\obj\Debug\net6.0\ref\NeatAPI.dll
 C:\Users\Kevin\Desktop\Neat\NeatApp\NeatAPI\bin\Debug\net6.0\Microsoft.AspNetCore.Authentication.JwtBearer.dll
+C:\Users\Kevin\Desktop\Neat\NeatApp\NeatAPI\bin\Debug\net6.0\Scrutor.dll
+C:\Users\Kevin\Desktop\Neat\NeatApp\NeatAPI\bin\Debug\net6.0\Swashbuckle.AspNetCore.Filters.dll
+C:\Users\Kevin\Desktop\Neat\NeatApp\NeatAPI\bin\Debug\net6.0\Swashbuckle.AspNetCore.Filters.Abstractions.dll
