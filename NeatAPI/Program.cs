@@ -1,7 +1,10 @@
+using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.IdentityModel.Tokens;
 using NeatAPI.Data;
 using NeatAPI.Interfaces;
 using NeatAPI.Repositories;
+using System.Text;
 
 var builder = WebApplication.CreateBuilder(args);
 var connectionString = builder.Configuration.GetConnectionString("DataContextConnection") ?? throw new InvalidOperationException("Connection string: 'DataContextConnection' Not Found!");
@@ -23,6 +26,19 @@ builder.Services.AddCors(options => options.AddPolicy(name: "NeatPolicy",
     policy.WithOrigins("http://localhost:4200").AllowAnyMethod().AllowAnyHeader();
   }));
 
+builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
+  .AddJwtBearer(options =>
+  {
+    options.TokenValidationParameters = new TokenValidationParameters
+    {
+      ValidateIssuerSigningKey = true,
+      IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.
+        GetBytes(builder.Configuration.GetSection("AppSettings:Token").Value)),
+      ValidateIssuer = false,
+      ValidateAudience = false
+    };
+  });
+
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
@@ -36,7 +52,7 @@ app.UseCors("NeatPolicy");
 
 app.UseHttpsRedirection();
 
-
+app.UseAuthentication();
 app.UseAuthorization();
 
 app.MapControllers();
