@@ -3,14 +3,20 @@ namespace NeatAPI.Models
   public class User
   {
     public int Id { get; set; }
-    public string UserName { get; set; }
-    public string Email { get; set; }
-    public string Password { get; set; }
+    public string UserName { get; set; } = string.Empty;
+
+    public byte[] PasswordHash { get; set; }
+
+    public byte[] PasswordSalt { get; set; }
+
+    public string Email { get; set; } = string.Empty;
+
+   
   }
 
 
 
-  public class UserRepo
+  /*public class UserRepo
   {
     private readonly List<User> _users;
 
@@ -78,5 +84,5 @@ namespace NeatAPI.Models
 
 
 
-  }
+  */
 }
