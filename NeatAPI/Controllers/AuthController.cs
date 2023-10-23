@@ -23,6 +23,17 @@ namespace NeatAPI.Controllers
 
     }
 
+    [HttpPost("login")]
+    public async Task<ActionResult<string>> Login(UserDto userDto)
+    {
+      if(user.UserName != userDto.UserName)
+      {
+        return BadRequest();
+      }
+
+      return Ok("Token");
+    }
+
     private void CreatePasswordHash(string password, out byte[] passwordHash, out byte[] passwordSalt)
     {
       using(var hmac = new HMACSHA512())
