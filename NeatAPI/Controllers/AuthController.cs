@@ -54,7 +54,8 @@ namespace NeatAPI.Controllers
     {
       List<Claim> claims = new List<Claim>
       {
-        new Claim(ClaimTypes.Name, user.UserName)
+        new Claim(ClaimTypes.Name, user.UserName),
+        new Claim(ClaimTypes.Role, "Admin")
       };
 
       var key = new SymmetricSecurityKey(System.Text.Encoding.UTF8.GetBytes(
