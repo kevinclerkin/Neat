@@ -34,11 +34,6 @@ builder.Services.AddDbContext<DataContext>(options =>
 
 options.UseSqlServer(connectionString));
 
-builder.Services.AddCors(options => options.AddPolicy(name: "NeatPolicy",
-  policy =>
-  {
-    policy.WithOrigins("http://localhost:4200").AllowAnyMethod().AllowAnyHeader();
-  }));
 
 builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
   .AddJwtBearer(options =>
@@ -52,6 +47,13 @@ builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
       ValidateAudience = false
     };
   });
+
+
+builder.Services.AddCors(options => options.AddPolicy(name: "NeatPolicy",
+  policy =>
+  {
+    policy.WithOrigins("http://localhost:4200").AllowAnyMethod().AllowAnyHeader();
+  }));
 
 var app = builder.Build();
 
