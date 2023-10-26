@@ -11,6 +11,7 @@ import { BookingItemComponent } from './components/booking-item/booking-item.com
 import { ButtonComponent } from './components/button/button.component';
 import { HttpClientModule } from '@angular/common/http';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { NavbarComponent } from './components/navbar/navbar.component';
 
 
 @NgModule({
@@ -20,7 +21,8 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
     BookingsComponent,
     AddBookingComponent,
     BookingItemComponent,
-    ButtonComponent
+    ButtonComponent,
+    NavbarComponent
   ],
   imports: [
     BrowserModule,
