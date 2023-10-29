@@ -12,6 +12,7 @@ import { ButtonComponent } from './components/button/button.component';
 import { HttpClientModule } from '@angular/common/http';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { NavbarComponent } from './components/navbar/navbar.component';
+import { RegLoginComponent } from './components/reg-login/reg-login.component';
 
 
 @NgModule({
@@ -22,7 +23,8 @@ import { NavbarComponent } from './components/navbar/navbar.component';
     AddBookingComponent,
     BookingItemComponent,
     ButtonComponent,
-    NavbarComponent
+    NavbarComponent,
+    RegLoginComponent
   ],
   imports: [
     BrowserModule,
