@@ -18,7 +18,7 @@ export class NavbarComponent {
     this.authService.register(user).subscribe();
   }
 
-  logn(user: User){
+  login(user: User){
     this.authService.login(user).subscribe((token: string) => {
       localStorage.setItem('authToken', token);
     });
