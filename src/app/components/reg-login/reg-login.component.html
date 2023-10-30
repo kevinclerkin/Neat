@@ -1,1 +1,10 @@
-<p>reg-login works!</p>
+<div>
+    Name:
+    <input [(ngModel)]="user.username" placeholder="Name">
+</div>
+<div>
+    Password:
+    <input [(ngModel)]="user.password" placeholder="Password" type="password">
+</div>
+<button (click)="register(user)">Register</button>
+<button (click)="login(user)">Login</button>
