@@ -24,7 +24,8 @@ import { RegLoginComponent } from './components/reg-login/reg-login.component';
     BookingItemComponent,
     ButtonComponent,
     NavbarComponent,
-    RegLoginComponent
+    RegLoginComponent,
+  
   ],
   imports: [
     BrowserModule,
