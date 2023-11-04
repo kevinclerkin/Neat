@@ -13,6 +13,7 @@ import { BookingItemComponent } from './components/booking-item/booking-item.com
 import { ButtonComponent } from './components/button/button.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { RegLoginComponent } from './components/reg-login/reg-login.component';
+import { HomeComponent } from './components/home/home.component';
 
 
 @NgModule({
@@ -25,6 +26,7 @@ import { RegLoginComponent } from './components/reg-login/reg-login.component';
     ButtonComponent,
     NavbarComponent,
     RegLoginComponent,
+    HomeComponent,
   
   ],
   imports: [
