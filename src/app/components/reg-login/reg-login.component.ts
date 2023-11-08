@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { User } from 'src/app/Models/User';
 import { AuthService } from 'src/app/services/auth.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-reg-login',
@@ -10,7 +11,7 @@ import { AuthService } from 'src/app/services/auth.service';
 export class RegLoginComponent {
   user = new User();
 
-  constructor(private authService: AuthService){}
+  constructor(private authService: AuthService, private router: Router){}
 
   register(user: User){
     this.authService.register(user).subscribe();
@@ -19,6 +20,7 @@ export class RegLoginComponent {
   login(user: User){
     this.authService.login(user).subscribe((token: string) => {
       localStorage.setItem('authToken', token);
+      this.router.navigate(['/'])
     });
   }
 
