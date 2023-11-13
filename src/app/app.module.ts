@@ -15,6 +15,7 @@ import { NavbarComponent } from './components/navbar/navbar.component';
 import { RegLoginComponent } from './components/reg-login/reg-login.component';
 import { HomeComponent } from './components/home/home.component';
 import { AuthInterceptor } from './services/auth.interceptor';
+import { AdminComponent } from './components/admin/admin.component';
 
 
 @NgModule({
@@ -28,6 +29,7 @@ import { AuthInterceptor } from './services/auth.interceptor';
     NavbarComponent,
     RegLoginComponent,
     HomeComponent,
+    AdminComponent,
   
   ],
   imports: [
