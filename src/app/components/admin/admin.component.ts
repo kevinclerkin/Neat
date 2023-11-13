@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
-import { Calendar } from '@fullcalendar/core';
 import {CalendarOptions} from '@fullcalendar/core'
 import timeGridPlugin from '@fullcalendar/timegrid';
+
 
 @Component({
   selector: 'app-admin',
@@ -11,7 +11,15 @@ import timeGridPlugin from '@fullcalendar/timegrid';
 export class AdminComponent {
   calendarOptions: CalendarOptions = {
     initialView: 'timeGridWeek',
-    plugins: [timeGridPlugin]
+    plugins: [timeGridPlugin],
+    headerToolbar: {
+      left: 'prev,next',
+      center: 'title',
+      right: 'timeGridWeek,timeGridDay'
+    }
+    
+    
+
   };
 
 }
