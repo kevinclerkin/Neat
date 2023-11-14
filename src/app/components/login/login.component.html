@@ -1,8 +1,8 @@
-<form [formGroup]="loginForm">
+<form [formGroup]="loginForm" (ngSubmit)="login(user)">
     <p-card header="Login" [style]="{width: '360px'}">
         <div class="field">
             <label for="username">UserName</label>
-            <input type="text" 
+            <input  [(ngModel)]="user.username"
             pInputText formControlName="username" 
             class="w-full" 
             name="username" 
@@ -14,7 +14,7 @@
         </small>
         <div class="field">
             <label for="password">Password</label>
-            <input type="password" 
+            <input [(ngModel)]="user.password" type="password"
             pInputText formControlName="password" 
             class="w-full" 
             name="password" 
@@ -23,7 +23,7 @@
         <small *ngIf="password.invalid && (password.dirty || password.touched)" class="block p-error">
             <div *ngIf="password.errors?.['required']">Password is required</div>
         </small>
-        <p-button label="SIGN IN" styleClass="w-full" [disabled]="loginForm.invalid"></p-button>
+        <p-button label="SIGN IN" styleClass="w-full" [disabled]="loginForm.invalid" type="submit"></p-button>
         <div class="mt-2">
             Not Registered? <a routerLink="/register">Register</a>
 

@@ -1,8 +1,8 @@
-<form [formGroup]="registerForm">
+<form [formGroup]="registerForm" (ngSubmit)="register(user)">
     <p-card header="Register" [style]="{width: '360px'}">
         <div class="field">
             <label for="username">UserName</label>
-            <input type="text" 
+            <input [(ngModel)]="user.username"
             pInputText formControlName="username" 
             class="w-full" 
             name="username" 
@@ -14,7 +14,7 @@
         </small>
         <div class="field">
             <label for="password">Password</label>
-            <input type="password" 
+            <input [(ngModel)]="user.password" type="password"
             pInputText formControlName="password" 
             class="w-full" 
             name="password" 
@@ -38,7 +38,7 @@
         *ngIf="registerForm.errors?.['passwordMismatch'] && confirmPassword.valid && password.valid">
             Password should match
         </small>
-        <p-button label="Register" styleClass="w-full" [disabled]="registerForm.invalid"></p-button>
+        <p-button label="Register" styleClass="w-full" [disabled]="registerForm.invalid" type="submit"></p-button>
         <div class="mt-2">
             Registered? <a routerLink="/login">Login</a>
 
