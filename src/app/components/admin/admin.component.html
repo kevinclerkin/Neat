@@ -1,5 +1,15 @@
 <button (click)="toggleWeekends()">Add Weekends</button>
-<div id='draggable-el' data-event='{ "title": "my event", "duration": "02:00" }'>drag me</div>
-<full-calendar [options]="calendarOptions"
-[events]="eventPromise | async">
-</full-calendar>
+
+  
+    
+<div class="container-wrapper">
+</div>
+<div class="external-events">
+<p><strong>Team Members</strong></p>
+<div class="external-event" *ngFor="let event of externalEvents" draggable="true">{{ event.title }}</div>
+</div>  
+<div class="calendar-container">   
+    <full-calendar [options]="calendarOptions"
+    [events]="eventPromise | async">
+    </full-calendar>
+</div>

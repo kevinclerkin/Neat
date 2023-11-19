@@ -4,6 +4,8 @@ import timeGridPlugin from '@fullcalendar/timegrid';
 import bootstrap5Plugin from '@fullcalendar/bootstrap5';
 import interactionPlugin, {Draggable} from '@fullcalendar/interaction';
 import { Booking, EventData } from 'src/app/Booking';
+import {ChipModule} from 'primeng/chip';
+import {Droppable} from 'primeng/dragdrop';
 
 @Component({
   selector: 'app-admin',
@@ -18,6 +20,7 @@ export class AdminComponent {
     themeSystem: 'bootstrap5',
     slotDuration: '00:30:00',
     droppable: true,
+    //drop: this.handleExternalEventDrop.bind(this),
     //dateClick: this.handleDateClick.bind(this),
     slotMinTime: '08:00:00',
     slotMaxTime: '19:00:00',
@@ -51,18 +54,63 @@ export class AdminComponent {
     
     eventSources:[]
 
+    
+
     };
 
-    currentEvents = signal<EventApi[]>([]);
+    externalEvents: EventInput[] = [
+      { title: 'David', id: 'teamMember1' },
+      { title: 'Alan', id: 'teamMember2' }];
 
-    constructor(private changeDetector: ChangeDetectorRef) {
+      initExternalEvents() {
+        const externalEventsContainer = document.querySelector('.external-events') as HTMLElement;
+    
+        if (externalEventsContainer) {
+          new Draggable(externalEventsContainer, {
+            itemSelector: '.external-event',
+            eventData: this.handleExternalEventDrop.bind(this),
+          });
+        }
+      }
+
+      handleExternalEventDrop(arg: { dateSelect: DateSelectArg; draggedEl: HTMLElement }) {
+        const calendarApi = arg.dateSelect.view;
+      
+        if (calendarApi) {
+          
+          const title = arg.draggedEl.innerText.trim();
+      
+          
+          const externalEvent = this.externalEvents.find((event) => event.title === title);
+      
+          if (externalEvent) {
+            
+            const newEvent: EventInput = {
+              id: this.createEventId(),
+              title: externalEvent.title,
+              //start,
+              allDay: false, 
+            };
+      
+            
+            //calendarApi.addEvent(newEvent);
+      
+            
+            const currentEvents = this.currentEvents();
+            
+            this.currentEvents.set(currentEvents);
+            this.changeDetector.detectChanges();
+          }
+        }
+      }
+      
+  currentEvents = signal<EventApi[]>([]);
+
+  constructor(private changeDetector: ChangeDetectorRef) {
     }
 
   eventPromise!: Promise<EventInput>;
 
-  //handleDateClick(arg: { dateStr: string; }) {
-    //alert('date click! ' + arg.dateStr)
-  //}
 
   toggleWeekends() {
     this.calendarOptions.weekends = !this.calendarOptions.weekends
@@ -93,7 +141,7 @@ export class AdminComponent {
 
   handleEvents(events: EventApi[]) {
     this.currentEvents.set(events);
-    this.changeDetector.detectChanges(); // workaround for pressionChangedAfterItHasBeenCheckedError
+    this.changeDetector.detectChanges(); // workaround for expressionChangedAfterItHasBeenCheckedError
   }
 
   eventGuid = 0;
@@ -102,6 +150,9 @@ export class AdminComponent {
     return String(this.eventGuid++);
   }
 
+  
+
+  
   
 
 }

@@ -8,7 +8,9 @@ import { CardModule } from 'primeng/card';
 import { InputTextModule } from 'primeng/inputtext';
 import { ReactiveFormsModule } from '@angular/forms';
 import { ButtonModule } from 'primeng/button';
-
+import { ChipModule } from 'primeng/chip';
+import { DragDropModule } from 'primeng/dragdrop';
+import { Draggable } from 'primeng/dragdrop';
 
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './components/header/header.component';
@@ -50,7 +52,10 @@ import { RegisterComponent } from './components/register/register.component';
     CardModule,
     InputTextModule,
     ReactiveFormsModule,
-    ButtonModule
+    ButtonModule,
+    ChipModule,
+    DragDropModule,
+  
     
   ],
   providers: [{
