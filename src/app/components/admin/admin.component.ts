@@ -4,6 +4,7 @@ import timeGridPlugin from '@fullcalendar/timegrid';
 import bootstrap5Plugin from '@fullcalendar/bootstrap5';
 import interactionPlugin, {Draggable} from '@fullcalendar/interaction';
 import { Booking, EventData } from 'src/app/Booking';
+import { BookingService } from 'src/app/services/booking.service';
 import {ChipModule} from 'primeng/chip';
 import {Droppable} from 'primeng/dragdrop';
 
@@ -47,18 +48,61 @@ export class AdminComponent {
     
     events: [
       {
-        id: "a",
+        
         title: "my event",
+        available: "team member",
         start: "2023-11-20T12:30:00",
         end: "2023-11-20T13:30:00"
       }
     ],
     
-    eventSources:[]
+    eventSources:[{
+      url: 'https://localhost:7193/api/Neat', // use the `url` property
+      method: 'GET',
+      extraParams: {
+        custom_param1: 'Service',
+        custom_param2: 'Available',
+        custom_param3: 'Name',
+        custom_param4: 'UserName'
+      },
+      color: 'purple',    // an option!
+      textColor: 'white'  // an option!
+    }]
 
     
 
     };
+
+    constructor(private changeDetector: ChangeDetectorRef, private bookingService: BookingService) {
+    }
+
+    ngOnInit() {
+      this.fetchEventsFromAPI();
+      this.initExternalEvents();
+    }
+
+    fetchEventsFromAPI() {
+      this.bookingService.getBookings().subscribe(bookings => {
+        const formattedBookings: EventInput[] = bookings.map(booking => ({
+          title: booking.service,
+          available: booking.available,
+          start: booking.dateTime,
+          end: this.calculateEndDateTime(new Date(booking.dateTime)),
+          extendedProps:{
+            teamMember: booking.available
+          }
+          
+        }));
+  
+        this.calendarOptions.events = formattedBookings;
+      });
+    }
+
+    calculateEndDateTime(start: Date): Date {
+      const end = new Date(start);
+      end.setMinutes(end.getMinutes() + 30);
+      return end;
+    }
 
     externalEvents: EventInput[] = [
       { title: 'David', id: 'teamMember1' },
@@ -107,9 +151,6 @@ export class AdminComponent {
       }
       
   currentEvents = signal<EventApi[]>([]);
-
-  constructor(private changeDetector: ChangeDetectorRef) {
-    }
 
   eventPromise!: Promise<EventInput>;
 

@@ -26,7 +26,7 @@ namespace NeatAPI.Controllers
 
 
     // GET: api/<NeatController>
-    [HttpGet, Authorize]
+    [HttpGet]
     [ProducesResponseType(typeof(IEnumerable<NeatBooking>), 200)]
     public IActionResult GetBookings()
     {
