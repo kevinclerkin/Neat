@@ -33,6 +33,8 @@ export class AdminComponent {
     allDaySlot: true,
     nowIndicator: true,
     expandRows: false,
+    slotEventOverlap: true,
+    eventMaxStack: 4,
     select: this.handleDateSelect.bind(this),
     eventClick: this.handleEventClick.bind(this),
     eventsSet: this.handleEvents.bind(this),
