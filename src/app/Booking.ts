@@ -6,3 +6,8 @@ export interface Booking{
     clientName: string;
     clientEmail: string;
 }
+
+export interface EventData{
+    title: string;
+    duration: string;
+}

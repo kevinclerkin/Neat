@@ -1,8 +1,9 @@
 import { Component, signal, ChangeDetectorRef } from '@angular/core';
 import {CalendarOptions, EventInput, DateSelectArg, EventClickArg, EventApi, } from '@fullcalendar/core'
 import timeGridPlugin from '@fullcalendar/timegrid';
-import draggble from '@fullcalendar/interaction';
-import interactionPlugin from '@fullcalendar/interaction';
+import bootstrap5Plugin from '@fullcalendar/bootstrap5';
+import interactionPlugin, {Draggable} from '@fullcalendar/interaction';
+import { Booking, EventData } from 'src/app/Booking';
 
 @Component({
   selector: 'app-admin',
@@ -12,6 +13,11 @@ import interactionPlugin from '@fullcalendar/interaction';
 export class AdminComponent {
   calendarOptions: CalendarOptions = {
     initialView: 'timeGridWeek',
+    height: 'auto',
+    contentHeight: 'auto',
+    themeSystem: 'bootstrap5',
+    slotDuration: '00:30:00',
+    droppable: true,
     //dateClick: this.handleDateClick.bind(this),
     slotMinTime: '08:00:00',
     slotMaxTime: '19:00:00',
@@ -21,11 +27,13 @@ export class AdminComponent {
     lazyFetching: true,
     selectable: true,
     editable: true,
-    allDaySlot: false,
+    allDaySlot: true,
+    nowIndicator: true,
+    expandRows: false,
     select: this.handleDateSelect.bind(this),
     eventClick: this.handleEventClick.bind(this),
     eventsSet: this.handleEvents.bind(this),
-    plugins: [timeGridPlugin, draggble, interactionPlugin],
+    plugins: [timeGridPlugin, interactionPlugin, bootstrap5Plugin],
     headerToolbar: {
       left: 'prev,next',
       center: 'title',
@@ -34,10 +42,10 @@ export class AdminComponent {
     
     events: [
       {
-        id: 'a',
-        title: 'my event',
-        start: '2023-11-20T12:30:00',
-        end: '2023-11-20T13:30:00'
+        id: "a",
+        title: "my event",
+        start: "2023-11-20T12:30:00",
+        end: "2023-11-20T13:30:00"
       }
     ],
     
@@ -93,7 +101,7 @@ export class AdminComponent {
   createEventId() {
     return String(this.eventGuid++);
   }
-  
 
+  
 
 }
