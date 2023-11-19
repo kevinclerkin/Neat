@@ -73,6 +73,8 @@ export class AdminComponent {
 
     };
 
+    bookings: Booking[] = [];
+
     constructor(private changeDetector: ChangeDetectorRef, private bookingService: BookingService) {
     }
 
@@ -171,16 +173,28 @@ export class AdminComponent {
         title,
         start: selectInfo.startStr,
         end: selectInfo.endStr,
-        allDay: selectInfo.allDay
+        allDay: selectInfo.allDay,
+        extendedProps: ['available']
       });
     }
   }
 
   handleEventClick(clickInfo: EventClickArg) {
-    if (confirm(`Are you sure you want to delete the event '${clickInfo.event.title}'`)) {
-      clickInfo.event.remove();
-    }
-  }
+    const title = clickInfo.event.title;
+    const teamMember = clickInfo.event.extendedProps['available'];
+    if (confirm(`Are you sure you want to delete the event '${title}' with '${teamMember}'`)) {
+      const bookingId = clickInfo.event.id;
+      const bookingToDelete = this.bookings.find(booking => booking.id === Number(bookingId));
+      
+      if (bookingToDelete) {
+        this.bookingService.deleteBooking(bookingToDelete).subscribe(() => {
+          clickInfo.event.remove();
+        });
+      }
+      else {
+        clickInfo.event.remove();
+      }
+  }}
 
   handleEvents(events: EventApi[]) {
     this.currentEvents.set(events);
