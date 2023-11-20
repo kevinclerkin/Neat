@@ -2,7 +2,7 @@ namespace NeatAPI.Models
 {
   public class User
   {
-    public int Id { get; set; }
+    public int UserId { get; set; }
 
     public string Name { get; set; }
     
@@ -12,6 +12,9 @@ namespace NeatAPI.Models
 
     public byte[] PasswordSalt { get; set; }
 
+    public List<NeatBooking> UserBookings { get; set; } = new List<NeatBooking>();
+
+    public List<Availability> UserAvailabilities { get; set; } = new List<Availability>();
 
    
   }

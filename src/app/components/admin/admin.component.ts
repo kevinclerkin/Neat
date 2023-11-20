@@ -49,10 +49,6 @@ export class AdminComponent {
     events: [
       {
         
-        title: "my event",
-        available: "team member",
-        start: "2023-11-20T12:30:00",
-        end: "2023-11-20T13:30:00"
       }
     ],
     
@@ -87,7 +83,6 @@ export class AdminComponent {
       this.bookingService.getBookings().subscribe(bookings => {
         const formattedBookings: EventInput[] = bookings.map(booking => ({
           title: booking.service,
-          available: booking.available,
           start: booking.dateTime,
           end: this.calculateEndDateTime(new Date(booking.dateTime)),
           extendedProps:{
