@@ -1,11 +1,14 @@
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
 namespace NeatAPI.Models
 {
+    
     public class NeatBooking
     {
+        [Key]
         public int BookingId { get; set; }
         [Required]
 

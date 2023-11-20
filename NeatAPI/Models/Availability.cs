@@ -1,9 +1,13 @@
+using Microsoft.EntityFrameworkCore;
+using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
 namespace NeatAPI.Models
 {
+  
   public class Availability
   {
+    [Key]
     public int AvailabilityId { get; set; }
 
     [ForeignKey("UserId")]

@@ -17,7 +17,7 @@ namespace NeatAPI.Repositories
 
     public ICollection<NeatBooking> GetBookings()
     {
-      return _context.NeatBookings.OrderBy(i => i.Id).ToList();
+      return _context.NeatBookings.OrderBy(i => i.BookingId).ToList();
     }
 
     public ICollection<NeatBooking> GetBookingsByClientEmail(string clientEmail)
@@ -34,7 +34,7 @@ namespace NeatAPI.Repositories
 
     public IEnumerable<NeatBooking> DeleteBooking(int id)
     {
-      var deleteBooking = _context.NeatBookings.FirstOrDefault(b =>  b.Id == id);
+      var deleteBooking = _context.NeatBookings.FirstOrDefault(b =>  b.BookingId == id);
 
       _context.NeatBookings.Remove(deleteBooking);
       _context.SaveChanges();
