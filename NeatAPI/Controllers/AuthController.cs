@@ -1,6 +1,7 @@
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.IdentityModel.Tokens;
+using NeatAPI.Data;
 using NeatAPI.Models;
 using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
@@ -13,11 +14,15 @@ namespace NeatAPI.Controllers
   public class AuthController : ControllerBase
   {
     public static User user = new User();
+
+    private readonly DataContext _context;
+
     private readonly IConfiguration _configuration;
 
-    public AuthController(IConfiguration configuration)
+    public AuthController(IConfiguration configuration, DataContext context)
     {
-      _configuration = configuration; 
+      _configuration = configuration;
+      _context = context;
     }
 
     [HttpPost("register")]
@@ -27,7 +32,8 @@ namespace NeatAPI.Controllers
       user.UserName = userDto.UserName;
       user.PasswordHash = passwordHash;
       user.PasswordSalt = passwordSalt;
-
+      _context.Users.Add(user);
+      _context.SaveChanges();
       return Ok(user);
 
     }
