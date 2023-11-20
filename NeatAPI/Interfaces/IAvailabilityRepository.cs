@@ -6,10 +6,10 @@ namespace NeatAPI.Interfaces
   {
     ICollection<Availability> GetAvailabilities();
 
-    ICollection<Availability> GetAvailabilityByUser(string user);
+    ICollection<Availability> GetAvailabilityByUser(int user);
 
     Availability CreateAvailability(Availability availability);
 
-    ICollection<Availability> DeleteAvailability(int id);
+    IEnumerable<Availability> DeleteAvailability(int id);
   }
 }
