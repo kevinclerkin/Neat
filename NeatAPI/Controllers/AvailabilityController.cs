@@ -19,7 +19,7 @@ namespace NeatAPI.Controllers
     }
 
     [HttpGet]
-    [ProducesResponseType(typeof(IEnumerable<NeatBooking>), 200)]
+    [ProducesResponseType(typeof(IEnumerable<Availability>), 200)]
     public IActionResult GetAvailabilites()
     {
       var allAvailabilities = _availabilityRepository.GetAvailabilities();
@@ -33,7 +33,7 @@ namespace NeatAPI.Controllers
     }
 
     [HttpGet("{UserId}")]
-    [ProducesResponseType(typeof(IEnumerable<NeatBooking>), 200)]
+    [ProducesResponseType(typeof(IEnumerable<Availability>), 200)]
     public IActionResult GetAvailabilityById(int id)
     {
       var availabilityByUser = _availabilityRepository.GetAvailabilityByUser(id);
@@ -48,7 +48,7 @@ namespace NeatAPI.Controllers
     }
 
     [HttpPost]
-    [ProducesResponseType(typeof(NeatBooking), 200)]
+    [ProducesResponseType(typeof(Availability), 200)]
     public IActionResult CreateBooking([FromBody] Availability availability)
     {
       if (availability == null || !ModelState.IsValid)
@@ -58,6 +58,19 @@ namespace NeatAPI.Controllers
 
       _availabilityRepository.CreateAvailability(availability);
       return Ok(availability);
+    }
+
+    [HttpDelete("id")]
+    public IActionResult DeleteAvailability(int id)
+    {
+      var deleteAvailability = _availabilityRepository.DeleteAvailability(id);
+
+      if (deleteAvailability == null)
+      {
+        return BadRequest();
+      }
+
+      return Ok(deleteAvailability);
     }
 
 
