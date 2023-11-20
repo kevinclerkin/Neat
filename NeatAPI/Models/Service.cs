@@ -1,3 +1,5 @@
+using System.ComponentModel.DataAnnotations.Schema;
+
 namespace NeatAPI.Models
 {
   public class Service
@@ -6,6 +8,9 @@ namespace NeatAPI.Models
 
     public String ServiceName { get; set; }
 
+    [ForeignKey("BookingId")]
     public int BookingId { get; set; }
+
+    
   }
 }

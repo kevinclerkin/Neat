@@ -1,5 +1,6 @@
 using Microsoft.AspNetCore.Mvc;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace NeatAPI.Models
 {
@@ -8,6 +9,7 @@ namespace NeatAPI.Models
         public int BookingId { get; set; }
         [Required]
 
+        [ForeignKey("UserId")]
         public int UserId { get; set; }
 
         public String Service { get; set; }

@@ -16,6 +16,8 @@ namespace NeatAPI.Data
 
     public DbSet<User> Users { get; set; }
 
+    
+
   }
 
   
