@@ -10,11 +10,9 @@ namespace NeatAPI.Data
 
     public DbSet<NeatBooking> NeatBookings { get; set; }
 
-    public DbSet<Availability> Availabilities { get; set; }
+    public DbSet<User> Users { get; set; }
 
     public DbSet<Service> Services { get; set; }
-
-    public DbSet<User> Users { get; set; }
 
     
 

@@ -2,7 +2,7 @@ using NeatAPI.Data;
 using NeatAPI.Interfaces;
 using NeatAPI.Models;
 
-namespace NeatAPI.Repositories
+/*namespace NeatAPI.Repositories
 {
   public class AvailabilityRepository : IAvailabilityRepository
   {
@@ -38,4 +38,4 @@ namespace NeatAPI.Repositories
       return _context.Availabilities.Where(a => a.UserId == user).ToList();
     }
   }
-}
+}*/

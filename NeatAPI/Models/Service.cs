@@ -12,9 +12,5 @@ namespace NeatAPI.Models
 
     public String ServiceName { get; set; }
 
-    [ForeignKey("BookingId")]
-    public int BookingId { get; set; }
-
-    
   }
 }

@@ -10,11 +10,12 @@ namespace NeatAPI.Models
     [Key]
     public int AvailabilityId { get; set; }
 
-    [ForeignKey("UserId")]
+    [ForeignKey("User")]
     public int UserId { get; set; }
+
+    public virtual User User { get; set; }
 
     public DateTime StartTime { get; set; }
 
-    public DateTime EndTime { get; set; }
   }
 }

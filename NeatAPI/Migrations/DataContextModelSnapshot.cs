@@ -30,9 +30,6 @@ namespace NeatAPI.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("AvailabilityId"));
 
-                    b.Property<DateTime>("EndTime")
-                        .HasColumnType("datetime2");
-
                     b.Property<DateTime>("StartTime")
                         .HasColumnType("datetime2");
 
@@ -43,7 +40,7 @@ namespace NeatAPI.Migrations
 
                     b.HasIndex("UserId");
 
-                    b.ToTable("Availabilities");
+                    b.ToTable("Availability");
                 });
 
             modelBuilder.Entity("NeatAPI.Models.NeatBooking", b =>
@@ -54,12 +51,6 @@ namespace NeatAPI.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("BookingId"));
 
-                    b.Property<int>("AvailabilityId")
-                        .HasColumnType("int");
-
-                    b.Property<DateTime>("BookingTime")
-                        .HasColumnType("datetime2");
-
                     b.Property<string>("ClientEmail")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
@@ -68,13 +59,15 @@ namespace NeatAPI.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("Service")
-                        .HasColumnType("nvarchar(max)");
+                    b.Property<int>("ServiceId")
+                        .HasColumnType("int");
 
                     b.Property<int>("UserId")
                         .HasColumnType("int");
 
                     b.HasKey("BookingId");
+
+                    b.HasIndex("ServiceId");
 
                     b.HasIndex("UserId");
 
@@ -88,9 +81,6 @@ namespace NeatAPI.Migrations
                         .HasColumnType("int");
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("ServiceId"));
-
-                    b.Property<int>("BookingId")
-                        .HasColumnType("int");
 
                     b.Property<string>("ServiceName")
                         .HasColumnType("nvarchar(max)");
@@ -109,15 +99,19 @@ namespace NeatAPI.Migrations
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("UserId"));
 
                     b.Property<string>("Name")
+                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<byte[]>("PasswordHash")
+                        .IsRequired()
                         .HasColumnType("varbinary(max)");
 
                     b.Property<byte[]>("PasswordSalt")
+                        .IsRequired()
                         .HasColumnType("varbinary(max)");
 
                     b.Property<string>("UserName")
+                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("UserId");
@@ -127,20 +121,32 @@ namespace NeatAPI.Migrations
 
             modelBuilder.Entity("NeatAPI.Models.Availability", b =>
                 {
-                    b.HasOne("NeatAPI.Models.User", null)
+                    b.HasOne("NeatAPI.Models.User", "User")
                         .WithMany("UserAvailabilities")
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
+
+                    b.Navigation("User");
                 });
 
             modelBuilder.Entity("NeatAPI.Models.NeatBooking", b =>
                 {
-                    b.HasOne("NeatAPI.Models.User", null)
+                    b.HasOne("NeatAPI.Models.Service", "Service")
+                        .WithMany()
+                        .HasForeignKey("ServiceId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("NeatAPI.Models.User", "User")
                         .WithMany("UserBookings")
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
+
+                    b.Navigation("Service");
+
+                    b.Navigation("User");
                 });
 
             modelBuilder.Entity("NeatAPI.Models.User", b =>

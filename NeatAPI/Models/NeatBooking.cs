@@ -9,18 +9,8 @@ namespace NeatAPI.Models
     public class NeatBooking
     {
         [Key]
+        [Required]
         public int BookingId { get; set; }
-        [Required]
-
-        [ForeignKey("UserId")]
-        public int UserId { get; set; }
-
-        public String Service { get; set; }
-
-        [Required]
-        public int AvailabilityId { get; set; }
-
-        public DateTime BookingTime { get; set; }
 
         [Required]
         public String ClientName { get; set; }
@@ -29,6 +19,16 @@ namespace NeatAPI.Models
         [EmailAddress]
 
         public String ClientEmail { get; set; }
+
+        [ForeignKey("User")]
+        public int UserId { get; set; }
+
+        public virtual User User { get; set; }
+
+        [ForeignKey("Service")]
+        public int ServiceId { get; set; }
+
+        public virtual Service Service { get; set; }
     }
 
   
