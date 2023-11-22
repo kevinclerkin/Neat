@@ -20,9 +20,6 @@ namespace NeatAPI.Models
 
         public String ClientEmail { get; set; }
 
-        [Required]
-        public DateTime StartTime { get; set; }
-
         [ForeignKey("User")]
         public int UserId { get; set; }
 
@@ -30,7 +27,10 @@ namespace NeatAPI.Models
         [ForeignKey("Service")]
         public int ServiceId { get; set; }
 
-    }
+        [Required]
+        public DateTime DateTime { get; set; }
+
+  }
 
   
 

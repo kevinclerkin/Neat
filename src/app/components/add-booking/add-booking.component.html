@@ -1,14 +1,14 @@
 <form *ngIf="showAddBooking" class="add-form" (ngSubmit)="onSubmit()">
 <div class="form-control">
         <label for="service">Service</label>
-        <select [(ngModel)]="selectedService" name="service" id="service">
+        <select [(ngModel)]="serviceId" name="service" id="service">
         <option value="">Choose a service</option>
         <option *ngFor="let service of services" [value]="service">{{service}}</option>
         </select>    
 </div>
 <div class="form-control">
         <label for="available">Available</label>
-        <select [(ngModel)]="available" name="available"  id="available">
+        <select [(ngModel)]="userId" name="available"  id="available">
         <option value="">Choose a team member</option> 
         <option *ngFor="let teamMember of teamMembers" [value]="teamMember">{{teamMember}}</option>
         </select>     

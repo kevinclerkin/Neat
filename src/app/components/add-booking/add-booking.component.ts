@@ -10,12 +10,14 @@ import { UiService } from 'src/app/services/ui.service';
 })
 export class AddBookingComponent implements OnInit {
   @Output() onAddBooking: EventEmitter<Booking> = new EventEmitter();
-  
-  selectedService: string = '';
-  available: string = '';
-  dateTime!: string;
+  Id!: number;
+  //selectedService: string = '';
+  //available: string = '';
+  userId!: number;
+  serviceId!: number;
   clientName!: string;
   clientEmail!: string;
+  dateTime!: string;
   showAddBooking: boolean = false;
   subscription!: Subscription;
 
@@ -37,14 +39,15 @@ export class AddBookingComponent implements OnInit {
   }
 
   onSubmit(){
-    if(!this.selectedService || !this.available || !this.dateTime || !this.clientName || !this.clientEmail){
+    if(!this.serviceId || !this.userId || !this.dateTime || !this.clientName || !this.clientEmail){
       alert('Complete all fields to make a booking!');
       return;
     }
 
     const newBooking = {
-      service: this.selectedService,
-      available: this.available,
+      Id: this.Id,
+      userId: this.userId,
+      serviceId: this.serviceId,
       dateTime: this.dateTime,
       clientName: this.clientName,
       clientEmail: this.clientEmail
@@ -53,12 +56,13 @@ export class AddBookingComponent implements OnInit {
     };
 
     this.onAddBooking.emit(newBooking);
-
-    this.selectedService = '';
-    this.available = '';
-    this.dateTime = '';
+    this.Id = 0;
     this.clientName = '';
     this.clientEmail = '';
+    this.userId = 0;
+    this.serviceId = 0;
+    this.dateTime = '';
+    
   }
 
 

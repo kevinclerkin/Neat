@@ -1,8 +1,10 @@
 <div [ngClass]="{clientEmail: booking.clientEmail}" class="booking" (dblclick)="onToggle(booking)">
-    <p>{{booking.service}}</p>
-    <p>{{booking.available}}</p>
-    <p>{{booking.dateTime}}</p>
+    <p>{{booking.id}}</p>
     <p>{{booking.clientName}}</p>
     <p>{{booking.clientEmail}}</p>
-
+    <p>{{booking.dateTime}}</p>
+    <p>{{booking.userId}}</p>
+    <p>{{booking.serviceId}}</p>
+    
+    
 </div>

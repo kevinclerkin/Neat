@@ -82,11 +82,11 @@ export class AdminComponent {
     fetchEventsFromAPI() {
       this.bookingService.getBookings().subscribe(bookings => {
         const formattedBookings: EventInput[] = bookings.map(booking => ({
-          title: booking.service,
+          title: String(booking.id),
           start: booking.dateTime,
           end: this.calculateEndDateTime(new Date(booking.dateTime)),
           extendedProps:{
-            teamMember: booking.available
+            teamMember: booking.clientEmail
           }
           
         }));
