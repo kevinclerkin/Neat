@@ -14,7 +14,7 @@ namespace NeatAPI.Models
     [ForeignKey("User")]
     public int UserId { get; set; }
     [Required]
-    public DateTime StartTime { get; set; }
+    public DateTime DateTime { get; set; }
 
   }
 }

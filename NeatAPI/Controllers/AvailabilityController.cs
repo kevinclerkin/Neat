@@ -49,7 +49,7 @@ namespace NeatAPI.Controllers
 
     [HttpPost]
     [ProducesResponseType(typeof(Availability), 200)]
-    public IActionResult CreateBooking([FromBody] Availability availability)
+    public IActionResult AddAvailability([FromBody] Availability availability)
     {
       if (availability == null || !ModelState.IsValid)
       {

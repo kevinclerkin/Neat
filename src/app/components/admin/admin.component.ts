@@ -7,6 +7,8 @@ import { Booking, EventData } from 'src/app/Booking';
 import { BookingService } from 'src/app/services/booking.service';
 import {ChipModule} from 'primeng/chip';
 import {Droppable} from 'primeng/dragdrop';
+import { Availability } from 'src/app/Availability';
+import { AvailabilityService } from 'src/app/services/availability.service';
 
 @Component({
   selector: 'app-admin',
@@ -51,16 +53,13 @@ export class AdminComponent {
         
       }
     ],
+
+    
     
     eventSources:[{
-      url: 'https://localhost:7193/api/Neat', // use the `url` property
+      url: 'https://localhost:7193/api/Availability', // use the `url` property
       method: 'GET',
-      extraParams: {
-        custom_param1: 'Service',
-        custom_param2: 'Available',
-        custom_param3: 'Name',
-        custom_param4: 'UserName'
-      },
+      
       color: 'purple',    // an option!
       textColor: 'white'  // an option!
     }]
@@ -71,12 +70,15 @@ export class AdminComponent {
 
     bookings: Booking[] = [];
 
-    constructor(private changeDetector: ChangeDetectorRef, private bookingService: BookingService) {
+    constructor(private changeDetector: ChangeDetectorRef, private bookingService: BookingService, 
+      private availabilityService: AvailabilityService) {
     }
 
     ngOnInit() {
+      this.fetchAvailabilityFromAPI();
       this.fetchEventsFromAPI();
       this.initExternalEvents();
+      
     }
 
     fetchEventsFromAPI() {
@@ -92,6 +94,20 @@ export class AdminComponent {
         }));
   
         this.calendarOptions.events = formattedBookings;
+      });
+    }
+
+    fetchAvailabilityFromAPI(){
+      this.availabilityService.getAvailabilities().subscribe(availabilities => {
+        const formattedAvailabilites: EventInput[] = availabilities.map(availability => ({
+          title: String(availability.userId),
+          start: availability.dateTime,
+          end: this.calculateEndDateTime(new Date(availability.dateTime))
+          
+          
+        }));
+  
+        this.calendarOptions.events = formattedAvailabilites;
       });
     }
 
@@ -164,7 +180,7 @@ export class AdminComponent {
 
     if (title) {
       calendarApi.addEvent({
-        id: this.createEventId(),
+        //id: this.createEventId(),
         title,
         start: selectInfo.startStr,
         end: selectInfo.endStr,
