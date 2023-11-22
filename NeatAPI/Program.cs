@@ -15,6 +15,8 @@ var connectionString = builder.Configuration.GetConnectionString("DataContextCon
 
 builder.Services.AddControllers();
 builder.Services.AddScoped<INeatBookingRepository, NeatBookingRepository>();
+builder.Services.AddScoped<INeatServiceRepository, NeatServiceRepository>();
+builder.Services.AddScoped<IAvailabilityRepository, AvailabilityRepository>();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen(options =>
