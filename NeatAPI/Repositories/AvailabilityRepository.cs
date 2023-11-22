@@ -2,7 +2,7 @@ using NeatAPI.Data;
 using NeatAPI.Interfaces;
 using NeatAPI.Models;
 
-/*namespace NeatAPI.Repositories
+namespace NeatAPI.Repositories
 {
   public class AvailabilityRepository : IAvailabilityRepository
   {
@@ -12,6 +12,19 @@ using NeatAPI.Models;
     {
       _context = context;
     }
+
+    public ICollection<Availability> GetAvailabilities()
+    {
+      return _context.Availabilities.OrderBy(a => a.AvailabilityId).ToList();
+    }
+
+
+    public ICollection<Availability> GetAvailabilityByUser(int user)
+    {
+      return _context.Availabilities.Where(a => a.UserId == user).ToList();
+    }
+
+
     public Availability CreateAvailability(Availability availability)
     {
       _context.Availabilities.Add(availability);
@@ -28,14 +41,6 @@ using NeatAPI.Models;
       return _context.Availabilities;
     }
 
-    public ICollection<Availability> GetAvailabilities()
-    {
-      return _context.Availabilities.OrderBy(a => a.AvailabilityId).ToList();
-    }
-
-    public ICollection<Availability> GetAvailabilityByUser(int user)
-    {
-      return _context.Availabilities.Where(a => a.UserId == user).ToList();
-    }
+   
   }
-}*/
+}

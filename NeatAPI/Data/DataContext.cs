@@ -14,6 +14,8 @@ namespace NeatAPI.Data
 
     public DbSet<Service> Services { get; set; }
 
+    public DbSet<Availability> Availabilities { get; set; }
+
     
 
   }

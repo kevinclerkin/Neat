@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using NeatAPI.Data;
 
@@ -11,9 +12,11 @@ using NeatAPI.Data;
 namespace NeatAPI.Migrations
 {
     [DbContext(typeof(DataContext))]
-    partial class DataContextModelSnapshot : ModelSnapshot
+    [Migration("20231121235640_updated1")]
+    partial class updated1
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -40,7 +43,7 @@ namespace NeatAPI.Migrations
 
                     b.HasIndex("UserId");
 
-                    b.ToTable("Availabilities");
+                    b.ToTable("Availability");
                 });
 
             modelBuilder.Entity("NeatAPI.Models.NeatBooking", b =>
@@ -62,13 +65,12 @@ namespace NeatAPI.Migrations
                     b.Property<int>("ServiceId")
                         .HasColumnType("int");
 
-                    b.Property<DateTime>("StartTime")
-                        .HasColumnType("datetime2");
-
                     b.Property<int>("UserId")
                         .HasColumnType("int");
 
                     b.HasKey("BookingId");
+
+                    b.HasIndex("ServiceId");
 
                     b.HasIndex("UserId");
 
@@ -84,7 +86,6 @@ namespace NeatAPI.Migrations
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("ServiceId"));
 
                     b.Property<string>("ServiceName")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("ServiceId");
@@ -122,20 +123,32 @@ namespace NeatAPI.Migrations
 
             modelBuilder.Entity("NeatAPI.Models.Availability", b =>
                 {
-                    b.HasOne("NeatAPI.Models.User", null)
+                    b.HasOne("NeatAPI.Models.User", "User")
                         .WithMany("UserAvailabilities")
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
+
+                    b.Navigation("User");
                 });
 
             modelBuilder.Entity("NeatAPI.Models.NeatBooking", b =>
                 {
-                    b.HasOne("NeatAPI.Models.User", null)
+                    b.HasOne("NeatAPI.Models.Service", "Service")
+                        .WithMany()
+                        .HasForeignKey("ServiceId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("NeatAPI.Models.User", "User")
                         .WithMany("UserBookings")
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
+
+                    b.Navigation("Service");
+
+                    b.Navigation("User");
                 });
 
             modelBuilder.Entity("NeatAPI.Models.User", b =>

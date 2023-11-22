@@ -20,15 +20,16 @@ namespace NeatAPI.Models
 
         public String ClientEmail { get; set; }
 
+        [Required]
+        public DateTime StartTime { get; set; }
+
         [ForeignKey("User")]
         public int UserId { get; set; }
 
-        public virtual User User { get; set; }
 
         [ForeignKey("Service")]
         public int ServiceId { get; set; }
 
-        public virtual Service Service { get; set; }
     }
 
   

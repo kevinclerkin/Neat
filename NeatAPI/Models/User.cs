@@ -9,7 +9,7 @@ namespace NeatAPI.Models
     [Key]
     [Required]
     public int UserId { get; set; }
-    [Required]
+    
     public string Name { get; set; }
     [Required]
     public string UserName { get; set; } = string.Empty;
@@ -17,7 +17,7 @@ namespace NeatAPI.Models
     public byte[] PasswordHash { get; set; }
     [Required]
     public byte[] PasswordSalt { get; set; }
-    [Required]
+   
     public List<NeatBooking> UserBookings { get; set; } = new List<NeatBooking>();
 
     public List<Availability> UserAvailabilities { get; set; } = new List<Availability>();

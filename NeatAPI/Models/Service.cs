@@ -10,6 +10,7 @@ namespace NeatAPI.Models
     [Key]
     public int ServiceId { get; set; }
 
+    [Required]
     public String ServiceName { get; set; }
 
   }

@@ -13,6 +13,12 @@ namespace NeatAPI.Repositories
     {
         _context = context;
     }
+
+    public ICollection<Service> GetAllServices()
+    {
+      return _context.Services.OrderBy(a => a.ServiceId).ToList();
+    }
+
     public Service CreateService(Service service)
     {
       _context.Services.Add(service);
@@ -29,9 +35,6 @@ namespace NeatAPI.Repositories
       return _context.Services;
     }
 
-    public ICollection<Service> GetAllServices()
-    {
-      return _context.Services.OrderBy(a => a.ServiceId).ToList();
-    }
+    
   }
 }
