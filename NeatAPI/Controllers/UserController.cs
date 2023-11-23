@@ -17,13 +17,13 @@ namespace NeatAPI.Controllers
         
     }
 
-    /*[HttpGet]
+    [HttpGet]
     public ActionResult<IEnumerable<User>> GetUsers()
     {
       return _context.Users.OrderBy(u => u.UserName).ToList();
-    }*/
+    }
 
-    [HttpGet]
+    [HttpGet("get-user-names")]
     public ActionResult<IEnumerable<string>> GetUserNames()
     {
       var userNames = _context.Users

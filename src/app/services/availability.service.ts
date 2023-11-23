@@ -21,6 +21,11 @@ export class AvailabilityService {
     return this.http.get<Availability[]>(this.apiUrl);
   }
 
+  getAvailabilitiesByUserId(userId: number): Observable<Availability[]>{
+    const url = `${this.apiUrl}?userId=${userId}`;
+    return this.http.get<Availability[]>(url);
+  }
+
   addAvailability(availability: Availability): Observable<Availability>{
     return this.http.post<Availability>(this.apiUrl, availability, httpOptions);
   }

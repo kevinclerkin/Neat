@@ -32,7 +32,7 @@ namespace NeatAPI.Controllers
       return Ok(allAvailabilities);
     }
 
-    [HttpGet("{UserId}")]
+    [HttpGet("userId")]
     [ProducesResponseType(typeof(IEnumerable<Availability>), 200)]
     public IActionResult GetAvailabilityById(int id)
     {

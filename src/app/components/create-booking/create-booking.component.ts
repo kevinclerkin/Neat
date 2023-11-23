@@ -3,6 +3,8 @@ import { FormBuilder, FormGroup, FormControl } from '@angular/forms';
 import { Availability } from 'src/app/Availability';
 import { AvailabilityService } from 'src/app/services/availability.service';
 import { User } from 'src/app/Models/User';
+import { TeamMemberService } from 'src/app/services/team-member.service';
+import { Observable, of, switchMap } from 'rxjs';
 
 @Component({
   selector: 'app-create-booking',
@@ -11,20 +13,33 @@ import { User } from 'src/app/Models/User';
 })
 export class CreateBookingComponent implements OnInit {
   availabilityForm!: FormGroup;
-  availabilities!: Availability[];
+  availabilities$: Observable<Availability[]> = of([]);
+  teamMembers!: User[];
 
   constructor(
     private formBuilder: FormBuilder,
-    private availabilityService: AvailabilityService
+    private availabilityService: AvailabilityService,
+    private teamMemberService: TeamMemberService
   ) {}
 
   ngOnInit(): void {
     this.availabilityForm = this.formBuilder.group({
-      selectedAvailability: new FormControl(null),
+      selectedTeamMember: new FormControl(null),
+      selectedAvailability: new FormControl(null)
+     
     });
 
-    this.availabilityService.getAvailabilities().subscribe((availabilities) => {
-      this.availabilities = availabilities;
+    this.availabilities$ = this.availabilityService.getAvailabilities();
+
+    this.teamMemberService.getUsers().subscribe((teamMembers)=>{
+      this.teamMembers = teamMembers;
+    })
+
+    this.availabilityForm.get('selectedTeamMember')?.valueChanges.pipe(
+      switchMap((userId)=> this.availabilityService.getAvailabilitiesByUserId(userId))
+    ).subscribe((availabilities)=> {
+      this.availabilities$ = of(availabilities);
     });
+    
   }
 }
