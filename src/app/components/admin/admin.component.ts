@@ -9,6 +9,7 @@ import {ChipModule} from 'primeng/chip';
 import {Droppable} from 'primeng/dragdrop';
 import { Availability } from 'src/app/Availability';
 import { AvailabilityService } from 'src/app/services/availability.service';
+import { CalendarView } from 'src/app/CalendarView';
 
 @Component({
   selector: 'app-admin',
@@ -179,16 +180,32 @@ export class AdminComponent {
     calendarApi.unselect(); // clear date selection
 
     if (title) {
-      calendarApi.addEvent({
+      const frontendEvent = {
         //id: this.createEventId(),
         title,
         start: selectInfo.startStr,
-        end: selectInfo.endStr,
-        allDay: selectInfo.allDay,
-        extendedProps: ['available']
-      });
+        end: selectInfo.endStr
+      };
+
+      calendarApi.addEvent(frontendEvent);
+
+      const backendEvent: Availability = this.mapFrontendToBackend(frontendEvent);
+
+      this.availabilityService.addAvailability(backendEvent).subscribe();
+
     }
   }
+
+  private mapFrontendToBackend(frontendEvent: any): Availability{
+    return {
+      availabilityId: 4,
+      userId: frontendEvent.userId,
+      dateTime: frontendEvent.start
+    }
+
+  }
+
+
 
   handleEventClick(clickInfo: EventClickArg) {
     const title = clickInfo.event.title;

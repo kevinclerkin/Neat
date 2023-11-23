@@ -20,4 +20,8 @@ export class AvailabilityService {
   getAvailabilities(): Observable<Availability[]>{
     return this.http.get<Availability[]>(this.apiUrl);
   }
+
+  addAvailability(availability: Availability): Observable<Availability>{
+    return this.http.post<Availability>(this.apiUrl, availability, httpOptions);
+  }
 }

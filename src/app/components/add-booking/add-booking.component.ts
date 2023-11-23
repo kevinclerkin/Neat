@@ -2,7 +2,7 @@ import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { Booking } from 'src/app/Booking';
 import { Subscription } from 'rxjs';
 import { UiService } from 'src/app/services/ui.service';
-
+import { Availability } from 'src/app/Availability';
 @Component({
   selector: 'app-add-booking',
   templateUrl: './add-booking.component.html',
@@ -23,6 +23,7 @@ export class AddBookingComponent implements OnInit {
 
   services: string[] = ["Dry Cut", "Wash, Cut & Style", "Hot Towel Shave", "Beard Trim"];
   teamMembers: string[] = ["Alan", "John", "Rob"];
+  availabilities: string[] = []
 
   
 
