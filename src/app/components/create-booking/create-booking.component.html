@@ -1,0 +1,13 @@
+<form [formGroup]="availabilityForm">
+    <p-card header="Book Your Appointment" [style]="{width: '360px'}">
+    <div class="field">
+    <label for="selectedAvailability">Select Availability:</label>
+    <select formControlName="selectedAvailability">
+      <option *ngFor="let availability of availabilities" [value]="availability.availabilityId">
+        {{ availability.dateTime | date: 'dd/MM/yy - HH:mm:00' }}
+      </option>
+    </select>
+    </div>
+    </p-card>
+</form>
+  

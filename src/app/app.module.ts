@@ -10,7 +10,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { ButtonModule } from 'primeng/button';
 import { ChipModule } from 'primeng/chip';
 import { DragDropModule } from 'primeng/dragdrop';
-import { Draggable } from 'primeng/dragdrop';
+
 
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './components/header/header.component';
@@ -25,6 +25,8 @@ import { AuthInterceptor } from './services/auth.interceptor';
 import { AdminComponent } from './components/admin/admin.component';
 import { LoginComponent } from './components/login/login.component';
 import { RegisterComponent } from './components/register/register.component';
+import { CreateBookingComponent } from './components/create-booking/create-booking.component';
+
 
 
 @NgModule({
@@ -41,6 +43,8 @@ import { RegisterComponent } from './components/register/register.component';
     AdminComponent,
     LoginComponent,
     RegisterComponent,
+    CreateBookingComponent
+  
   
   ],
   imports: [

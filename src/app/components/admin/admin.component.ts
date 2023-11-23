@@ -9,7 +9,6 @@ import {ChipModule} from 'primeng/chip';
 import {Droppable} from 'primeng/dragdrop';
 import { Availability } from 'src/app/Availability';
 import { AvailabilityService } from 'src/app/services/availability.service';
-import { CalendarView } from 'src/app/CalendarView';
 
 @Component({
   selector: 'app-admin',
@@ -198,7 +197,6 @@ export class AdminComponent {
 
   private mapFrontendToBackend(frontendEvent: any): Availability{
     return {
-      availabilityId: 4,
       userId: frontendEvent.userId,
       dateTime: frontendEvent.start
     }

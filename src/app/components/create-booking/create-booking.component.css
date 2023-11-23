@@ -1,0 +1,16 @@
+@import "primeicons/primeicons.css";
+
+html,
+body{
+    height: 100%;
+    margin: 0;
+    
+    justify-content: center;
+    align-items: center;
+}
+
+form{
+    margin-top: 100px;
+    margin-left: 100px;
+    margin-right: 100px;
+}
