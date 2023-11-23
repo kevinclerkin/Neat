@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, FormControl } from '@angular/forms';
 import { Availability } from 'src/app/Availability';
 import { AvailabilityService } from 'src/app/services/availability.service';
+import { User } from 'src/app/Models/User';
 
 @Component({
   selector: 'app-create-booking',
