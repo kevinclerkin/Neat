@@ -35,5 +35,14 @@ namespace NeatAPI.Controllers
 
 
     }
+
+    [HttpPost]
+    public IActionResult CreateUser(User user)
+    {
+      _context.Users.Add(user);
+      _context.SaveChanges();
+      return Ok(user);
+
+    }
   }
 }

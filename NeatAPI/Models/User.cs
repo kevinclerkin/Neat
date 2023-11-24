@@ -17,9 +17,10 @@ namespace NeatAPI.Models
     public byte[] PasswordHash { get; set; }
     [Required]
     public byte[] PasswordSalt { get; set; }
-   
-    public List<NeatBooking> UserBookings { get; set; } = new List<NeatBooking>();
 
+    [Required]
+    public List<NeatBooking> UserBookings { get; set; } = new List<NeatBooking>();
+    [Required]
     public List<Availability> UserAvailabilities { get; set; } = new List<Availability>();
 
    

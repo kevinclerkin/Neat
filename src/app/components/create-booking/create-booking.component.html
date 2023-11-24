@@ -3,7 +3,7 @@
         <div class="field">
             <label for="selectedTeamMember">Select Team Member:</label>
             <select formControlName="selectedTeamMember">
-              <option *ngFor="let teamMember of teamMembers" [value]="teamMember.userId">
+              <option *ngFor="let teamMember of teamMembers" [ngValue]="teamMember.userId">
                 {{ teamMember.name }}
               </option>
             </select>
@@ -11,8 +11,8 @@
     <div class="field">
     <label for="selectedAvailability">Select Availability:</label>
     <select formControlName="selectedAvailability">
-      <ng-container *ngFor="let availability of availabilities$ | async">
-        <option [value]="availability.availabilityId">
+      <ng-container *ngFor="let availability of availabilities">
+        <option [ngValue]="availability.availabilityId">
         {{ availability.dateTime | date: 'dd/MM/yy - HH:mm:00' }}
       </option>
       </ng-container>

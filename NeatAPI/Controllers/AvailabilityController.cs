@@ -32,11 +32,11 @@ namespace NeatAPI.Controllers
       return Ok(allAvailabilities);
     }
 
-    [HttpGet("userId")]
+    [HttpGet("{userId}")]
     [ProducesResponseType(typeof(IEnumerable<Availability>), 200)]
-    public IActionResult GetAvailabilityById(int id)
+    public IActionResult GetAvailabilityById(int userId)
     {
-      var availabilityByUser = _availabilityRepository.GetAvailabilityByUser(id);
+      var availabilityByUser = _availabilityRepository.GetAvailabilityByUser(userId);
 
       if (!ModelState.IsValid)
       {
