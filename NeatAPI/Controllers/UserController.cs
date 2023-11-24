@@ -44,5 +44,20 @@ namespace NeatAPI.Controllers
       return Ok(user);
 
     }
+
+    [HttpPut]
+    public IActionResult EditUserAvailability(int userId, [FromBody] List<Availability> updateAvailabilities)
+    {
+      var user = _context.Users.Find(userId);
+
+      if (user == null)
+      {
+        return BadRequest();
+      }
+
+      user.UserAvailabilities = updateAvailabilities;
+      _context.SaveChanges();
+      return Ok();
+    }
   }
 }
