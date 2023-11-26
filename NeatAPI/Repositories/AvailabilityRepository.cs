@@ -15,7 +15,10 @@ namespace NeatAPI.Repositories
 
     public ICollection<Availability> GetAvailabilities()
     {
-      return _context.Availabilities.OrderBy(a => a.AvailabilityId).ToList();
+      DateTime now = DateTime.Now;
+
+      return _context.Availabilities.Where(a => a.DateTime >= now)
+        .OrderBy(a => a.DateTime).ToList();
     }
 
 
