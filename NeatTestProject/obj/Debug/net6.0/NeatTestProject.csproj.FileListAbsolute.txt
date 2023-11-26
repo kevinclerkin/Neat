@@ -1,4 +1,3 @@
-C:\Users\Kevin\Desktop\Neat\NeatApp\NeatTestProject\bin\Debug\net6.0\CoverletSourceRootsMapping
 C:\Users\Kevin\Desktop\Neat\NeatApp\NeatTestProject\bin\Debug\net6.0\testhost.dll
 C:\Users\Kevin\Desktop\Neat\NeatApp\NeatTestProject\bin\Debug\net6.0\NeatAPI.deps.json
 C:\Users\Kevin\Desktop\Neat\NeatApp\NeatTestProject\bin\Debug\net6.0\NeatAPI.runtimeconfig.json
@@ -168,3 +167,8 @@ C:\Users\Kevin\Desktop\Neat\NeatApp\NeatTestProject\bin\Debug\net6.0\runtimes\br
 C:\Users\Kevin\Desktop\Neat\NeatApp\NeatTestProject\bin\Debug\net6.0\Castle.Core.dll
 C:\Users\Kevin\Desktop\Neat\NeatApp\NeatTestProject\bin\Debug\net6.0\FakeItEasy.dll
 C:\Users\Kevin\Desktop\Neat\NeatApp\NeatTestProject\bin\Debug\net6.0\FluentAssertions.dll
+C:\Users\Kevin\Desktop\Neat\NeatApp\NeatTestProject\bin\Debug\net6.0\CoverletSourceRootsMapping_NeatTestProject
+C:\Users\Kevin\Desktop\Neat\NeatApp\NeatTestProject\bin\Debug\net6.0\Microsoft.AspNetCore.Authentication.JwtBearer.dll
+C:\Users\Kevin\Desktop\Neat\NeatApp\NeatTestProject\bin\Debug\net6.0\Scrutor.dll
+C:\Users\Kevin\Desktop\Neat\NeatApp\NeatTestProject\bin\Debug\net6.0\Swashbuckle.AspNetCore.Filters.dll
+C:\Users\Kevin\Desktop\Neat\NeatApp\NeatTestProject\bin\Debug\net6.0\Swashbuckle.AspNetCore.Filters.Abstractions.dll
