@@ -56,13 +56,13 @@ export class AddBookingComponent implements OnInit {
 
     };
 
-    this.onAddBooking.emit(newBooking);
+    /*this.onAddBooking.emit(newBooking);
     this.Id = 0;
     this.clientName = '';
     this.clientEmail = '';
     this.userId = 0;
     this.serviceId = 0;
-    this.dateTime = '';
+    this.dateTime = '';*/
     
   }
 

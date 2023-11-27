@@ -1,11 +1,16 @@
-import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, FormControl } from '@angular/forms';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { FormBuilder, FormGroup, FormControl, Validators } from '@angular/forms';
 import { Availability } from 'src/app/Availability';
 import { AvailabilityService } from 'src/app/services/availability.service';
 import { User } from 'src/app/Models/User';
 import { TeamMemberService } from 'src/app/services/team-member.service';
-import { Observable, of, switchMap, BehaviorSubject } from 'rxjs';
+import { Observable, of, switchMap, BehaviorSubject, tap } from 'rxjs';
 import { A } from '@fullcalendar/core/internal-common';
+import { ServiceOption } from 'src/app/Models/ServiceOption';
+import { NeatService } from 'src/app/services/neat.service';
+import { Booking } from 'src/app/Booking';
+import { BookingService } from 'src/app/services/booking.service';
+import { BookingsComponent } from '../bookings/bookings.component';
 
 @Component({
   selector: 'app-create-booking',
@@ -13,6 +18,7 @@ import { A } from '@fullcalendar/core/internal-common';
   styleUrls: ['./create-booking.component.css']
 })
 export class CreateBookingComponent implements OnInit {
+  @Output() onAddBooking: EventEmitter<Booking> = new EventEmitter();
   availabilityForm!: FormGroup;
   //availabilities$: Observable<Availability[]> = of([]);
   availabilities!: Availability[];
@@ -21,20 +27,33 @@ export class CreateBookingComponent implements OnInit {
   //selectedAvailabilityList: any[] = [];
   originalAvailabilities!: Availability[];
   isListFiltered: boolean = false;
+  clientServices!: ServiceOption[];
+  bookings!: Booking[];
+  //id!: number;
+  //booking!: Booking;
+  
 
   constructor(
     private formBuilder: FormBuilder,
     private availabilityService: AvailabilityService,
-    private teamMemberService: TeamMemberService
+    private teamMemberService: TeamMemberService,
+    private neatService: NeatService,
+    private bookingService: BookingService
   ){} //{this.availabilities$ = this.availabilitiesSubject.asObservable()}
 
   ngOnInit(): void {
     this.availabilityForm = this.formBuilder.group({
-      selectedTeamMember: new FormControl({value: null, disabled: false}),
-      selectedAvailability: new FormControl({value: null, disabled: true}),
-      
+      selectedTeamMember: new FormControl({value: null, disabled: false}, [Validators.required]),
+      selectedAvailability: new FormControl({value: null, disabled: true}, [Validators.required]),
+      selectedService: new FormControl(null, [Validators.required]),
+      clientName: new FormControl(null, [Validators.required]),
+      clientEmail: new FormControl(null, [Validators.required, Validators.email])
      
     });
+
+    this.neatService.getServices().subscribe((clientServices)=> {
+      this.clientServices = clientServices;
+    })
 
     this.availabilityService.getAvailabilities().subscribe((availabilities)=> {
       this.availabilities = availabilities;
@@ -74,7 +93,6 @@ export class CreateBookingComponent implements OnInit {
     });
 
     //this.availabilities = [...this.originalAvailabilities]
-
     
 
 
@@ -99,4 +117,30 @@ export class CreateBookingComponent implements OnInit {
     });*/
     
   }
+
+  addBooking(): void{
+    if(this.availabilityForm.valid){
+      const selectedAvailabilityId: number = this.availabilityForm.get('selectedAvailability')?.value;
+      const selectedAvailability: Availability | undefined = this.availabilities.find(availability => availability.availabilityId === selectedAvailabilityId);
+      //const dateTime: string = selectedAvailability! ? selectedAvailability!.dateTime;
+
+      const newBooking: Booking = {
+        clientName: this.availabilityForm.get('clientName')?.value,
+        clientEmail: this.availabilityForm.get('clientEmail')?.value,
+        userId: this.availabilityForm.get('selectedTeamMember')?.value,
+        serviceId: this.availabilityForm.get('selectedService')?.value,
+        dateTime: selectedAvailability!.dateTime,
+      }
+
+      /*this.bookingService.addBooking(newBooking).pipe(
+        tap(response => {
+          console.log('Booking added', response);
+          this.availabilityForm.reset();
+        })
+      ).subscribe();*/
+
+    //this.bookingService.addBooking(newBooking).subscribe((newBooking) => (this.bookings.push(newBooking)))
+    this.bookingService.addBooking(newBooking).subscribe();
+
+}  }
 }

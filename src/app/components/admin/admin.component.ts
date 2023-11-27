@@ -3,7 +3,7 @@ import {CalendarOptions, EventInput, DateSelectArg, EventClickArg, EventApi, } f
 import timeGridPlugin from '@fullcalendar/timegrid';
 import bootstrap5Plugin from '@fullcalendar/bootstrap5';
 import interactionPlugin, {Draggable} from '@fullcalendar/interaction';
-import { Booking, EventData } from 'src/app/Booking';
+import { Booking } from 'src/app/Booking';
 import { BookingService } from 'src/app/services/booking.service';
 import {ChipModule} from 'primeng/chip';
 import {Droppable} from 'primeng/dragdrop';

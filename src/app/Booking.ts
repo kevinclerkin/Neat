@@ -6,8 +6,3 @@ export interface Booking{
     serviceId: number;
     dateTime: string;
 }
-
-export interface EventData{
-    title: string;
-    duration: string;
-}
