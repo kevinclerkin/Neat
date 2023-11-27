@@ -42,10 +42,10 @@ export class TokenInterceptor implements HttpInterceptor {
     );
   }
   handleUnAuthorizedError(req: HttpRequest<any>, next: HttpHandler){
-    let tokeApiModel = new TokenModel();
-    tokeApiModel.accessToken = this.auth.getToken()!;
-    tokeApiModel.refreshToken = this.auth.getRefreshToken()!;
-    return this.auth.renewToken(tokeApiModel)
+    let tokenModel = new TokenModel();
+    tokenModel.accessToken = this.auth.getToken()!;
+    tokenModel.refreshToken = this.auth.getRefreshToken()!;
+    return this.auth.renewToken(tokenModel)
     .pipe(
       switchMap((data:TokenModel)=>{
         this.auth.storeRefreshToken(data.refreshToken);

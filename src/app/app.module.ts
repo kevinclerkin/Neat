@@ -26,6 +26,7 @@ import { AdminComponent } from './components/admin/admin.component';
 import { LoginComponent } from './components/login/login.component';
 import { RegisterComponent } from './components/register/register.component';
 import { CreateBookingComponent } from './components/create-booking/create-booking.component';
+import { TokenInterceptor } from './services/token.interceptor';
 
 
 
@@ -63,8 +64,10 @@ import { CreateBookingComponent } from './components/create-booking/create-booki
     
   ],
   providers: [{
+    
     provide: HTTP_INTERCEPTORS,
-    useClass: AuthInterceptor,
+    useClass: TokenInterceptor,
+    //useClass: AuthInterceptor,
     multi: true,
   }],
   bootstrap: [AppComponent]
