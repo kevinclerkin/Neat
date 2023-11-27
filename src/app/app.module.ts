@@ -10,7 +10,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { ButtonModule } from 'primeng/button';
 import { ChipModule } from 'primeng/chip';
 import { DragDropModule } from 'primeng/dragdrop';
-
+import { NgToastModule } from 'ng-angular-popup';
 
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './components/header/header.component';
@@ -19,7 +19,6 @@ import { AddBookingComponent } from './components/add-booking/add-booking.compon
 import { BookingItemComponent } from './components/booking-item/booking-item.component';
 import { ButtonComponent } from './components/button/button.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
-import { RegLoginComponent } from './components/reg-login/reg-login.component';
 import { HomeComponent } from './components/home/home.component';
 import { AuthInterceptor } from './services/auth.interceptor';
 import { AdminComponent } from './components/admin/admin.component';
@@ -27,8 +26,8 @@ import { LoginComponent } from './components/login/login.component';
 import { RegisterComponent } from './components/register/register.component';
 import { CreateBookingComponent } from './components/create-booking/create-booking.component';
 import { TokenInterceptor } from './services/token.interceptor';
-
-
+import { SignupComponent } from './components/signup/signup.component';
+import { NewLoginComponent } from './components/new-login/new-login.component';
 
 @NgModule({
   declarations: [
@@ -39,12 +38,15 @@ import { TokenInterceptor } from './services/token.interceptor';
     BookingItemComponent,
     ButtonComponent,
     NavbarComponent,
-    RegLoginComponent,
     HomeComponent,
     AdminComponent,
     LoginComponent,
     RegisterComponent,
-    CreateBookingComponent
+    CreateBookingComponent,
+    SignupComponent,
+    NewLoginComponent
+  
+    
   
   
   ],
@@ -60,6 +62,7 @@ import { TokenInterceptor } from './services/token.interceptor';
     ButtonModule,
     ChipModule,
     DragDropModule,
+    NgToastModule
   
     
   ],

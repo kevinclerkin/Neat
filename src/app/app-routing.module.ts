@@ -6,12 +6,14 @@ import { AdminComponent } from './components/admin/admin.component';
 import { RegisterComponent } from './components/register/register.component';
 import { LoginComponent } from './components/login/login.component';
 import { CreateBookingComponent } from './components/create-booking/create-booking.component';
+import {NewLoginComponent} from './components/new-login/new-login.component';
+import { SignupComponent } from './components/signup/signup.component';
 
 const routes: Routes = [
   {path: '', redirectTo: '/home', pathMatch: 'full'},
   {path: 'home', component: HomeComponent},
-  {path: 'register', component: RegisterComponent},
-  {path: 'login', component: LoginComponent},
+  {path: 'register', component: SignupComponent},
+  {path: 'login', component: NewLoginComponent},
   {path: 'bookings', component: BookingsComponent},
   {path: 'admin', component: AdminComponent},
   {path:'create', component: CreateBookingComponent}
