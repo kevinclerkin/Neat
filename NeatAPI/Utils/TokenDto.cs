@@ -1,4 +1,4 @@
-namespace NeatAPI
+namespace NeatAPI.Utils
 {
   public class TokenDto
   {

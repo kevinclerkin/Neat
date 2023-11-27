@@ -16,6 +16,8 @@ namespace NeatAPI.Data
 
     public DbSet<Availability> Availabilities { get; set; }
 
+    public DbSet<TeamMember> TeamMembers { get; set; }
+
     
 
   }
