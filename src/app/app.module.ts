@@ -28,6 +28,7 @@ import { CreateBookingComponent } from './components/create-booking/create-booki
 import { TokenInterceptor } from './services/token.interceptor';
 import { SignupComponent } from './components/signup/signup.component';
 import { NewLoginComponent } from './components/new-login/new-login.component';
+import { DashboardComponent } from './components/dashboard/dashboard.component';
 
 @NgModule({
   declarations: [
@@ -44,7 +45,8 @@ import { NewLoginComponent } from './components/new-login/new-login.component';
     RegisterComponent,
     CreateBookingComponent,
     SignupComponent,
-    NewLoginComponent
+    NewLoginComponent,
+    DashboardComponent
   
     
   

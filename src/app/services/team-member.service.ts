@@ -13,11 +13,16 @@ headers: new HttpHeaders({
 })
 export class TeamMemberService {
   private apiUrl = 'https://localhost:7193/api/User';
+  private newAuthUrl = 'https://localhost:7193/api/NewAuth';
   
   constructor(private http: HttpClient) { }
 
   getUsers(): Observable<User[]>{
     return this.http.get<User[]>(this.apiUrl);
 
+  }
+
+  getTeamMembers(){
+    return this.http.get<any>(this.newAuthUrl);
   }
 }
