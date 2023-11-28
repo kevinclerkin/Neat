@@ -19,7 +19,7 @@ builder.Services.AddScoped<INeatServiceRepository, NeatServiceRepository>();
 builder.Services.AddScoped<IAvailabilityRepository, AvailabilityRepository>();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
-builder.Services.AddSwaggerGen(); /*(options =>
+builder.Services.AddSwaggerGen(options =>
 {
   options.AddSecurityDefinition("oauth2", new OpenApiSecurityScheme
   {
@@ -31,7 +31,7 @@ builder.Services.AddSwaggerGen(); /*(options =>
   });
 
   options.OperationFilter<SecurityRequirementsOperationFilter>();
-});*/
+});
 builder.Services.AddDbContext<DataContext>(options =>
 
 options.UseSqlServer(connectionString));
@@ -74,7 +74,10 @@ builder.Services.AddAuthentication(x =>
 builder.Services.AddCors(options => options.AddPolicy(name: "NeatPolicy",
   policy =>
   {
-    policy.WithOrigins("http://localhost:4200").AllowAnyMethod().AllowAnyHeader();
+    policy.WithOrigins("http://localhost:4200")
+    .AllowAnyMethod()
+    .AllowAnyHeader()
+    .AllowCredentials();
   }));
 
 var app = builder.Build();
@@ -86,9 +89,10 @@ if (app.Environment.IsDevelopment())
     app.UseSwaggerUI();
 }
 
-app.UseCors("NeatPolicy");
 
 app.UseHttpsRedirection();
+
+app.UseCors("NeatPolicy");
 
 app.UseAuthentication();
 app.UseAuthorization();

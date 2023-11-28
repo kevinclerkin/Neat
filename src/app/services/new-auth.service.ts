@@ -9,6 +9,7 @@ import { TokenModel } from '../Models/TokenModel';
 })
 export class NewAuthService {
   private apiUrl: string = 'https://localhost:7193/api/NewAuth';
+  private apiLoginUrl: string = 'https://localhost:7193/api/NewAuth/authenticate'
 
   private userPayload:any;
   constructor(private http: HttpClient, private router: Router) {
@@ -20,7 +21,7 @@ export class NewAuthService {
   }
 
   signIn(loginObj : any){
-    return this.http.post<any>(`${this.apiUrl}authenticate`,loginObj)
+    return this.http.post<any>(`${this.apiUrl}/authenticate`,loginObj)
   }
 
   signOut(){

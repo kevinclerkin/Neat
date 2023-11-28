@@ -49,7 +49,7 @@ export class NewLoginComponent implements OnInit {
           this.userRole.setFullNameForStore(tokenPayload.name);
           this.userRole.setRoleForStore(tokenPayload.role);
           this.toast.success({detail:"SUCCESS", summary:res.message, duration: 5000});
-          this.router.navigate(['dashboard'])
+          this.router.navigate(['admin'])
         },
         error: (err) => {
           this.toast.error({detail:"ERROR", summary:"Something went wrong!", duration: 5000});
