@@ -11,6 +11,8 @@ import { ButtonModule } from 'primeng/button';
 import { ChipModule } from 'primeng/chip';
 import { DragDropModule } from 'primeng/dragdrop';
 import { NgToastModule } from 'ng-angular-popup';
+import { ToastModule } from 'primeng/toast';
+
 
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './components/header/header.component';
@@ -64,7 +66,8 @@ import { DashboardComponent } from './components/dashboard/dashboard.component';
     ButtonModule,
     ChipModule,
     DragDropModule,
-    NgToastModule
+    NgToastModule,
+    ToastModule
   
     
   ],

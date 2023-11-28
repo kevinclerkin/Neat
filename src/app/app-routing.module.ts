@@ -8,15 +8,17 @@ import { LoginComponent } from './components/login/login.component';
 import { CreateBookingComponent } from './components/create-booking/create-booking.component';
 import {NewLoginComponent} from './components/new-login/new-login.component';
 import { SignupComponent } from './components/signup/signup.component';
+import { DashboardComponent } from './components/dashboard/dashboard.component';
+import { AddBookingComponent } from './components/add-booking/add-booking.component';
 
 const routes: Routes = [
   {path: '', redirectTo: '/home', pathMatch: 'full'},
-  {path: 'home', component: HomeComponent},
+  {path: 'home', component: CreateBookingComponent},
   {path: 'register', component: SignupComponent},
   {path: 'login', component: NewLoginComponent},
   {path: 'bookings', component: BookingsComponent},
-  {path: 'admin', component: AdminComponent},
-  {path:'create', component: CreateBookingComponent}
+  {path: 'admin', component: DashboardComponent},
+  {path:'calendar', component: AdminComponent}
 ];
 
 @NgModule({

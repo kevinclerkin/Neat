@@ -11,11 +11,16 @@ import { NeatService } from 'src/app/services/neat.service';
 import { Booking } from 'src/app/Booking';
 import { BookingService } from 'src/app/services/booking.service';
 import { BookingsComponent } from '../bookings/bookings.component';
+import { MessageService } from 'primeng/api';
+import { ButtonModule } from 'primeng/button';
+
+
 
 @Component({
   selector: 'app-create-booking',
   templateUrl: './create-booking.component.html',
-  styleUrls: ['./create-booking.component.css']
+  styleUrls: ['./create-booking.component.css'],
+  providers: [MessageService]
 })
 export class CreateBookingComponent implements OnInit {
   @Output() onAddBooking: EventEmitter<Booking> = new EventEmitter();
@@ -38,7 +43,8 @@ export class CreateBookingComponent implements OnInit {
     private availabilityService: AvailabilityService,
     private teamMemberService: TeamMemberService,
     private neatService: NeatService,
-    private bookingService: BookingService
+    private bookingService: BookingService,
+    private messageService: MessageService
   ){} //{this.availabilities$ = this.availabilitiesSubject.asObservable()}
 
   ngOnInit(): void {
@@ -141,6 +147,16 @@ export class CreateBookingComponent implements OnInit {
 
     //this.bookingService.addBooking(newBooking).subscribe((newBooking) => (this.bookings.push(newBooking)))
     this.bookingService.addBooking(newBooking).subscribe();
+    
 
-}  }
+} this.showSuccess(); }
+
+showSuccess() {
+  this.messageService.add({
+    severity: 'success',
+    summary: 'Success',
+    detail: 'Appointment booked successfully!'
+  });
+}
+
 }

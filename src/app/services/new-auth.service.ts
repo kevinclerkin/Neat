@@ -17,7 +17,7 @@ export class NewAuthService {
    }
 
   signUp(memberObj: any) {
-    return this.http.post<any>(`${this.apiUrl}register`, memberObj)
+    return this.http.post<any>(`${this.apiUrl}/register`, memberObj)
   }
 
   signIn(loginObj : any){

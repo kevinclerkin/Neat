@@ -4,13 +4,16 @@ html,
 body{
     height: 100%;
     margin: 0;
-    
+    display: flex;
     justify-content: center;
     align-items: center;
 }
 
 form{
-    margin-top: 100px;
-    margin-left: 100px;
-    margin-right: 100px;
+    width: 100%;
+    max-width: 400px;
+    background-color: #fff;
+    display: flex;
+    margin-top: 20px;
+   
 }
