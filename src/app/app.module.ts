@@ -12,6 +12,7 @@ import { ChipModule } from 'primeng/chip';
 import { DragDropModule } from 'primeng/dragdrop';
 import { NgToastModule } from 'ng-angular-popup';
 import { ToastModule } from 'primeng/toast';
+import { TableModule } from 'primeng/table';
 
 
 import { AppComponent } from './app.component';
@@ -31,6 +32,7 @@ import { TokenInterceptor } from './services/token.interceptor';
 import { SignupComponent } from './components/signup/signup.component';
 import { NewLoginComponent } from './components/new-login/new-login.component';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
+import { AllBookingsComponent } from './components/all-bookings/all-bookings.component';
 
 @NgModule({
   declarations: [
@@ -48,7 +50,8 @@ import { DashboardComponent } from './components/dashboard/dashboard.component';
     CreateBookingComponent,
     SignupComponent,
     NewLoginComponent,
-    DashboardComponent
+    DashboardComponent,
+    AllBookingsComponent
   
     
   
@@ -67,7 +70,8 @@ import { DashboardComponent } from './components/dashboard/dashboard.component';
     ChipModule,
     DragDropModule,
     NgToastModule,
-    ToastModule
+    ToastModule,
+    TableModule
   
     
   ],

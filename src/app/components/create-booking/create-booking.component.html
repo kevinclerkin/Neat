@@ -26,13 +26,15 @@
       </ng-container>
       </select>
     </div>
-    <div class="field">
+    <div class="field"[class.error]="availabilityForm.controls['clientName'].dirty && availabilityForm.hasError('required','clientName')">
       <label for="clientName">Name:</label>
-      <input type="text" formControlName="clientName" />
+      <input type="text" formControlName="clientName"   />
+      <small *ngIf="availabilityForm.controls['clientName'].dirty && availabilityForm.hasError('required','clientName')" class="text-danger">*Name is required*</small>
   </div>
-  <div class="field">
+  <div class="field"[class.error]="availabilityForm.controls['clientEmail'].dirty && availabilityForm.hasError('required','clientEmail')">
       <label for="clientEmail">Email:</label>
       <input type="email" formControlName="clientEmail" />
+      <small *ngIf="availabilityForm.controls['clientEmail'].dirty && availabilityForm.hasError('required','clientEmail')" class="text-danger">*Email is required*</small>
   </div>
   <p-button type="submit">Book Appointment</p-button>
   </p-card>
