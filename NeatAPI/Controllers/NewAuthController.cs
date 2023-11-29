@@ -107,7 +107,7 @@ namespace NeatAPI.Controllers
     private string CreateJwt(TeamMember teamMember)
     {
       var jwtTokenHandler = new JwtSecurityTokenHandler();
-      var key = Encoding.ASCII.GetBytes("veryverysceret.....");
+      var key = Encoding.ASCII.GetBytes("veryverysecrettoken");
       var identity = new ClaimsIdentity(new Claim[]
       {
                 new Claim(ClaimTypes.Role, teamMember.Role),
@@ -142,7 +142,7 @@ namespace NeatAPI.Controllers
 
     private ClaimsPrincipal GetPrincipleFromExpiredToken(string token)
     {
-      var key = Encoding.ASCII.GetBytes("veryverysceret.....");
+      var key = Encoding.ASCII.GetBytes("veryverysecrettoken");
       var tokenValidationParameters = new TokenValidationParameters
       {
         ValidateAudience = false,

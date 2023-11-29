@@ -23,7 +23,7 @@ builder.Services.AddSwaggerGen(options =>
 {
   options.AddSecurityDefinition("oauth2", new OpenApiSecurityScheme
   {
-    Description = "Standard Authorization Header Using The Bearer Scheme (\"bearer {token}\")",
+    Description = "Standard Authorization Header Using The Bearer Scheme (\"bearer {veryverysecrettoken}\")",
     In = ParameterLocation.Header,
     Name = "Authorization",
     Type = SecuritySchemeType.ApiKey
@@ -62,7 +62,7 @@ builder.Services.AddAuthentication(x =>
   x.TokenValidationParameters = new TokenValidationParameters
   {
     ValidateIssuerSigningKey = true,
-    IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes("veryverysceret.....")),
+    IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes("veryverysecrettoken")),
     ValidateAudience = false,
     ValidateIssuer = false,
     ClockSkew = TimeSpan.Zero
