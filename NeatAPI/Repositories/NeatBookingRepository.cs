@@ -1,8 +1,7 @@
-using Microsoft.AspNetCore.Mvc;
 using NeatAPI.Data;
 using NeatAPI.Interfaces;
 using NeatAPI.Models;
-using System.Collections.Generic;
+
 
 namespace NeatAPI.Repositories
 {

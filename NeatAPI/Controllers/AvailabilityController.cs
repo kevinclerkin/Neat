@@ -1,9 +1,7 @@
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
-using NeatAPI.Data;
 using NeatAPI.Interfaces;
 using NeatAPI.Models;
-using NeatAPI.Repositories;
+
 
 namespace NeatAPI.Controllers
 {

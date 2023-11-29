@@ -3,14 +3,11 @@ using NeatAPI.Models;
 using System.Text.RegularExpressions;
 using System.Text;
 using Microsoft.EntityFrameworkCore;
-using System.Diagnostics;
 using System.IdentityModel.Tokens.Jwt;
-using System;
 using System.Security.Claims;
 using Microsoft.IdentityModel.Tokens;
 using Microsoft.AspNetCore.Authorization;
 using System.Security.Cryptography;
-using Microsoft.EntityFrameworkCore.Metadata.Internal;
 using NeatAPI.Utils;
 using NeatAPI.Data;
 
@@ -89,10 +86,10 @@ namespace NeatAPI.Controllers
       });
     }
 
-    private Task<bool> CheckEmailExistAsync(string? email)
+    private Task<bool> CheckEmailExistAsync(string email)
         => _context.TeamMembers.AnyAsync(x => x.Email == email);
 
-    private Task<bool> CheckUsernameExistAsync(string? username)
+    private Task<bool> CheckUsernameExistAsync(string username)
         => _context.TeamMembers.AnyAsync(x => x.Email == username);
 
     private static string CheckPasswordStrength(string pass)

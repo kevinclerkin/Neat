@@ -1,4 +1,3 @@
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.IdentityModel.Tokens;
 using NeatAPI.Data;
@@ -26,7 +25,7 @@ namespace NeatAPI.Controllers
     }
 
     [HttpPost("register")]
-    public async Task<ActionResult<User>> Register(UserDto userDto)
+    public Task<ActionResult<User>> Register(UserDto userDto)
     {
       CreatePasswordHash(userDto.Password, out byte[] passwordHash, out byte[] passwordSalt);
       user.UserName = userDto.UserName;
@@ -34,26 +33,26 @@ namespace NeatAPI.Controllers
       user.PasswordSalt = passwordSalt;
       _context.Users.Add(user);
       _context.SaveChanges();
-      return Ok(user);
+      return Task.FromResult<ActionResult<User>>(Ok(user));
 
     }
 
     [HttpPost("login")]
-    public async Task<ActionResult<string>> Login(UserDto userDto)
+    public Task<ActionResult<string>> Login(UserDto userDto)
     {
       if(user.UserName != userDto.UserName)
       {
-        return BadRequest();
+        return Task.FromResult<ActionResult<string>>(BadRequest());
       }
 
       if(!VerifyPasswordHash(userDto.Password, user.PasswordHash, user.PasswordSalt))
       {
-        return BadRequest();
+        return Task.FromResult<ActionResult<string>>(BadRequest());
       }
 
       string token = CreateToken(user);
 
-      return Ok(token);
+      return Task.FromResult<ActionResult<string>>(Ok(token));
     }
 
     private string CreateToken(User user)
