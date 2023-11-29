@@ -84,6 +84,8 @@ var app = builder.Build();
 
 // Configure the HTTP request pipeline.
 
+//Removed developement conditional for Swagger
+
 app.UseSwagger();
 app.UseSwaggerUI();
 
