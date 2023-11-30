@@ -23,7 +23,10 @@ jobs:
           dotnet-version: '6.0.x'
 
       - name: Restore Dependencies
-        run: dotnet restore ./NeatAPI/NeatAPI.sln
+        run: |
+          cd NeatAPI
+          dotnet restore
+      
 
       - name: Replace Connection String
         run: |
