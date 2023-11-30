@@ -1,17 +1,16 @@
 name: Publish
 
 on:
+  workflow_dispatch:
   push:
     branches:
-      - no-branch
+    - main
 
 env:
   AZURE_WEBAPP_NAME: neat-api
 
 jobs:
   publish:
-    if: false  # This job will never run
-
     runs-on: ubuntu-latest
 
     steps:
@@ -24,16 +23,13 @@ jobs:
           dotnet-version: '6.0.x'
 
       - name: Restore Dependencies
-        run: |
-          cd NeatAPI
-          dotnet restore ./NeatAPI.sln
+        run: dotnet restore ./NeatAPI.sln
 
       - name: Replace Connection String
         run: |
           sed -i 's/REPLACE_WITH_ACTUAL_CONNECTION_STRING/${{ secrets.AZURE_SQL_CONNECTION_STRING }}/g' NeatAPI/appsettings.json
-
       - name: Build
-        run: dotnet build ./NeatAPI/NeatAPI.sln --configuration Release
+        run: dotnet build ./NeatAPI.sln --configuration Release
 
       - name: Publish
         run: dotnet publish ./NeatAPI/NeatAPI.csproj --configuration Release
