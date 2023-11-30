@@ -35,7 +35,7 @@ jobs:
 
 
       - name: Publish
-        run: dotnet publish ./NeatAPI.sln --configuration Release --no-build --output '${{ env.AZURE_WEBAPP_PACKAGE_PATH }}'
+        run: dotnet publish ./NeatAPI.sln --configuration Release --no-build --property:PublishDir=${{ env.AZURE_WEBAPP_PACKAGE_PATH }}/NeatAPI
 
       - name: Deployment
         uses: azure/webapps-deploy@v2
