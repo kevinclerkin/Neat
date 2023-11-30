@@ -1,16 +1,17 @@
 name: Publish
 
 on:
-  workflow_dispatch:
   push:
     branches:
-      - main
+      - no-branch
 
 env:
   AZURE_WEBAPP_NAME: neat-api
 
 jobs:
   publish:
+    if: false  # This job will never run
+
     runs-on: ubuntu-latest
 
     steps:
