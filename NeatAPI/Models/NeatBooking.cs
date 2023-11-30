@@ -1,9 +1,9 @@
-using System.ComponentModel.DataAnnotations;
+﻿using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
 namespace NeatAPI.Models
 {
-    
+
     public class NeatBooking
     {
         [Key]
@@ -28,11 +28,11 @@ namespace NeatAPI.Models
         [Required]
         public DateTime DateTime { get; set; }
 
-  }
-
-  
+    }
 
 
 
-  
+
+
+
 }

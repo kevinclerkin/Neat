@@ -9,7 +9,7 @@ using Swashbuckle.AspNetCore.Filters;
 using System.Text;
 
 var builder = WebApplication.CreateBuilder(args);
-var connectionString = builder.Configuration.GetConnectionString("AzureDataContextConnection") ?? throw new InvalidOperationException("Connection string: 'DataContextConnection' Not Found!");
+var connectionString = builder.Configuration.GetConnectionString("DataContextConnection") ?? throw new InvalidOperationException("Connection string: 'DataContextConnection' Not Found!");
 
 // Add services to the container.
 
@@ -21,16 +21,16 @@ builder.Services.AddScoped<IAvailabilityRepository, AvailabilityRepository>();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen(options =>
 {
-  options.AddSecurityDefinition("oauth2", new OpenApiSecurityScheme
-  {
-    Description = "Standard Authorization Header Using The Bearer Scheme (\"bearer {veryverysecrettoken}\")",
-    In = ParameterLocation.Header,
-    Name = "Authorization",
-    Type = SecuritySchemeType.ApiKey
+    options.AddSecurityDefinition("oauth2", new OpenApiSecurityScheme
+    {
+        Description = "Standard Authorization Header Using The Bearer Scheme (\"bearer {veryverysecrettoken}\")",
+        In = ParameterLocation.Header,
+        Name = "Authorization",
+        Type = SecuritySchemeType.ApiKey
 
-  });
+    });
 
-  options.OperationFilter<SecurityRequirementsOperationFilter>();
+    options.OperationFilter<SecurityRequirementsOperationFilter>();
 });
 builder.Services.AddDbContext<DataContext>(options =>
 
@@ -53,20 +53,20 @@ options.UseSqlServer(connectionString));
 
 builder.Services.AddAuthentication(x =>
 {
-  x.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
-  x.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
+    x.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
+    x.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
 }).AddJwtBearer(x =>
 {
-  x.RequireHttpsMetadata = false;
-  x.SaveToken = true;
-  x.TokenValidationParameters = new TokenValidationParameters
-  {
-    ValidateIssuerSigningKey = true,
-    IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes("veryverysecrettoken")),
-    ValidateAudience = false,
-    ValidateIssuer = false,
-    ClockSkew = TimeSpan.Zero
-  };
+    x.RequireHttpsMetadata = false;
+    x.SaveToken = true;
+    x.TokenValidationParameters = new TokenValidationParameters
+    {
+        ValidateIssuerSigningKey = true,
+        IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes("veryverysecrettoken")),
+        ValidateAudience = false,
+        ValidateIssuer = false,
+        ClockSkew = TimeSpan.Zero
+    };
 });
 
 
@@ -74,10 +74,10 @@ builder.Services.AddAuthentication(x =>
 builder.Services.AddCors(options => options.AddPolicy(name: "NeatPolicy",
   policy =>
   {
-    policy.WithOrigins("http://localhost:4200")
-    .AllowAnyMethod()
-    .AllowAnyHeader()
-    .AllowCredentials();
+      policy.WithOrigins("http://localhost:4200")
+      .AllowAnyMethod()
+      .AllowAnyHeader()
+      .AllowCredentials();
   }));
 
 var app = builder.Build();
@@ -100,3 +100,4 @@ app.UseAuthorization();
 app.MapControllers();
 
 app.Run();
+

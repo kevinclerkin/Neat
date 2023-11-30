@@ -17,11 +17,32 @@ namespace NeatAPI.Migrations
                 {
                     ServiceId = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    ServiceName = table.Column<string>(type: "nvarchar(max)", nullable: true)
+                    ServiceName = table.Column<string>(type: "nvarchar(max)", nullable: false)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Services", x => x.ServiceId);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "TeamMembers",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    FirstName = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    LastName = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Username = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Password = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Token = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Role = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Email = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    RefreshToken = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    RefreshTokenExpiryTime = table.Column<DateTime>(type: "datetime2", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_TeamMembers", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
@@ -30,7 +51,7 @@ namespace NeatAPI.Migrations
                 {
                     UserId = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    Name = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Name = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     UserName = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     PasswordHash = table.Column<byte[]>(type: "varbinary(max)", nullable: false),
                     PasswordSalt = table.Column<byte[]>(type: "varbinary(max)", nullable: false)
@@ -41,19 +62,19 @@ namespace NeatAPI.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "Availability",
+                name: "Availabilities",
                 columns: table => new
                 {
                     AvailabilityId = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     UserId = table.Column<int>(type: "int", nullable: false),
-                    StartTime = table.Column<DateTime>(type: "datetime2", nullable: false)
+                    DateTime = table.Column<DateTime>(type: "datetime2", nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Availability", x => x.AvailabilityId);
+                    table.PrimaryKey("PK_Availabilities", x => x.AvailabilityId);
                     table.ForeignKey(
-                        name: "FK_Availability_Users_UserId",
+                        name: "FK_Availabilities_Users_UserId",
                         column: x => x.UserId,
                         principalTable: "Users",
                         principalColumn: "UserId",
@@ -69,17 +90,12 @@ namespace NeatAPI.Migrations
                     ClientName = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     ClientEmail = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     UserId = table.Column<int>(type: "int", nullable: false),
-                    ServiceId = table.Column<int>(type: "int", nullable: false)
+                    ServiceId = table.Column<int>(type: "int", nullable: false),
+                    DateTime = table.Column<DateTime>(type: "datetime2", nullable: false)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_NeatBookings", x => x.BookingId);
-                    table.ForeignKey(
-                        name: "FK_NeatBookings_Services_ServiceId",
-                        column: x => x.ServiceId,
-                        principalTable: "Services",
-                        principalColumn: "ServiceId",
-                        onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
                         name: "FK_NeatBookings_Users_UserId",
                         column: x => x.UserId,
@@ -89,14 +105,9 @@ namespace NeatAPI.Migrations
                 });
 
             migrationBuilder.CreateIndex(
-                name: "IX_Availability_UserId",
-                table: "Availability",
+                name: "IX_Availabilities_UserId",
+                table: "Availabilities",
                 column: "UserId");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_NeatBookings_ServiceId",
-                table: "NeatBookings",
-                column: "ServiceId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_NeatBookings_UserId",
@@ -108,13 +119,16 @@ namespace NeatAPI.Migrations
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropTable(
-                name: "Availability");
+                name: "Availabilities");
 
             migrationBuilder.DropTable(
                 name: "NeatBookings");
 
             migrationBuilder.DropTable(
                 name: "Services");
+
+            migrationBuilder.DropTable(
+                name: "TeamMembers");
 
             migrationBuilder.DropTable(
                 name: "Users");

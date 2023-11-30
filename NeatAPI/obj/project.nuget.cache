@@ -1,12 +1,11 @@
 {
   "version": 2,
-  "dgSpecHash": "teifKzjaxQx7acwlce5GrrV47OYwlpIg2E3LEmiAmVBlPGh4yPA3UnZqxZ0thrONzGo6sVBCToQh5998iEvPaQ==",
+  "dgSpecHash": "URz5RwRIypSL3EYyfh5qo6chFk0VX2RtdpOGR8XR1w5XqHF2d30kFjMPzzFh20yeOQ4brSRRsKzqb5u3IzaxDQ==",
   "success": true,
-  "projectFilePath": "C:\\Users\\Kevin\\Desktop\\Neat\\NeatApp\\NeatAPI\\NeatAPI.csproj",
+  "projectFilePath": "C:\\Users\\Kevin\\Desktop\\NeatApp\\NeatAPI\\NeatAPI.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Kevin\\.nuget\\packages\\azure.core\\1.25.0\\azure.core.1.25.0.nupkg.sha512",
     "C:\\Users\\Kevin\\.nuget\\packages\\azure.identity\\1.7.0\\azure.identity.1.7.0.nupkg.sha512",
-    "C:\\Users\\Kevin\\.nuget\\packages\\bcrypt.net-core\\1.6.0\\bcrypt.net-core.1.6.0.nupkg.sha512",
     "C:\\Users\\Kevin\\.nuget\\packages\\humanizer.core\\2.14.1\\humanizer.core.2.14.1.nupkg.sha512",
     "C:\\Users\\Kevin\\.nuget\\packages\\microsoft.aspnetcore.authentication.jwtbearer\\6.0.23\\microsoft.aspnetcore.authentication.jwtbearer.6.0.23.nupkg.sha512",
     "C:\\Users\\Kevin\\.nuget\\packages\\microsoft.bcl.asyncinterfaces\\1.1.1\\microsoft.bcl.asyncinterfaces.1.1.1.nupkg.sha512",

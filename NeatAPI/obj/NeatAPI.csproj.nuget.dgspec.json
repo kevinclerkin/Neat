@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Kevin\\Desktop\\Neat\\NeatApp\\NeatAPI\\NeatAPI.csproj": {}
+    "C:\\Users\\Kevin\\Desktop\\NeatApp\\NeatAPI\\NeatAPI.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Kevin\\Desktop\\Neat\\NeatApp\\NeatAPI\\NeatAPI.csproj": {
+    "C:\\Users\\Kevin\\Desktop\\NeatApp\\NeatAPI\\NeatAPI.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Kevin\\Desktop\\Neat\\NeatApp\\NeatAPI\\NeatAPI.csproj",
+        "projectUniqueName": "C:\\Users\\Kevin\\Desktop\\NeatApp\\NeatAPI\\NeatAPI.csproj",
         "projectName": "NeatAPI",
-        "projectPath": "C:\\Users\\Kevin\\Desktop\\Neat\\NeatApp\\NeatAPI\\NeatAPI.csproj",
+        "projectPath": "C:\\Users\\Kevin\\Desktop\\NeatApp\\NeatAPI\\NeatAPI.csproj",
         "packagesPath": "C:\\Users\\Kevin\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Kevin\\Desktop\\Neat\\NeatApp\\NeatAPI\\obj\\",
+        "outputPath": "C:\\Users\\Kevin\\Desktop\\NeatApp\\NeatAPI\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\Kevin\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -41,10 +41,6 @@
         "net6.0": {
           "targetAlias": "net6.0",
           "dependencies": {
-            "BCrypt.Net-Core": {
-              "target": "Package",
-              "version": "[1.6.0, )"
-            },
             "Microsoft.AspNetCore.Authentication.JwtBearer": {
               "target": "Package",
               "version": "[6.0.23, )"
