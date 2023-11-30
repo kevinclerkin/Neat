@@ -8,38 +8,35 @@ on:
 
 env:
   AZURE_WEBAPP_NAME: neat-api
-  AZURE_WEBAPP_PACKAGE_PATH: "./publish"
-
 
 jobs:
   publish:
     runs-on: ubuntu-latest
 
     steps:
-      - uses: actions/checkout@v3
-      
+      - name: Checkout Code
+        uses: actions/checkout@v3
+
       - name: Setup .NET
         uses: actions/setup-dotnet@v3
         with:
           dotnet-version: '6.0.x'
 
-      - name: Restore
+      - name: Restore Dependencies
         run: dotnet restore ./NeatAPI.sln
-      
-      - name: Build
-        run: dotnet build ./NeatAPI.sln --configuration Release --no-restore
 
       - name: Replace Connection String
         run: |
           sed -i 's/REPLACE_WITH_ACTUAL_CONNECTION_STRING/${{ secrets.AZURE_SQL_CONNECTION_STRING }}/g' NeatAPI/appsettings.json
 
+      - name: Build
+        run: dotnet build ./NeatAPI.sln --configuration Release
 
       - name: Publish
-        run: dotnet publish ./NeatAPI.sln --configuration Release --no-build --property:PublishDir=${{ env.AZURE_WEBAPP_PACKAGE_PATH }}
+        run: dotnet publish ./NeatAPI/NeatAPI.csproj --configuration Release
 
-      - name: Deployment
+      - name: Deploy
         uses: azure/webapps-deploy@v2
         with:
           app-name: ${{ env.AZURE_WEBAPP_NAME }}
           publish-profile: ${{ secrets.AZURE_PUBLISH_PROFILE }}
-          package: "${{ env.AZURE_WEBAPP_PACKAGE_PATH }}"
