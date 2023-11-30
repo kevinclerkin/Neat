@@ -4,7 +4,7 @@ on:
   workflow_dispatch:
   push:
     branches:
-    - main
+      - main
 
 env:
   AZURE_WEBAPP_NAME: neat-api
@@ -25,8 +25,7 @@ jobs:
       - name: Restore Dependencies
         run: |
           cd NeatAPI
-          dotnet restore
-      
+          dotnet restore ./NeatAPI.sln
 
       - name: Replace Connection String
         run: |
