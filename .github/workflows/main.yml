@@ -22,17 +22,23 @@ jobs:
         with:
           dotnet-version: '6.0.x'
 
+      
       - name: Restore Dependencies
         run: dotnet restore ./NeatAPI
 
+      
       - name: Replace Connection String
         run: |
           sed -i 's/REPLACE_WITH_ACTUAL_CONNECTION_STRING/${{ secrets.AZURE_SQL_CONNECTION_STRING }}/g' NeatAPI/appsettings.json
+      
+      
       - name: Build
         run: dotnet build ./NeatAPI --configuration Release
 
+      
       - name: Publish
         run: dotnet publish ./NeatAPI/NeatAPI.csproj --configuration Release
+
 
       - name: Deploy
         uses: azure/webapps-deploy@v2
