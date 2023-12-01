@@ -34,6 +34,9 @@ jobs:
       - name: Publish
         run: dotnet publish ./NeatAPI/NeatAPI.csproj --configuration Release
 
+      - name: Apply Migrations
+        run: dotnet ef database update --project ./NeatAPI --configuration Release
+
       - name: Deploy
         uses: azure/webapps-deploy@v2
         with:
