@@ -9,7 +9,7 @@ using Swashbuckle.AspNetCore.Filters;
 using System.Text;
 
 var builder = WebApplication.CreateBuilder(args);
-var connectionString = builder.Configuration.GetConnectionString("DataContextConnection") ?? throw new InvalidOperationException("Connection string: 'DataContextConnection' Not Found!");
+var connectionString = builder.Configuration.GetConnectionString("AzureDataContextConnection") ?? throw new InvalidOperationException("Connection string: 'DataContextConnection' Not Found!");
 
 // Add services to the container.
 
@@ -87,7 +87,11 @@ var app = builder.Build();
 //Removed developement conditional for Swagger
 
 app.UseSwagger();
-app.UseSwaggerUI();
+app.UseSwaggerUI(a=>
+{
+    a.SwaggerEndpoint("/swagger/v1/swagger.json", "Neat API V1");
+
+});
 
 
 app.UseHttpsRedirection();
