@@ -87,7 +87,11 @@ var app = builder.Build();
 //Removed developement conditional for Swagger
 
 app.UseSwagger();
-app.UseSwaggerUI();
+app.UseSwaggerUI(a =>
+{
+    a.SwaggerEndpoint("/swagger/v1/swagger.json", "Neat API V1");
+
+});
 
 
 app.UseHttpsRedirection();
