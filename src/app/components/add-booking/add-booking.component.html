@@ -1,0 +1,29 @@
+<form *ngIf="showAddBooking" class="add-form" (ngSubmit)="onSubmit()">
+<div class="form-control">
+        <label for="service">Service</label>
+        <select [(ngModel)]="serviceId" name="service" id="service">
+        <option value="">Choose a service</option>
+        <option *ngFor="let service of services" [value]="service">{{service}}</option>
+        </select>    
+</div>
+<div class="form-control">
+        <label for="available">Available</label>
+        <select [(ngModel)]="userId" name="available"  id="available">
+        <option value="">Choose a team member</option> 
+        <option *ngFor="let teamMember of teamMembers" [value]="teamMember">{{teamMember}}</option>
+        </select>     
+</div>
+<div class="form-control form-control-check">
+        <label for="dateTime">Date & Time</label>
+        <input type="datetime-local" name="dateTime" [(ngModel)]="dateTime" id="dateTime"/>
+</div>
+<div class="form-control">
+        <label for="clientName">Name</label>
+        <input type="text" name="clientName" [(ngModel)]="clientName" id="clientName" placeholder="Name"/>
+</div>
+<div class="form-control">
+        <label for="clientEmail">Email</label>
+        <input type="text" name="clientEmail"  [(ngModel)]="clientEmail" id="clientEmail" placeholder="Email" required email/>
+</div>
+<input type="submit" value="Save Booking" class="btn-secondary"/>
+</form>

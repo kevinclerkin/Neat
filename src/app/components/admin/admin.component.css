@@ -1,0 +1,29 @@
+@import 'bootstrap/dist/css/bootstrap.css';
+@import 'bootstrap-icons/font/bootstrap-icons.css';
+
+
+
+.container-wrapper{
+    display: flex;
+    
+
+
+}
+
+.calendar-container{
+    flex: 1;
+    position: relative;
+    z-index: 1;
+    margin-left: 200px;
+    
+}
+
+.external-events{
+    position: relative;
+    width: 150px;
+    z-index: 2;
+    padding: 0 10px;
+    border: 1px solid #ccc;
+    background: #eee;
+
+}
