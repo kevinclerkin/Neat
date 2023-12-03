@@ -1,24 +1,28 @@
-import { ActivatedRouteSnapshot, CanActivateChildFn, CanActivateFn, Router, RouterStateSnapshot } from "@angular/router";
+import { ActivatedRouteSnapshot, CanActivateFn, CanActivateChildFn, Router, RouterStateSnapshot } from "@angular/router";
 import { NewAuthService } from "../services/new-auth.service";
-import { inject } from "@angular/core";
+import { Injectable } from "@angular/core"; 
 import { NgToastService } from 'ng-angular-popup';
 
-export const canActivate: CanActivateFn = (
-  route: ActivatedRouteSnapshot,
-  state: RouterStateSnapshot
-) => {
-  const authService = inject(NewAuthService);
-  const router = inject(Router);
-  const toast = inject(NgToastService);
+@Injectable({ providedIn: 'root' })
+export class AuthGuard {
+  constructor(
+    private authService: NewAuthService,
+    private router: Router,
+    private toast: NgToastService
+  ) {}
 
-  if (authService.isLoggedIn()) {
-    return true;
-  } else {
-    toast.error({ detail: "ERROR", summary: "Login Required!" });
-    router.navigate(['']);
-    return false;
-  }
-};
+  canActivate: CanActivateFn = (
+    route: ActivatedRouteSnapshot,
+    state: RouterStateSnapshot
+  ) => {
+    if (this.authService.isLoggedIn()) {
+      return true;
+    } else {
+      this.toast.error({ detail: "ERROR", summary: "Login Required!" });
+      this.router.navigate(['']);
+      return false;
+    }
+  };
 
-export const canActivateChild: CanActivateChildFn = (route: ActivatedRouteSnapshot, state: RouterStateSnapshot) => canActivate(route, state);
-
+  canActivateChild: CanActivateChildFn = (route: ActivatedRouteSnapshot, state: RouterStateSnapshot) => this.canActivate(route, state);
+}
