@@ -71,13 +71,15 @@ namespace NeatAPI.Controllers
       return Ok(neatBooking);
     }
 
-    // PUT api/<NeatController>/
-    //[HttpPut("{id}")]
-    //public void Put(int id, [FromBody] string value)
-    //{
-    //}
+        // PUT api/<NeatController>/
+        //[HttpPut("{id}")]
+        //public void Put(int id, [FromBody] string value)
+        //{
+        //}
 
-    //DELETE api/<NeatController>/
+        //DELETE api/<NeatController>/
+
+    [Authorize]
     [HttpDelete("id")]
     public IActionResult DeleteBooking(int id)
     {

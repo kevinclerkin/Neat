@@ -1,3 +1,4 @@
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using NeatAPI.Interfaces;
 using NeatAPI.Models;
@@ -45,6 +46,7 @@ namespace NeatAPI.Controllers
 
     }
 
+    [Authorize]
     [HttpPost]
     [ProducesResponseType(typeof(Availability), 200)]
     public IActionResult AddAvailability([FromBody] Availability availability)
@@ -58,6 +60,8 @@ namespace NeatAPI.Controllers
       return Ok(availability);
     }
 
+
+    [Authorize]
     [HttpDelete("id")]
     public IActionResult DeleteAvailability(int id)
     {

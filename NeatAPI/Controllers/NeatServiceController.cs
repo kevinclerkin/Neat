@@ -1,3 +1,4 @@
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using NeatAPI.Interfaces;
 using NeatAPI.Models;
@@ -29,7 +30,7 @@ namespace NeatAPI.Controllers
 
       return Ok(allServices);
     }
-
+    [Authorize]
     [HttpPost]
     [ProducesResponseType(typeof(Service), 200)]
     public IActionResult CreateNeatService([FromBody] Service service)
@@ -43,6 +44,8 @@ namespace NeatAPI.Controllers
       return Ok(service);
     }
 
+
+    [Authorize]
     [HttpDelete("id")]
     public IActionResult DeleteNeatService(int id)
     {
