@@ -1,13 +1,13 @@
 import { TestBed } from '@angular/core/testing';
 
-import { NeatServiceService } from './neat-service.service';
+import { NeatService } from './neat-service.service';
 
 describe('NeatServiceService', () => {
-  let service: NeatServiceService;
+  let service: NeatService;
 
   beforeEach(() => {
     TestBed.configureTestingModule({});
-    service = TestBed.inject(NeatServiceService);
+    service = TestBed.inject(NeatService);
   });
 
   it('should be created', () => {

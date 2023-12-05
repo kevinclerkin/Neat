@@ -56,9 +56,9 @@ export class CreateBookingComponent implements OnInit {
   
       
   
-      /*this.teamMemberService.getUsers().subscribe((teamMembers)=>{
+      this.teamMemberService.getTeamMembers().subscribe((teamMembers)=>{
         this.teamMembers = teamMembers;
-      })*/
+      })
 
       this.availabilityForm.get('selectedTeamMember')?.valueChanges.subscribe((userId: number) => {
         console.log(userId);

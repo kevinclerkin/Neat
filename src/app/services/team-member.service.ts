@@ -11,14 +11,13 @@ headers: new HttpHeaders({
   providedIn: 'root'
 })
 export class TeamMemberService {
-  private apiUrl = 'https://localhost:7003/api/User';
-  private newAuthUrl = 'https://localhost:7003/api/NewAuth';
+ private newAuthUrl = 'https://neatapi.azurewebsites.net/api/NewAuth/team-members';
   
   constructor(private http: HttpClient) { }
 
   
 
   getTeamMembers(): Observable<TeamMember[]>{
-    return this.http.get<any>(this.newAuthUrl);
+    return this.http.get<TeamMember[]>(this.newAuthUrl);
   }
 }

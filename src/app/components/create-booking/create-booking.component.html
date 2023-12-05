@@ -1,44 +1,50 @@
-
-<form [formGroup]="availabilityForm" (ngSubmit)="addBooking()">
-        <header>
-            <h1>Book Your Appointment</h1>
-            <div class="field">
-                <label for="selectedService">Select Service:</label>
-                <select formControlName="selectedService">
-                    <option *ngFor="let clientService of clientServices" [ngValue]="clientService.serviceId">
-                        {{ clientService.serviceName }}
-                    </option>
-                </select>
-            </div>  
-            <div class="field">
-                <label for="selectedTeamMember">Select Team Member:</label>
-                <select formControlName="selectedTeamMember">
-                    <option *ngFor="let teamMember of teamMembers" [ngValue]="teamMember.teamMemberId">
-                        {{ teamMember.firstName }}
-                    </option>
-                </select>
-            </div>    
-            <div class="field">
-                <label for="selectedAvailability">Select Availability:</label>
-                <select formControlName="selectedAvailability">
-                    <ng-container *ngFor="let availability of availabilities">
-                        <option [ngValue]="availability.availabilityId">
-                            {{ availability.dateTime | date: 'dd/MM/yy - HH:mm:00' }}
-                        </option>
-                    </ng-container>
-                </select>
-            </div>
-            <div class="field" [class.error]="availabilityForm.controls['clientName'].dirty && availabilityForm.hasError('required','clientName')">
-                <label for="clientName">Name:</label>
-                <input type="text" formControlName="clientName" />
-                <small *ngIf="availabilityForm.controls['clientName'].dirty && availabilityForm.hasError('required','clientName')" class="text-danger">*Name is required*</small>
-            </div>
-            <div class="field" [class.error]="availabilityForm.controls['clientEmail'].dirty && availabilityForm.hasError('required','clientEmail')">
-                <label for="clientEmail">Email:</label>
-                <input type="email" formControlName="clientEmail" />
-                <small *ngIf="availabilityForm.controls['clientEmail'].dirty && availabilityForm.hasError('required','clientEmail')" class="text-danger">*Email is required*</small>
-            </div>
-            <button type="submit">Book Appointment</button>
-        </header>
-</form>
+<div id="bookingContainer">
+    <form [formGroup]="availabilityForm" (ngSubmit)="addBooking()" id="bookingForm">
+      <header>
+        <h1>Book Your Appointment</h1>
+        <div class="field" id="serviceField">
+          <label for="selectedService">Select Service:</label>
+          <select formControlName="selectedService" id="selectedService">
+            <option *ngFor="let clientService of clientServices" [ngValue]="clientService.serviceId">
+              {{ clientService.serviceName }}
+            </option>
+          </select>
+        </div>
+  
+        <div class="field" id="teamMemberField">
+          <label for="selectedTeamMember">Select Team Member:</label>
+          <select formControlName="selectedTeamMember" id="selectedTeamMember">
+            <option *ngFor="let teamMember of teamMembers" [ngValue]="teamMember.teamMemberId">
+              {{ teamMember.firstName }}
+            </option>
+          </select>
+        </div>
+  
+        <div class="field" id="availabilityField">
+          <label for="selectedAvailability">Select Availability:</label>
+          <select formControlName="selectedAvailability" id="selectedAvailability">
+            <ng-container *ngFor="let availability of availabilities">
+              <option [ngValue]="availability.availabilityId">
+                {{ availability.dateTime | date: 'dd/MM/yy - HH:mm:00' }}
+              </option>
+            </ng-container>
+          </select>
+        </div>
+  
+        <div class="field" [class.error]="availabilityForm.controls['clientName'].dirty && availabilityForm.hasError('required','clientName')" id="clientNameField">
+          <label for="clientName">Name:</label>
+          <input type="text" formControlName="clientName" id="clientName" />
+          <small *ngIf="availabilityForm.controls['clientName'].dirty && availabilityForm.hasError('required','clientName')" class="text-danger">*Name is required*</small>
+        </div>
+  
+        <div class="field" [class.error]="availabilityForm.controls['clientEmail'].dirty && availabilityForm.hasError('required','clientEmail')" id="clientEmailField">
+          <label for="clientEmail">Email:</label>
+          <input type="email" formControlName="clientEmail" id="clientEmail" />
+          <small *ngIf="availabilityForm.controls['clientEmail'].dirty && availabilityForm.hasError('required','clientEmail')" class="text-danger">*Email is required*</small>
+        </div>
+  
+        <button type="submit" id="submitBtn">Book Appointment</button>
+      </header>
+    </form>
+  </div>
 
