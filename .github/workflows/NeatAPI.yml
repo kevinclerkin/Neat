@@ -1,8 +1,6 @@
 name: Build and deploy .NET Core application to Web App NeatAPI
 on:
   push:
-    branches:
-    - main
 env:
   AZURE_WEBAPP_NAME: NeatAPI
   AZURE_WEBAPP_PACKAGE_PATH: ./publish
