@@ -1,3 +1,4 @@
+using Microsoft.AspNetCore.Mvc;
 using NeatAPI.Data;
 using NeatAPI.Interfaces;
 using NeatAPI.Models;
@@ -24,7 +25,8 @@ namespace NeatAPI.Repositories
 
     public ICollection<Availability> GetAvailabilityByUser(int id)
     {
-      return _context.Availabilities.Where(a => a.UserId == id).ToList();
+            //return _context.Availabilities.Where(a => a.Id == id).ToList();
+            return null;
     }
 
 

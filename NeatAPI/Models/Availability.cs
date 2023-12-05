@@ -11,7 +11,8 @@ namespace NeatAPI.Models
         public int AvailabilityId { get; set; }
 
         [ForeignKey("TeamMember")]
-        public int Id { get; set; }
+        public int TeamMemberId { get; set; }
+
         [Required]
         public DateTime DateTime { get; set; }
 

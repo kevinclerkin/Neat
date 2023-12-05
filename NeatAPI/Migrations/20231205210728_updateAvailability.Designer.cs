@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using NeatAPI.Data;
 
@@ -11,9 +12,11 @@ using NeatAPI.Data;
 namespace NeatAPI.Migrations
 {
     [DbContext(typeof(DataContext))]
-    partial class DataContextModelSnapshot : ModelSnapshot
+    [Migration("20231205210728_updateAvailability")]
+    partial class updateAvailability
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -32,9 +35,6 @@ namespace NeatAPI.Migrations
 
                     b.Property<DateTime>("DateTime")
                         .HasColumnType("datetime2");
-
-                    b.Property<int>("TeamMemberId")
-                        .HasColumnType("int");
 
                     b.Property<int?>("UserId")
                         .HasColumnType("int");
@@ -97,11 +97,11 @@ namespace NeatAPI.Migrations
 
             modelBuilder.Entity("NeatAPI.Models.TeamMember", b =>
                 {
-                    b.Property<int>("TeamMemberId")
+                    b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("TeamMemberId"));
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
                     b.Property<string>("Email")
                         .HasColumnType("nvarchar(max)");
@@ -130,7 +130,7 @@ namespace NeatAPI.Migrations
                     b.Property<string>("Username")
                         .HasColumnType("nvarchar(max)");
 
-                    b.HasKey("TeamMemberId");
+                    b.HasKey("Id");
 
                     b.ToTable("TeamMembers");
                 });
