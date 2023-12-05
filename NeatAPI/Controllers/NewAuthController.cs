@@ -161,7 +161,7 @@ namespace NeatAPI.Controllers
 
     }
 
-    [Authorize]
+    
     [HttpGet]
     public async Task<ActionResult<TeamMember>> GetAllTeamMembers()
     {
