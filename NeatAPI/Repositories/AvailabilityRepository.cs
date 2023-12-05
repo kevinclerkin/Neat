@@ -25,8 +25,8 @@ namespace NeatAPI.Repositories
 
     public ICollection<Availability> GetAvailabilityByUser(int id)
     {
-            //return _context.Availabilities.Where(a => a.Id == id).ToList();
-            return null;
+            return _context.Availabilities.Where(a => a.TeamMemberId == id).ToList();
+            
     }
 
 
