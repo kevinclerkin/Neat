@@ -162,10 +162,10 @@ namespace NeatAPI.Controllers
     }
 
     
-    [HttpGet]
-    public async Task<ActionResult<TeamMember>> GetAllTeamMembers()
+    [HttpGet("team-members")]
+    public ActionResult<IEnumerable<TeamMember>> GetAllTeamMembers()
     {
-      return Ok(await _context.TeamMembers.ToListAsync());
+      return Ok(_context.TeamMembers.OrderBy(t=> t.TeamMemberId).ToList());
     }
 
     [HttpPost("refresh")]
