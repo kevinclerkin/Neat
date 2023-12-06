@@ -20,6 +20,18 @@ yarn-error.log
 .settings/
 *.sublime-workspace
 
+# Compiled output for .NET Core
+/bin
+/obj
+
+# Visual Studio files
+.vs/
+*.suo
+*.user
+*.user
+*.suo
+
+
 # Visual Studio Code
 .vscode/*
 !.vscode/settings.json
