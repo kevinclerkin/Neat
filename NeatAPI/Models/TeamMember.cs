@@ -1,4 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
+using System.Diagnostics.Contracts;
 
 namespace NeatAPI.Models
 {
@@ -14,5 +16,8 @@ namespace NeatAPI.Models
         public string Email { get; set; }
         public string RefreshToken { get; set; }
         public DateTime RefreshTokenExpiryTime { get; set; }
+        [Required]
+        [ForeignKey("Company")]
+        public int CompanyId { get; set; }
     }
 }

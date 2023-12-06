@@ -12,5 +12,7 @@ namespace NeatAPI.Models
         [Required]
         public string ServiceName { get; set; }
 
+        public int Price { get; set; }
+
     }
 }

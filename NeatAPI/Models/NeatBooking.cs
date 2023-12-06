@@ -18,8 +18,8 @@ namespace NeatAPI.Models
 
         public String ClientEmail { get; set; }
 
-        [ForeignKey("User")]
-        public int UserId { get; set; }
+        [ForeignKey("TeamMember")]
+        public int TeamMemberId { get; set; }
 
 
         [ForeignKey("Service")]

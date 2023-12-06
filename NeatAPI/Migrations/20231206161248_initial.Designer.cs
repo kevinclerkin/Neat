@@ -12,7 +12,7 @@ using NeatAPI.Data;
 namespace NeatAPI.Migrations
 {
     [DbContext(typeof(DataContext))]
-    [Migration("20231130162108_initial")]
+    [Migration("20231206161248_initial")]
     partial class initial
     {
         /// <inheritdoc />
@@ -36,7 +36,10 @@ namespace NeatAPI.Migrations
                     b.Property<DateTime>("DateTime")
                         .HasColumnType("datetime2");
 
-                    b.Property<int>("UserId")
+                    b.Property<int>("TeamMemberId")
+                        .HasColumnType("int");
+
+                    b.Property<int?>("UserId")
                         .HasColumnType("int");
 
                     b.HasKey("AvailabilityId");
@@ -44,6 +47,44 @@ namespace NeatAPI.Migrations
                     b.HasIndex("UserId");
 
                     b.ToTable("Availabilities");
+                });
+
+            modelBuilder.Entity("NeatAPI.Models.Company", b =>
+                {
+                    b.Property<int>("CompanyId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("CompanyId"));
+
+                    b.Property<string>("CompanyName")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Location")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("CompanyId");
+
+                    b.ToTable("Companies");
+                });
+
+            modelBuilder.Entity("NeatAPI.Models.Customer", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<string>("Email")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Name")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Customers");
                 });
 
             modelBuilder.Entity("NeatAPI.Models.NeatBooking", b =>
@@ -68,7 +109,10 @@ namespace NeatAPI.Migrations
                     b.Property<int>("ServiceId")
                         .HasColumnType("int");
 
-                    b.Property<int>("UserId")
+                    b.Property<int>("TeamMemberId")
+                        .HasColumnType("int");
+
+                    b.Property<int?>("UserId")
                         .HasColumnType("int");
 
                     b.HasKey("BookingId");
@@ -78,6 +122,25 @@ namespace NeatAPI.Migrations
                     b.ToTable("NeatBookings");
                 });
 
+            modelBuilder.Entity("NeatAPI.Models.Payment", b =>
+                {
+                    b.Property<int>("PaymentId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("PaymentId"));
+
+                    b.Property<int>("BookingId")
+                        .HasColumnType("int");
+
+                    b.Property<bool>("IsConfirmed")
+                        .HasColumnType("bit");
+
+                    b.HasKey("PaymentId");
+
+                    b.ToTable("Payments");
+                });
+
             modelBuilder.Entity("NeatAPI.Models.Service", b =>
                 {
                     b.Property<int>("ServiceId")
@@ -85,6 +148,9 @@ namespace NeatAPI.Migrations
                         .HasColumnType("int");
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("ServiceId"));
+
+                    b.Property<int>("Price")
+                        .HasColumnType("int");
 
                     b.Property<string>("ServiceName")
                         .IsRequired()
@@ -97,11 +163,14 @@ namespace NeatAPI.Migrations
 
             modelBuilder.Entity("NeatAPI.Models.TeamMember", b =>
                 {
-                    b.Property<int>("Id")
+                    b.Property<int>("TeamMemberId")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("TeamMemberId"));
+
+                    b.Property<int>("CompanyId")
+                        .HasColumnType("int");
 
                     b.Property<string>("Email")
                         .HasColumnType("nvarchar(max)");
@@ -130,7 +199,7 @@ namespace NeatAPI.Migrations
                     b.Property<string>("Username")
                         .HasColumnType("nvarchar(max)");
 
-                    b.HasKey("Id");
+                    b.HasKey("TeamMemberId");
 
                     b.ToTable("TeamMembers");
                 });
@@ -167,18 +236,14 @@ namespace NeatAPI.Migrations
                 {
                     b.HasOne("NeatAPI.Models.User", null)
                         .WithMany("UserAvailabilities")
-                        .HasForeignKey("UserId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("UserId");
                 });
 
             modelBuilder.Entity("NeatAPI.Models.NeatBooking", b =>
                 {
                     b.HasOne("NeatAPI.Models.User", null)
                         .WithMany("UserBookings")
-                        .HasForeignKey("UserId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("UserId");
                 });
 
             modelBuilder.Entity("NeatAPI.Models.User", b =>

@@ -10,6 +10,13 @@
       "type": "mssql.azure",
       "connectionId": "ConnectionStrings:AzureDataContextConnection",
       "dynamicId": null
+    },
+    "mssql2": {
+      "serviceConnectorResourceId": "/subscriptions/[parameters('subscriptionId')]/resourceGroups/[parameters('resourceGroupName')]/providers/Microsoft.ServiceLinker/locations/westeurope/connectors/ConnectionStringsDataContextConnection_9862463AE1",
+      "secretStore": null,
+      "resourceId": "/subscriptions/[parameters('subscriptionId')]/resourceGroups/[parameters('resourceGroupName')]/providers/Microsoft.Sql/servers/new-neatserver/databases/NewNeatDb",
+      "type": "mssql.azure",
+      "connectionId": "ConnectionStrings:DataContextConnection"
     }
   }
 }

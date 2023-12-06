@@ -18,6 +18,13 @@ namespace NeatAPI.Data
 
     public DbSet<TeamMember> TeamMembers { get; set; }
 
+    public DbSet<Company> Companies { get; set; }
+
+    public DbSet<Customer> Customers { get; set; }
+
+    public DbSet<Payment> Payments { get; set; }
+
+
     
 
   }
