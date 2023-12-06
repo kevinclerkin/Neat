@@ -46,7 +46,6 @@ namespace NeatAPI.Controllers
 
     }
 
-    [Authorize]
     [HttpPost]
     [ProducesResponseType(typeof(Availability), 200)]
     public IActionResult AddAvailability([FromBody] Availability availability)
