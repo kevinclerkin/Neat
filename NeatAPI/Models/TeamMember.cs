@@ -18,6 +18,6 @@ namespace NeatAPI.Models
         public DateTime RefreshTokenExpiryTime { get; set; }
         [Required]
         [ForeignKey("Company")]
-        public int CompanyId { get; set; }
+        public string CompanyName { get; set; }
     }
 }
