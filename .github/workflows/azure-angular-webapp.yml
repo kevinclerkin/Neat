@@ -1,9 +1,6 @@
 name: Publish
 
-on:
-  push:
-    branches: [ "neat-ui-angular17" ]
-  workflow_dispatch:
+on
 
 env:
   AZURE_WEBAPP_NAME: neatapp    
