@@ -12,7 +12,7 @@ import { RegisterComponent } from './components/register/register.component';
 import { LoginComponent } from './components/login/login.component';
 import { TokenInterceptor } from './services/token.interceptor';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
-//import { ConfirmPayComponent } from './components/confirm-pay/confirm-pay.component';
+import { ConfirmPayComponent } from './components/confirm-pay/confirm-pay.component';
 
 @NgModule({
   declarations: [
@@ -23,7 +23,7 @@ import { DashboardComponent } from './components/dashboard/dashboard.component';
     RegisterComponent,
     LoginComponent,
     DashboardComponent,
-    //ConfirmPayComponent
+    ConfirmPayComponent
   ],
   imports: [
     BrowserModule,

@@ -1,30 +1,29 @@
-/*import { Component, OnDestroy } from '@angular/core';
+import { Component, OnInit, HostListener} from '@angular/core';
 import { Booking } from '../../interfaces/booking';
-import {Subscription} from 'rxjs';
-import { CreateBookingComponent } from '../create-booking/create-booking.component';
+import { BookingDataService } from '../../services/booking-data.service';
 import { Router } from '@angular/router';
+
 @Component({
   selector: 'app-confirm-pay',
   templateUrl: './confirm-pay.component.html',
-  styleUrl: './confirm-pay.component.css'
+  styleUrls: ['./confirm-pay.component.css']
 })
-export class ConfirmPayComponent implements OnDestroy {
-  private subscription: Subscription;
-  private router!: Router;
+export class ConfirmPayComponent implements OnInit{
+  capturedEventData!: Booking | null;
 
-  constructor(private createBookingComponent: CreateBookingComponent) {
-    
-    this.subscription = this.createBookingComponent.onAddBooking.subscribe((newBooking: Booking) => {
-      
+  constructor(private bookingDataService: BookingDataService, private router: Router){
+    this.capturedEventData = null;
+  }
+
+  ngOnInit(): void {
+    this.bookingDataService.capturedBooking$.subscribe((booking) => {
+      this.capturedEventData = booking;
     });
   }
 
-  ngOnDestroy(): void {
-    this.subscription.unsubscribe();
+  @HostListener('window:beforeunload', ['$event'])
+  unloadHandler(event: Event): void {
     this.router.navigate(['/home']);
   }
+
 }
- 
-*/
-
-

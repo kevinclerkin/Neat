@@ -1,4 +1,4 @@
-import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output} from '@angular/core';
 import { FormBuilder, FormGroup, FormControl, Validators } from '@angular/forms';
 import { Availability } from '../../interfaces/availability';
 import { AvailabilityService } from '../../services/availability.service';
@@ -9,6 +9,7 @@ import { Booking } from '../../interfaces/booking';
 import { BookingService } from '../../services/booking.service';
 import { TeamMember } from '../../models/team-member';
 import { Router } from '@angular/router';
+import { BookingDataService } from '../../services/booking-data.service';
 
 @Component({
   selector: 'app-create-booking',
@@ -28,6 +29,7 @@ export class CreateBookingComponent implements OnInit {
   isListFiltered: boolean = false;
   clientServices!: ServiceOption[];
   bookings!: Booking[];
+ 
 
   constructor(
     private formBuilder: FormBuilder,
@@ -35,7 +37,8 @@ export class CreateBookingComponent implements OnInit {
     private teamMemberService: TeamMemberService,
     private neatService: NeatService,
     private bookingService: BookingService,
-    private router: Router){}
+    private router: Router,
+    private bookingDataService: BookingDataService){}
     
     ngOnInit(): void {
       this.availabilityForm = this.formBuilder.group({
@@ -92,8 +95,8 @@ export class CreateBookingComponent implements OnInit {
   
         
       this.bookingService.addBooking(newBooking).subscribe();
-      this.onAddBooking.emit(newBooking)
-      this.router.navigate(['confirm']);
+      this.bookingDataService.setCapturedBooking(newBooking);
+      this.router.navigate(['/confirm-pay']);
 
       }   
   

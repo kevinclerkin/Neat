@@ -4,7 +4,7 @@ import { CreateBookingComponent } from './components/create-booking/create-booki
 import { RegisterComponent } from './components/register/register.component';
 import { LoginComponent } from './components/login/login.component';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
-//import { ConfirmPayComponent } from './components/confirm-pay/confirm-pay.component';
+import { ConfirmPayComponent } from './components/confirm-pay/confirm-pay.component';
 
 const routes: Routes = [
   {path: '', redirectTo: '/home', pathMatch: 'full'},
@@ -12,7 +12,7 @@ const routes: Routes = [
   {path:'register', component: RegisterComponent},
   {path:'login', component: LoginComponent},
   {path:'dashboard', component: DashboardComponent},
-  //{path:'/confirm-pay', component: ConfirmPayComponent}
+  {path:'confirm-pay', component: ConfirmPayComponent}
 ];
 
 @NgModule({
