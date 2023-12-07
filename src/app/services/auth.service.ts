@@ -9,8 +9,8 @@ import {JwtHelperService} from '@auth0/angular-jwt'
   providedIn: 'root'
 })
 export class AuthService {
-  private apiUrl: string = '';
-  private apiLoginUrl: string = ''
+  private apiUrl: string = 'https://neatapi.azurewebsites.net/api/NewAuth';
+  private apiLoginUrl: string = 'https://neatapi.azurewebsites.net/api/NewAuth/authenticate'
   private userPayload:any;
 
   constructor(private http: HttpClient, private router: Router){

@@ -11,6 +11,8 @@ import { NavbarComponent } from './components/navbar/navbar.component';
 import { RegisterComponent } from './components/register/register.component';
 import { LoginComponent } from './components/login/login.component';
 import { TokenInterceptor } from './services/token.interceptor';
+import { DashboardComponent } from './components/dashboard/dashboard.component';
+//import { ConfirmPayComponent } from './components/confirm-pay/confirm-pay.component';
 
 @NgModule({
   declarations: [
@@ -19,7 +21,9 @@ import { TokenInterceptor } from './services/token.interceptor';
     CreateBookingComponent,
     NavbarComponent,
     RegisterComponent,
-    LoginComponent
+    LoginComponent,
+    DashboardComponent,
+    //ConfirmPayComponent
   ],
   imports: [
     BrowserModule,

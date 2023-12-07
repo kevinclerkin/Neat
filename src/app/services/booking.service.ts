@@ -14,7 +14,7 @@ const httpOptions = {
   providedIn: 'root'
 })
 export class BookingService {
-  private apiUrl = 'https://neatapi.azurewebsites.net/api/Booking';
+  private apiUrl = 'https://neatapi.azurewebsites.net/api/Neat';
 
   constructor(private http: HttpClient) { }
 

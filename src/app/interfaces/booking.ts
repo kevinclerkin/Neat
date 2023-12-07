@@ -2,7 +2,7 @@ export interface Booking{
     id?: number;
     clientName: string;
     clientEmail: string;
-    userId: number;
+    teamMemberId: number;
     serviceId: number;
     dateTime: string;
 }

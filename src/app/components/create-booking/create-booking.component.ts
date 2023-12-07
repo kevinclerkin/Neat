@@ -8,6 +8,7 @@ import { NeatService } from '../../services/neat-service.service';
 import { Booking } from '../../interfaces/booking';
 import { BookingService } from '../../services/booking.service';
 import { TeamMember } from '../../models/team-member';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-create-booking',
@@ -33,7 +34,8 @@ export class CreateBookingComponent implements OnInit {
     private availabilityService: AvailabilityService,
     private teamMemberService: TeamMemberService,
     private neatService: NeatService,
-    private bookingService: BookingService,){}
+    private bookingService: BookingService,
+    private router: Router){}
     
     ngOnInit(): void {
       this.availabilityForm = this.formBuilder.group({
@@ -58,20 +60,16 @@ export class CreateBookingComponent implements OnInit {
   
       this.teamMemberService.getTeamMembers().subscribe((teamMembers)=>{
         this.teamMembers = teamMembers;
-      })
+      });
 
-      this.availabilityForm.get('selectedTeamMember')?.valueChanges.subscribe((userId: number) => {
-        console.log(userId);
-  
-        
+      this.availabilityForm.get('selectedTeamMember')?.valueChanges.subscribe((userId: number) =>{
         if (userId) {
-          this.availabilities = this.originalAvailabilities.filter((obj: any) => obj.userId === userId);
+          this.availabilities = this.originalAvailabilities.filter((obj:any) => obj.teamMemberId === userId);
           this.availabilityForm.get('selectedAvailability')?.enable();
         } else {
           this.availabilities = [...this.originalAvailabilities];
           this.availabilityForm.get('selectedAvailability')?.disable();
-        }
-      });
+        }});
   
 
 
@@ -87,13 +85,16 @@ export class CreateBookingComponent implements OnInit {
         const newBooking: Booking = {
           clientName: this.availabilityForm.get('clientName')?.value,
           clientEmail: this.availabilityForm.get('clientEmail')?.value,
-          userId: this.availabilityForm.get('selectedTeamMember')?.value,
+          teamMemberId: this.availabilityForm.get('selectedTeamMember')?.value,
           serviceId: this.availabilityForm.get('selectedService')?.value,
           dateTime: selectedAvailability!.dateTime,
         }
   
         
       this.bookingService.addBooking(newBooking).subscribe();
+      this.onAddBooking.emit(newBooking)
+      this.router.navigate(['confirm']);
+
       }   
   
   } 

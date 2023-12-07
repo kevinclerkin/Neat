@@ -9,6 +9,10 @@
                     <div class="panel-body p-3">
                         <form [formGroup]="signUpForm" (ngSubmit)="onSubmit()">
                             <div class="form-group pt-3">
+                                <div class="input-field" [class.error]="signUpForm.controls['companyName'].dirty && signUpForm.hasError('required','companyName')"> <span class="fa fa-user p-2"></span> <input formControlName="companyName" type="text" placeholder="Barber"> </div>
+                            </div>
+                            <small *ngIf="signUpForm.controls['companyName'].dirty && signUpForm.hasError('required','companyName')" class="text-danger">*Barber Name is required*</small>
+                            <div class="form-group pt-3">
                                 <div class="input-field" [class.error]="signUpForm.controls['firstName'].dirty && signUpForm.hasError('required','firstName')"> <span class="fa fa-user p-2"></span> <input formControlName="firstName" type="text" placeholder="First Name"> </div>
                             </div>
                             <small *ngIf="signUpForm.controls['firstName'].dirty && signUpForm.hasError('required','firstName')" class="text-danger">*First Name is required*</small>
