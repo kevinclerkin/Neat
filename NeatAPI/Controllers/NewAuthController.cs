@@ -64,11 +64,11 @@ namespace NeatAPI.Controllers
 
       // check email
       if (await CheckEmailExistAsync(memberObj.Email))
-        return BadRequest(new { Message = "Email Already Exist" });
+        return BadRequest(new { Message = "Email Already Exists" });
 
       //check username
       if (await CheckUsernameExistAsync(memberObj.Username))
-        return BadRequest(new { Message = "Username Already Exist" });
+        return BadRequest(new { Message = "Username Already Exists" });
 
       var passMessage = CheckPasswordStrength(memberObj.Password);
       if (!string.IsNullOrEmpty(passMessage))
@@ -107,7 +107,7 @@ namespace NeatAPI.Controllers
     private string CreateJwt(TeamMember teamMember)
     {
       var jwtTokenHandler = new JwtSecurityTokenHandler();
-      var key = Encoding.ASCII.GetBytes("veryverysecrettoken");
+      var key = Encoding.ASCII.GetBytes("veryverysceret.....");
       var identity = new ClaimsIdentity(new Claim[]
       {
                 new Claim(ClaimTypes.Role, teamMember.Role),
@@ -142,7 +142,7 @@ namespace NeatAPI.Controllers
 
     private ClaimsPrincipal GetPrincipleFromExpiredToken(string token)
     {
-      var key = Encoding.ASCII.GetBytes("veryverysecrettoken");
+      var key = Encoding.ASCII.GetBytes("veryverysceret.....");
       var tokenValidationParameters = new TokenValidationParameters
       {
         ValidateAudience = false,
@@ -156,7 +156,7 @@ namespace NeatAPI.Controllers
       var principal = tokenHandler.ValidateToken(token, tokenValidationParameters, out securityToken);
       var jwtSecurityToken = securityToken as JwtSecurityToken;
       if (jwtSecurityToken == null || !jwtSecurityToken.Header.Alg.Equals(SecurityAlgorithms.HmacSha256, StringComparison.InvariantCultureIgnoreCase))
-        throw new SecurityTokenException("This is Invalid Token");
+        throw new SecurityTokenException("This is an invalid Token");
       return principal;
 
     }
