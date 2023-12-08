@@ -60,15 +60,14 @@ namespace NeatAPI.Controllers
     }
 
 
-    
-    [HttpDelete("{id}")]
+    [HttpDelete("delete{id}")]
     public IActionResult DeleteAvailability(int id)
     {
       var deleteAvailability = _availabilityRepository.DeleteAvailability(id);
 
       if (deleteAvailability == null)
       {
-        return BadRequest();
+        return NotFound();
       }
 
       return Ok(deleteAvailability);
