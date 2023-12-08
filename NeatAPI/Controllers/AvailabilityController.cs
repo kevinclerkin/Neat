@@ -61,7 +61,7 @@ namespace NeatAPI.Controllers
         }
 
 
-        [HttpDelete("delete{id}")]
+        [HttpDelete("delete")]
         [ProducesResponseType(400)]
         [ProducesResponseType(204)]
         [ProducesResponseType(404)]
