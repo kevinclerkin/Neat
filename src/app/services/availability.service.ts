@@ -30,11 +30,20 @@ export class AvailabilityService {
     return this.http.post<Availability>(this.apiUrl, availability, httpOptions);
   }
 
-  deleteAvailability(availabilityId: number): Observable<Availability[]>{
+  deleteAvailability(availabilityId: number): Observable<Availability>{
     console.log(availabilityId);
-    const url = `${this.deleteApiUrl}/${availabilityId}`;
+    const url = `${this.apiUrl}/${availabilityId}`;
     console.log(url);
-    return this.http.delete<Availability[]>(url);
+    return this.http.delete<Availability>(url, httpOptions);
   }
+
+  /*deleteAvailability(availabilityId: number): Observable<Availability>{
+    console.log(typeof(availabilityId));
+    return this.http.delete<Availability>(this.deleteApiUrl + availabilityId);
+    
+  }*/
+
+  
+  
 }
 

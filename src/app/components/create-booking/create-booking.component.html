@@ -23,11 +23,14 @@
         <div class="field" id="availabilityField">
           <label for="selectedAvailability">Select Availability:</label>
           <select formControlName="selectedAvailability" id="selectedAvailability">
-            <ng-container *ngFor="let availability of availabilities">
-              <option [ngValue]="availability.availabilityId">
+            <ng-container *ngIf="availabilities.length > 0; else noAvailability">
+            <option *ngFor="let availability of availabilities" [ngValue]="availability.availabilityId">
                 {{ availability.dateTime | date: 'dd/MM/yy - HH:mm:00' }}
               </option>
             </ng-container>
+            <ng-template #noAvailability>
+              <option disabled selected value="">No Availability</option>
+            </ng-template>
           </select>
         </div>
   
