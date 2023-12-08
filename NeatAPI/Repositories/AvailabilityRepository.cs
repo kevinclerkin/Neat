@@ -39,11 +39,11 @@ namespace NeatAPI.Repositories
     }
 
     
-    public bool DeleteAvailability(Availability availability)
+    public Availability DeleteAvailability(Availability availability)
     {
       _context.Availabilities.Remove(availability);
       _context.SaveChanges();
-      return true;
+      return availability;
 
     }
   

@@ -62,9 +62,7 @@ namespace NeatAPI.Controllers
 
 
         [HttpDelete("delete")]
-        [ProducesResponseType(400)]
-        [ProducesResponseType(204)]
-        [ProducesResponseType(404)]
+        [ProducesResponseType(typeof(Availability), 200)]
         public IActionResult DeleteAvailability(int availabilityId)
         {
 

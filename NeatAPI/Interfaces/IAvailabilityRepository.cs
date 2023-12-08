@@ -10,6 +10,6 @@ namespace NeatAPI.Interfaces
 
     Availability CreateAvailability(Availability availability);
 
-    bool DeleteAvailability(Availability availability);
+    Availability DeleteAvailability(Availability availability);
   }
 }
