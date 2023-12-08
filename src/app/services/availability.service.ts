@@ -14,7 +14,7 @@ const httpOptions = {
 })
 export class AvailabilityService {
   private apiUrl = 'https://neatapi.azurewebsites.net/api/Availability';
-
+  private deleteApiUrl = 'https://neatapi.azurewebsites.net/api/Availability/delete';
   constructor(private http: HttpClient) { }
 
   getAvailabilities(): Observable<Availability[]>{
@@ -28,6 +28,13 @@ export class AvailabilityService {
 
   addAvailability(availability: Availability): Observable<Availability>{
     return this.http.post<Availability>(this.apiUrl, availability, httpOptions);
+  }
+
+  deleteAvailability(availabilityId: number): Observable<Availability[]>{
+    console.log(availabilityId);
+    const url = `${this.deleteApiUrl}/${availabilityId}`;
+    console.log(url);
+    return this.http.delete<Availability[]>(url);
   }
 }
 

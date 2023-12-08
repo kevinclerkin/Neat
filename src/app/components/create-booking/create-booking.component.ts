@@ -94,11 +94,15 @@ export class CreateBookingComponent implements OnInit {
         }
   
         
-      this.bookingService.addBooking(newBooking).subscribe();
-      this.bookingDataService.setCapturedBooking(newBooking);
-      this.router.navigate(['/confirm-pay']);
+        this.bookingService.addBooking(newBooking).subscribe(() => {
+        this.availabilityService.deleteAvailability(selectedAvailabilityId)});
+        console.log(selectedAvailabilityId);
+        this.bookingDataService.setCapturedBooking(newBooking);
+        this.router.navigate(['/confirm-pay']);
 
-      }   
+      }
+      
+      
   
   } 
   
