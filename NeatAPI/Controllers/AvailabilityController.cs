@@ -61,20 +61,20 @@ namespace NeatAPI.Controllers
         }
 
 
-        [HttpDelete("delete")]
+        [HttpDelete()]
         [ProducesResponseType(typeof(Availability), 200)]
-        public IActionResult DeleteAvailability(int availabilityId)
+        public IActionResult DeleteAvailability(Availability availability)
         {
-
-            var deleteAvailability = _availabilityRepository.GetAvailabilityById(availabilityId);
-
-            if (deleteAvailability != null && ModelState.IsValid)
+            if(availability == null || !ModelState.IsValid)
             {
-                _availabilityRepository.DeleteAvailability((Availability)deleteAvailability);
+                return BadRequest("Model data is not valid");
             }
 
+            var deleteAvailability = _availabilityRepository.DeleteAvailability(availability);
 
             return Ok(deleteAvailability);
+
+            
 
                 
             
