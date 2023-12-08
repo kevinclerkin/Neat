@@ -1,4 +1,5 @@
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore.Diagnostics;
 using NeatAPI.Data;
 using NeatAPI.Interfaces;
 using NeatAPI.Models;
@@ -23,9 +24,9 @@ namespace NeatAPI.Repositories
     }
 
 
-    public ICollection<Availability> GetAvailabilityByUser(int id)
+    public ICollection<Availability> GetAvailabilityById(int id)
     {
-            return _context.Availabilities.Where(a => a.TeamMemberId == id).ToList();
+      return _context.Availabilities.Where(a => a.AvailabilityId == id).ToList();
             
     }
 
@@ -37,15 +38,16 @@ namespace NeatAPI.Repositories
       return availability ;
     }
 
-    public IEnumerable<Availability> DeleteAvailability(int id)
+    
+    public bool DeleteAvailability(Availability availability)
     {
-      var deleteAvailability = _context.Availabilities.FirstOrDefault(b => b.AvailabilityId == id);
-
-      _context.Availabilities.Remove(deleteAvailability);
+      _context.Availabilities.Remove(availability);
       _context.SaveChanges();
-      return _context.Availabilities;
-    }
+      return true;
 
-   
+    }
+  
+  
   }
+
 }
