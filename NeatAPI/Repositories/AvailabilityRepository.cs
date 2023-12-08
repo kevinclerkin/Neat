@@ -24,10 +24,9 @@ namespace NeatAPI.Repositories
     }
 
 
-    public ICollection<Availability> GetAvailabilityById(int id)
+    public Availability GetAvailabilityById(int id)
     {
-      return _context.Availabilities.Where(a => a.AvailabilityId == id).ToList();
-            
+      return _context.Availabilities.FirstOrDefault(a => a.AvailabilityId == id);
     }
 
 

@@ -82,9 +82,29 @@ namespace NeatAPI.Controllers
             
         }
 
+        [HttpDelete("{id}")]
+        [ProducesResponseType(204)]
+        [ProducesResponseType(404)]
+
+        public IActionResult DeleteAvailabilityById(int id)
+        {
+            var availabilityExists = _availabilityRepository.GetAvailabilityById(id);
 
 
-        
+
+            if (availabilityExists == null)
+            {
+                return NotFound("Id not found");
+            };
+
+
+
+            _availabilityRepository.DeleteAvailability(availabilityExists);
+
+            return NoContent();
+        }
+
+
 
     }
 

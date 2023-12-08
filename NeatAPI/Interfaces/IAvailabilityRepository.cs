@@ -6,7 +6,7 @@ namespace NeatAPI.Interfaces
   {
     ICollection<Availability> GetAvailabilities();
 
-    ICollection<Availability> GetAvailabilityById(int id);
+    Availability GetAvailabilityById(int id);
 
     Availability CreateAvailability(Availability availability);
 
