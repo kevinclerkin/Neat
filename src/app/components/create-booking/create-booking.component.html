@@ -7,9 +7,12 @@
           <select formControlName="selectedService" id="selectedService">
             <option *ngFor="let clientService of clientServices" [ngValue]="clientService.serviceId">
               {{ clientService.serviceName }}
+              <ng-container *ngIf="clientService.price !== null && clientService.price !== 0">
+                - {{ clientService.price | currency:'EUR':true }}
+              </ng-container>
             </option>
           </select>
-        </div>
+          </div>
   
         <div class="field" id="teamMemberField">
           <label for="selectedTeamMember">Select Team Member:</label>
