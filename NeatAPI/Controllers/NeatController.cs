@@ -82,7 +82,7 @@ namespace NeatAPI.Controllers
       
       var clientEmail = neatBooking.ClientEmail;
 
-      await _emailService.SendBookingConfirmationEmail(clientEmail, emailSubject, emailBody);
+      _emailService.SendBookingConfirmationEmail(clientEmail, emailSubject, emailBody).Wait();
 
       return Ok(neatBooking);
 
