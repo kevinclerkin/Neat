@@ -26,14 +26,14 @@ jobs:
       run: |
           sed -i 's/REPLACE_WITH_ACTUAL_CONNECTION_STRING/${{ secrets.AZURE_SQL_CONNECTION_STRING_2 }}/g' NeatAPI/appsettings.json  
 
-    - name: Replace Email Settings
-      run: |
-          sed -i 's/TEST_APIKEY/${{ secrets.SENDGRID_APIKEY }}/g' NeatAPI/appsettings.json
-          sed -i 's/NEAT_SENDER_EMAIL/${{ secrets.NEAT_SENDER_EMAIL }}/g' NeatAPI/appsettings.json
+    
 
     
     - name: Build
       run: dotnet build "${{ env.WORKING_DIRECTORY }}" --configuration ${{ env.CONFIGURATION }} --no-restore
+
+   
+      
     
     - name: Test
       run: dotnet test "${{ env.WORKING_DIRECTORY }}" --no-build
