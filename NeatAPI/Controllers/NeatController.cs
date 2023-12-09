@@ -1,11 +1,8 @@
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using NeatAPI.Models;
-using System.Collections.Generic;
-using System.Linq;
-using Microsoft.EntityFrameworkCore;
-using NeatAPI.Data;
 using NeatAPI.Interfaces;
+
 
 namespace NeatAPI.Controllers
 {
@@ -15,11 +12,15 @@ namespace NeatAPI.Controllers
   public class NeatController : ControllerBase
   {
     private readonly INeatBookingRepository _neatBookingRepository;
-    
+    private readonly IEmailService _emailService;
+    private readonly ILogger<NeatController> _logger;
 
-    public NeatController(INeatBookingRepository neatBookingRepository)
+
+    public NeatController(INeatBookingRepository neatBookingRepository, IEmailService emailService, ILogger<NeatController> logger)
     {
       _neatBookingRepository = neatBookingRepository;
+      _emailService = emailService;
+      _logger = logger;
     }
 
 
@@ -68,7 +69,23 @@ namespace NeatAPI.Controllers
       }
 
       _neatBookingRepository.CreateBooking(neatBooking);
+
+      // Send confirmation email
+      var emailSubject = "Booking Confirmation";
+      
+      var formattedDateTime = neatBooking.DateTime.ToString("dddd - dd/MM/yyyy - HH:mm");
+
+
+      var emailBody = $"Thank you for your booking, {neatBooking.ClientName}." +
+                      $"Your booking is on: {formattedDateTime}.";
+
+      
+      var clientEmail = neatBooking.ClientEmail;
+
+      _emailService.SendBookingConfirmationEmail(clientEmail, emailSubject, emailBody);
+
       return Ok(neatBooking);
+
     }
 
         // PUT api/<NeatController>/

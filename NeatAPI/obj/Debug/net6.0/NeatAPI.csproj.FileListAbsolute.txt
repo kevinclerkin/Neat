@@ -271,3 +271,7 @@ C:\Users\Kevin\Desktop\NeatAPI Working\NeatAPI\obj\Debug\net6.0\refint\NeatAPI.d
 C:\Users\Kevin\Desktop\NeatAPI Working\NeatAPI\obj\Debug\net6.0\NeatAPI.pdb
 C:\Users\Kevin\Desktop\NeatAPI Working\NeatAPI\obj\Debug\net6.0\NeatAPI.genruntimeconfig.cache
 C:\Users\Kevin\Desktop\NeatAPI Working\NeatAPI\obj\Debug\net6.0\ref\NeatAPI.dll
+C:\Users\Kevin\Desktop\NeatAPI Working\NeatAPI\bin\Debug\net6.0\Newtonsoft.Json.dll
+C:\Users\Kevin\Desktop\NeatAPI Working\NeatAPI\bin\Debug\net6.0\SendGrid.dll
+C:\Users\Kevin\Desktop\NeatAPI Working\NeatAPI\bin\Debug\net6.0\SendGrid.Extensions.DependencyInjection.dll
+C:\Users\Kevin\Desktop\NeatAPI Working\NeatAPI\bin\Debug\net6.0\StarkbankEcdsa.dll

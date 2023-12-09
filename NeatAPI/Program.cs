@@ -4,9 +4,13 @@ using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
 using NeatAPI.Data;
 using NeatAPI.Interfaces;
+using NeatAPI.Models;
 using NeatAPI.Repositories;
 using Swashbuckle.AspNetCore.Filters;
 using System.Text;
+using SendGrid.Extensions.DependencyInjection;
+using NeatAPI.Services;
+using NeatAPI.Utils;
 
 var builder = WebApplication.CreateBuilder(args);
 var connectionString = builder.Configuration.GetConnectionString("AzureDataContextConnection") ?? throw new InvalidOperationException("Connection string: 'DataContextConnection' Not Found!");
@@ -17,7 +21,17 @@ builder.Services.AddControllers();
 builder.Services.AddScoped<INeatBookingRepository, NeatBookingRepository>();
 builder.Services.AddScoped<INeatServiceRepository, NeatServiceRepository>();
 builder.Services.AddScoped<IAvailabilityRepository, AvailabilityRepository>();
+builder.Services.AddScoped<IEmailService, EmailService>();
+builder.Services.Configure<EmailSettings>(builder.Configuration.GetSection("EmailSettings"));
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
+
+builder.Services.AddSendGrid(options =>
+{
+    options.ApiKey = builder.Configuration
+    .GetSection("EmailSettings").GetValue<string>("ApiKey");
+});
+
+
 
 // Configure SQL Azure execution strategy
 builder.Services.AddDbContext<DataContext>(options =>
@@ -30,6 +44,7 @@ builder.Services.AddDbContext<DataContext>(options =>
             errorNumbersToAdd: null);
     });
 });
+
 
 
 builder.Services.AddEndpointsApiExplorer();
@@ -46,9 +61,10 @@ builder.Services.AddSwaggerGen(options =>
 
     options.OperationFilter<SecurityRequirementsOperationFilter>();
 });
-builder.Services.AddDbContext<DataContext>(options =>
 
-options.UseSqlServer(connectionString));
+//builder.Services.AddDbContext<DataContext>(options =>
+
+//options.UseSqlServer(connectionString));
 
 
 /*builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
