@@ -24,10 +24,10 @@ namespace NeatAPI.Repositories
       return _context.NeatBookings.Where(e=> e.ClientEmail == clientEmail).ToList();
     }
 
-    public NeatBooking CreateBooking(NeatBooking newBooking)
+    public async Task<NeatBooking> CreateBookingAsync(NeatBooking newBooking)
     {
       _context.NeatBookings.Add(newBooking);
-      _context.SaveChanges();
+      await _context.SaveChangesAsync();
       return newBooking;
     }
 
