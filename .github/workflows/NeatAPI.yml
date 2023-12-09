@@ -32,10 +32,7 @@ jobs:
     - name: Build
       run: dotnet build "${{ env.WORKING_DIRECTORY }}" --configuration ${{ env.CONFIGURATION }} --no-restore
 
-    - name: Replace Email Settings
-      run: |
-          sed -i 's/TEST_APIKEY/${{ secrets.SENDGRID_APIKEY }}/g' NeatAPI/appsettings.json
-          sed -i 's/NEAT_SENDER_EMAIL/${{ secrets.NEAT_SENDER_EMAIL }}/g' NeatAPI/appsettings.json
+   
       
     
     - name: Test
