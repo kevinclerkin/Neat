@@ -8,7 +8,7 @@ namespace NeatAPI.Interfaces
 
     ICollection<NeatBooking> GetBookingsByClientEmail(string clientEmail);
 
-    Task<NeatBooking>CreateBookingAsync(NeatBooking neatBooking);
+    NeatBooking CreateBooking(NeatBooking neatBooking);
 
     IEnumerable<NeatBooking> DeleteBooking(int id);
 

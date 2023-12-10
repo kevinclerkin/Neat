@@ -61,14 +61,14 @@ namespace NeatAPI.Controllers
         // POST api/<NeatController>/
         [HttpPost]
         [ProducesResponseType(typeof(NeatBooking), 200)]
-        public async Task<IActionResult> CreateBookingAsync([FromBody] NeatBooking neatBooking)
+        public IActionResult CreateBooking([FromBody] NeatBooking neatBooking)
         {
             if (neatBooking == null || !ModelState.IsValid)
             {
                 return BadRequest("Invalid data; refer to schema");
             }
 
-            await _neatBookingRepository.CreateBookingAsync(neatBooking);
+            _neatBookingRepository.CreateBooking(neatBooking);
 
             // Send confirmation email
             var emailSubject = "Booking Confirmation";

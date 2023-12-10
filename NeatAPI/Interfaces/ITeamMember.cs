@@ -7,5 +7,6 @@ namespace NeatAPI.Interfaces
         ICollection<TeamMember> GetTeamMembers();
 
         ICollection<string> GetTeamMemberNames();
+
     }
 }
