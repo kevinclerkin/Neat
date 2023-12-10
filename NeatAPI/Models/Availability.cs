@@ -16,5 +16,7 @@ namespace NeatAPI.Models
         [Required]
         public DateTime DateTime { get; set; }
 
+
+
     }
 }

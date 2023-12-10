@@ -11,5 +11,7 @@ namespace NeatAPI.Interfaces
     Availability CreateAvailability(Availability availability);
 
     Availability DeleteAvailability(Availability availability);
+
+    Availability EditAvailability (int id, Availability availability);
   }
 }

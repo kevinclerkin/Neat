@@ -6,47 +6,60 @@ using NeatAPI.Models;
 
 namespace NeatAPI.Repositories
 {
-  public class AvailabilityRepository : IAvailabilityRepository
-  {
-    private readonly DataContext _context;
-
-    public AvailabilityRepository(DataContext context)
+    public class AvailabilityRepository : IAvailabilityRepository
     {
-      _context = context;
+        private readonly DataContext _context;
+
+        public AvailabilityRepository(DataContext context)
+        {
+            _context = context;
+        }
+
+        public ICollection<Availability> GetAvailabilities()
+        {
+            DateTime now = DateTime.Now;
+
+            return _context.Availabilities.Where(a => a.DateTime >= now)
+              .OrderBy(a => a.DateTime).ToList();
+        }
+
+
+        public Availability GetAvailabilityById(int id)
+        {
+            return _context.Availabilities.FirstOrDefault(a => a.AvailabilityId == id);
+        }
+
+
+        public Availability CreateAvailability(Availability availability)
+        {
+            _context.Availabilities.Add(availability);
+            _context.SaveChanges();
+            return availability;
+        }
+
+
+        public Availability DeleteAvailability(Availability availability)
+        {
+            _context.Availabilities.Remove(availability);
+            _context.SaveChanges();
+            return availability;
+
+        }
+        public Availability EditAvailability(int id, Availability editedAvailability)
+        {
+            var existingAvailability = _context.Availabilities.FirstOrDefault(a => a.AvailabilityId == id);
+
+            if (existingAvailability != null)
+            {
+
+                existingAvailability.DateTime = editedAvailability.DateTime;
+
+
+                _context.SaveChanges();
+            }
+
+            return existingAvailability;
+        }
     }
-
-    public ICollection<Availability> GetAvailabilities()
-    {
-      DateTime now = DateTime.Now;
-
-      return _context.Availabilities.Where(a => a.DateTime >= now)
-        .OrderBy(a => a.DateTime).ToList();
-    }
-
-
-    public Availability GetAvailabilityById(int id)
-    {
-      return _context.Availabilities.FirstOrDefault(a => a.AvailabilityId == id);
-    }
-
-
-    public Availability CreateAvailability(Availability availability)
-    {
-      _context.Availabilities.Add(availability);
-      _context.SaveChanges();
-      return availability ;
-    }
-
-    
-    public Availability DeleteAvailability(Availability availability)
-    {
-      _context.Availabilities.Remove(availability);
-      _context.SaveChanges();
-      return availability;
-
-    }
-  
-  
-  }
 
 }

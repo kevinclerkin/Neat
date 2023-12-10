@@ -73,15 +73,10 @@ namespace NeatAPI.Controllers
             var deleteAvailability = _availabilityRepository.DeleteAvailability(availability);
 
             return Ok(deleteAvailability);
-
-            
-
-                
-            
-            
-            
         }
 
+        
+        
         [HttpDelete("{id}")]
         [ProducesResponseType(204)]
         [ProducesResponseType(404)]
@@ -102,6 +97,20 @@ namespace NeatAPI.Controllers
             _availabilityRepository.DeleteAvailability(availabilityExists);
 
             return NoContent();
+        }
+
+
+        [HttpPut("{id}")]
+        public IActionResult EditAvailability(int id, [FromBody] Availability editedAvailability)
+        {
+            var updatedAvailability = _availabilityRepository.EditAvailability(id, editedAvailability);
+
+            if (updatedAvailability == null)
+            {
+                return NotFound();
+            }
+
+            return Ok(updatedAvailability);
         }
 
 

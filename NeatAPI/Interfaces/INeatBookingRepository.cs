@@ -11,5 +11,9 @@ namespace NeatAPI.Interfaces
     Task<NeatBooking>CreateBookingAsync(NeatBooking neatBooking);
 
     IEnumerable<NeatBooking> DeleteBooking(int id);
+
+    ICollection<NeatBooking> GetNextBooking();
+
+
   }
 }

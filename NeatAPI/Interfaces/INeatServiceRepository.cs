@@ -9,5 +9,7 @@ namespace NeatAPI.Interfaces
     Service CreateService(Service service);
 
     IEnumerable<Service> DeleteService(int id);
+
+    Service EditService(int id, Service editedService);
   }
 }
