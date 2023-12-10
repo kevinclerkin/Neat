@@ -1,0 +1,35 @@
+<app-sidebar [mode]="'side'">
+
+    <mat-divider></mat-divider>
+
+<br>
+
+<mat-card>
+    <mat-card-header>
+      <mat-card-title>Availabilities</mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+      <mat-nav-list *ngIf="availabilities && availabilities.length > 0">
+        <mat-list-item *ngFor="let availability of availabilities">
+          <div matLine>
+            {{ availability.dateTime | date:'medium' }} - Team Member ID: {{ availability.teamMemberId }}
+            <button mat-icon-button color="warn" (click)="deleteAvailability()">
+              <mat-icon>delete</mat-icon>
+            </button>
+          </div>
+        </mat-list-item>
+      </mat-nav-list>
+      <div *ngIf="!availabilities || availabilities.length === 0">
+        <p>No availabilities available.</p>
+      </div>
+    </mat-card-content>
+  </mat-card>
+
+  <br>
+
+<mat-divider></mat-divider>
+
+<router-outlet></router-outlet>
+</app-sidebar>
+
+

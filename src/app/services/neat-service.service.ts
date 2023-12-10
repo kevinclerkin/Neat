@@ -20,4 +20,18 @@ export class NeatService {
   getServices(): Observable<ServiceOption[]>{
     return this.http.get<ServiceOption[]>(this.apiUrl)
   }
+
+  createService(service: ServiceOption): Observable<ServiceOption>{
+    return this.http.post<ServiceOption>(this.apiUrl, service, httpOptions);
+  }
+
+  deleteService(service: ServiceOption): Observable<ServiceOption>{
+    const url = `${this.apiUrl}/${service.serviceId}`;
+    return this.http.delete<ServiceOption>(url);
+  }
+
+  updateService(serviceId: number, service: ServiceOption): Observable<any>{
+    const url = `${this.apiUrl}/${serviceId}`;
+    return this.http.put(url, service, httpOptions);
+  }
 }

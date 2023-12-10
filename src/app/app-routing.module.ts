@@ -5,14 +5,23 @@ import { RegisterComponent } from './components/register/register.component';
 import { LoginComponent } from './components/login/login.component';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { ConfirmPayComponent } from './components/confirm-pay/confirm-pay.component';
+import { BookingsComponent } from './components/bookings/bookings.component';
+import { AvailabilitiesComponent } from './components/availabilities/availabilities.component';
+import { TeamComponent } from './components/team/team.component';
+import { ServiceComponent } from './components/service/service.component';
 
 const routes: Routes = [
-  {path: '', redirectTo: '/home', pathMatch: 'full'},
+  {path:'', redirectTo: '/home', pathMatch: 'full'},
   {path:'home', component: CreateBookingComponent},
   {path:'register', component: RegisterComponent},
   {path:'login', component: LoginComponent},
+  {path:'confirm-pay', component: ConfirmPayComponent},
   {path:'dashboard', component: DashboardComponent},
-  {path:'confirm-pay', component: ConfirmPayComponent}
+  {path:'bookings', component: BookingsComponent},
+  {path:'availabilities', component: AvailabilitiesComponent},
+  {path:'team', component: TeamComponent},
+  {path: 'services', component: ServiceComponent}
+ 
 ];
 
 @NgModule({
