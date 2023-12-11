@@ -1,3 +1,5 @@
+// Adapted from https://github.com/yshashi/AngularAuthYtAPI
+
 import { Injectable } from '@angular/core';
 import {HttpClient} from '@angular/common/http';
 import { Observable } from 'rxjs';
@@ -26,7 +28,8 @@ export class AuthService {
   }
 
   signOut(){
-    localStorage.clear();
+    const res = localStorage.clear();
+    console.log(res);
     this.router.navigate(['login'])
   }
 
@@ -67,5 +70,12 @@ export class AuthService {
 
   renewToken(tokenApi : TokenModel){
     return this.http.post<any>(`${this.apiUrl}refresh`, tokenApi)
+  }
+
+  getTeamMemberIdFromToken(): number | null {
+    if (this.userPayload) {
+      return this.userPayload.teamMemberId;
+    }
+    return null;
   }
 }

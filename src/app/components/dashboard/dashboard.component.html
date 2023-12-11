@@ -6,22 +6,23 @@
 
 <div fxLayout="row" fxLayoutAlign="space-between center" fxLayoutGap="20px" class="stats-cards">
     <div fxLayout="row" fxLayoutAlign="space-between center" fxFlex="50%">
-        <mat-card fxFlex="48%">
-            <app-chart label="Bookings" total="12k" percentage="50"></app-chart>
-        </mat-card>
-        <mat-card fxFlex="48%">
-            <app-chart label="Repeat Customers" total="10k" percentage="40"></app-chart>
-        </mat-card>
+      <mat-card fxFlex="48%">
+        <app-chart [label]="'Bookings'"></app-chart>
+      </mat-card>
+      <mat-card fxFlex="48%">
+        <app-chart [label]="'Customer Retention'"></app-chart>
+      </mat-card>
     </div>
     <div fxLayout="row" fxLayoutAlign="space-between center" fxFlex="50%">
-        <mat-card fxFlex="48%">
-            <app-chart label="Most Popular Service" total="8k" percentage="30"></app-chart>
-        </mat-card>
-        <mat-card fxFlex="48%">
-            <app-chart label="Next Booking" total="6k" percentage="20"></app-chart>
-        </mat-card>
+      >
+      <mat-card fxFlex="48%">
+        <app-chart [label]="'Most Popular Service'"></app-chart>
+      </mat-card>
+      <mat-card fxFlex="48%">
+        <app-chart [label]="'Most Popular Team Member'"></app-chart>
+      </mat-card>
     </div>
-</div>
+  </div>
 
 <br>
 

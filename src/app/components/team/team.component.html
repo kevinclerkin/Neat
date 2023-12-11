@@ -3,8 +3,18 @@
     <mat-divider></mat-divider>
 
 <br>
+<mat-nav-list>
+    <div *ngFor="let teamMember of teamMembers" class="list-item">
+      <div class="team-member-info">
+        <h2>{{ teamMember.firstName }} {{ teamMember.lastName }}</h2>
+        <p>Email: {{ teamMember.email }}</p>
+      </div>
+      <div class="list-item-actions">
+      </div>
+    </div>
+  </mat-nav-list>
 
-
+<br>
 
 <mat-divider></mat-divider>
 <router-outlet></router-outlet>

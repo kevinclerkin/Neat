@@ -1,5 +1,5 @@
 export class ServiceOption{
-    serviceId!: number;
+    serviceId?: number;
     serviceName!: string;
     price!: number;
 }

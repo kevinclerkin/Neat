@@ -4,38 +4,20 @@
 
 <br>
 
-<div *ngFor="let pair of bookingsPairs" class="booking-pair">
-    <mat-card>
-      <mat-card-header>
-        <div mat-card-avatar class="example-header-image"></div>
-        <mat-card-title>{{ pair[0].clientName }}</mat-card-title>
-        <mat-card-subtitle>{{ pair[0].clientEmail }}</mat-card-subtitle>
-      </mat-card-header>
-      <mat-card-content>
-        <p>Team Member ID: {{ pair[0].teamMemberId }}</p>
-        <p>Service ID: {{ pair[0].serviceId }}</p>
-        <p>Date Time: {{ pair[0].dateTime }}</p>
-      </mat-card-content>
-      <mat-card-actions>
-        <!-- Add any additional actions/buttons here -->
-      </mat-card-actions>
-    </mat-card>
-  
-    <mat-card *ngIf="pair[1]" class="second-booking">
-      <mat-card-header>
-        <div mat-card-avatar class="example-header-image"></div>
-        <mat-card-title>{{ pair[1].clientName }}</mat-card-title>
-        <mat-card-subtitle>{{ pair[1].clientEmail }}</mat-card-subtitle>
-      </mat-card-header>
-      <mat-card-content>
-        <p>Team Member ID: {{ pair[1].teamMemberId }}</p>
-        <p>Service ID: {{ pair[1].serviceId }}</p>
-        <p>Date Time: {{ pair[1].dateTime }}</p>
-      </mat-card-content>
-      <mat-card-actions>
-      </mat-card-actions>
-    </mat-card>
-  </div>
+<mat-card *ngFor="let booking of bookings" class="booking-card">
+  <mat-card-header>
+    <div mat-card-avatar class="example-header-image"></div>
+    <mat-card-title></mat-card-title>
+    <mat-card-subtitle></mat-card-subtitle>
+  </mat-card-header>
+  <mat-card-content>
+    <p>Client Name: {{ booking.clientName }}</p>
+    <p>Client Email: {{ booking.clientEmail }}</p>
+    <p>Date Time: {{ booking.dateTime | date: 'dd/MM/yyyy - HH:mm:00' }}</p>
+  </mat-card-content>
+  <mat-card-actions>
+  </mat-card-actions>
+</mat-card>
 
 <br>
 

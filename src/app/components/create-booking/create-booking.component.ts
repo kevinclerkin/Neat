@@ -94,11 +94,12 @@ export class CreateBookingComponent implements OnInit {
         }
   
         
-        //this.bookingService.addBooking(newBooking).subscribe(() => {
-        //this.availabilityService.deleteAvailability(selectedAvailabilityId)}); //delete the whole object/availability sans id
+        
+        
         this.bookingService.addBooking(newBooking).subscribe;
         console.log(selectedAvailabilityId);
         console.log(selectedAvailability);
+        
         this.bookingDataService.setCapturedBooking(newBooking);
         this.router.navigate(['/confirm-pay']);
         this.availabilityService.deleteAvailability(selectedAvailabilityId).subscribe();

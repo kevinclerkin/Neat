@@ -3,6 +3,8 @@
     <mat-divider></mat-divider>
 
 <br>
+
+<button mat-raised-button color="primary" (click)="openAddServiceDialog()">Add Service</button>
 <div *ngFor="let service of services" class="service-item">
     <mat-card>
       <mat-card-header>
@@ -10,9 +12,6 @@
         <mat-card-subtitle>Price: {{ service.price | currency: 'EUR' }}</mat-card-subtitle>
       </mat-card-header>
       <mat-card-actions>
-        <button mat-icon-button (click)="editService(service)">
-          <mat-icon>edit</mat-icon>
-        </button>
         <button mat-icon-button (click)="deleteService(service)">
           <mat-icon>delete</mat-icon>
         </button>

@@ -1,23 +1,21 @@
-import { ActivatedRouteSnapshot, CanActivateChildFn, CanActivateFn, Router, RouterStateSnapshot } from "@angular/router";
-import { AuthService } from "../services/auth.service";
-import { inject } from "@angular/core";
+import { Injectable } from '@angular/core';
+import { CanActivate, ActivatedRouteSnapshot, RouterStateSnapshot, Router } from '@angular/router';
+import { AuthService } from '../services/auth.service';
 
+@Injectable({
+  providedIn: 'root'
+})
+export class AuthGuard implements CanActivate {
 
-export const canActivate: CanActivateFn = (
-  route: ActivatedRouteSnapshot,
-  state: RouterStateSnapshot
-) => {
-  const authService = inject(AuthService);
-  const router = inject(Router);
- 
+  constructor(private authService: AuthService, private router: Router) {}
 
-  if (authService.isLoggedIn()) {
-    return true;
-  } else {
-    console.error({ detail: "ERROR", summary: "Login Required!" });
-    router.navigate(['']);
-    return false;
+  canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): boolean {
+    if (this.authService.isLoggedIn()) {
+      return true;
+    } else {
+      console.error({ detail: 'ERROR', summary: 'Login Required!' });
+      this.router.navigate(['']);
+      return false;
+    }
   }
-};
-
-export const canActivateChild: CanActivateChildFn = (route: ActivatedRouteSnapshot, state: RouterStateSnapshot) => canActivate(route, state);
+}

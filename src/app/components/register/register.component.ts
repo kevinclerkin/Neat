@@ -1,3 +1,5 @@
+// Adapted from https://github.com/yshashi/AngularAuthYtAPI
+
 import ValidateForm from '../../validation/validator';
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from '../../services/auth.service';
@@ -54,7 +56,7 @@ export class RegisterComponent implements OnInit {
         })
       })
     } else {
-      ValidateForm.validateAllFormFields(this.signUpForm); //{7}
+      ValidateForm.validateAllFormFields(this.signUpForm);
     }
   }
 

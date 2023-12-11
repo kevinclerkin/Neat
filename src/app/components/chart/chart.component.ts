@@ -1,3 +1,5 @@
+//Adapted from https://github.com/soufiane-fadil/angular-material-dashboard
+
 import { Component, OnInit, Input } from '@angular/core';
 import * as Highcharts from 'highcharts';
 import HC_exporting from 'highcharts/modules/exporting';

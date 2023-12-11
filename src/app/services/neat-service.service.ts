@@ -21,7 +21,7 @@ export class NeatService {
     return this.http.get<ServiceOption[]>(this.apiUrl)
   }
 
-  createService(service: ServiceOption): Observable<ServiceOption>{
+  createService(service: ServiceOption): Observable<any>{
     return this.http.post<ServiceOption>(this.apiUrl, service, httpOptions);
   }
 

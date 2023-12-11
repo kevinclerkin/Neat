@@ -17,6 +17,6 @@ export class TeamComponent implements OnInit {
     });
 
     
-}
+};
 
-}
+};

@@ -1,6 +1,8 @@
+<mat-card>
 <div *ngIf="capturedEventData">
-    <p>Captured Event Data:</p>
-    <p>Client Name: {{ capturedEventData.clientName }}</p>
-    <p>Client Email: {{ capturedEventData.clientEmail }}</p>
+    <p>Booking Confirmation!</p>
+    <p>Name: {{ capturedEventData.clientName }}</p>
+    <p>Email: {{ capturedEventData.clientEmail }}</p>
     <p>Appointment confirmed! You've been sent an email confirmation!</p>
   </div>
+</mat-card>

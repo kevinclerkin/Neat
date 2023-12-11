@@ -1,0 +1,35 @@
+.background{
+    color: #f0f0f0;
+}
+
+.outer {
+    height: 100vh;
+    
+  }
+  
+  .container {
+    margin-top: 20px;
+  }
+  
+  .full-width {
+    width: 100%;
+  }
+
+  mat-error {
+    color: black;
+  }
+  
+  
+  .input-field.error {
+    color: black; 
+  }
+  
+  
+  .small-error {
+    color: black;
+  } 
+  
+  .pt-3 {
+    text-align: center; 
+    font-weight: bold;
+  }

@@ -37,6 +37,9 @@ export class AvailabilityService {
     return this.http.delete<Availability>(url, httpOptions);
   }
 
+  
+
+
   /*deleteAvailability(availabilityId: number): Observable<Availability>{
     console.log(typeof(availabilityId));
     return this.http.delete<Availability>(this.deleteApiUrl + availabilityId);

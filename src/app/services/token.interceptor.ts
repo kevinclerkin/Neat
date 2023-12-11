@@ -1,3 +1,5 @@
+// Adapted from https://github.com/yshashi/AngularAuthYtAPI
+
 import { TokenModel } from '../models/token-model';
 import { Router } from '@angular/router';
 import { AuthService } from './auth.service';
@@ -20,7 +22,6 @@ export class TokenInterceptor implements HttpInterceptor {
   intercept(request: HttpRequest<unknown>, next: HttpHandler): Observable<HttpEvent<unknown>> {
     const myToken = this.auth.getToken();
 
-    // this.start.load();
     if(myToken){
       request = request.clone({
         setHeaders: {Authorization:`Bearer ${myToken}`}

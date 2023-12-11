@@ -1,3 +1,5 @@
+// Adapted from https://github.com/yshashi/AngularAuthYtAPI
+
 import { Injectable } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
 

@@ -9,6 +9,7 @@ import { BookingsComponent } from './components/bookings/bookings.component';
 import { AvailabilitiesComponent } from './components/availabilities/availabilities.component';
 import { TeamComponent } from './components/team/team.component';
 import { ServiceComponent } from './components/service/service.component';
+import { AuthGuard } from './guards/auth.guard';
 
 const routes: Routes = [
   {path:'', redirectTo: '/home', pathMatch: 'full'},
@@ -16,7 +17,7 @@ const routes: Routes = [
   {path:'register', component: RegisterComponent},
   {path:'login', component: LoginComponent},
   {path:'confirm-pay', component: ConfirmPayComponent},
-  {path:'dashboard', component: DashboardComponent},
+  {path:'dashboard', component: DashboardComponent, canActivate: [AuthGuard]},
   {path:'bookings', component: BookingsComponent},
   {path:'availabilities', component: AvailabilitiesComponent},
   {path:'team', component: TeamComponent},

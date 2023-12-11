@@ -8,7 +8,7 @@
             <option *ngFor="let clientService of clientServices" [ngValue]="clientService.serviceId">
               {{ clientService.serviceName }}
               <ng-container *ngIf="clientService.price !== null && clientService.price !== 0">
-                - {{ clientService.price | currency:'EUR':true }}
+                - {{ clientService.price | currency:'EUR': 'symbol' }}
               </ng-container>
             </option>
           </select>
@@ -26,7 +26,7 @@
         <div class="field" id="availabilityField">
           <label for="selectedAvailability">Select Availability:</label>
           <select formControlName="selectedAvailability" id="selectedAvailability">
-            <ng-container *ngIf="availabilities.length > 0; else noAvailability">
+            <ng-container>
             <option *ngFor="let availability of availabilities" [ngValue]="availability.availabilityId">
                 {{ availability.dateTime | date: 'dd/MM/yy - HH:mm:00' }}
               </option>

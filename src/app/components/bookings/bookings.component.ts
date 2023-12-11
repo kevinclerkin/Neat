@@ -1,6 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { Booking } from '../../interfaces/booking';
 import { BookingService } from '../../services/booking.service';
+import { TeamMember } from '../../models/team-member';
+import { TeamMemberService } from '../../services/team-member.service';
+import { AuthService } from '../../services/auth.service';
+
 @Component({
   selector: 'app-bookings',
   templateUrl: './bookings.component.html',
@@ -8,22 +12,30 @@ import { BookingService } from '../../services/booking.service';
 })
 export class BookingsComponent implements OnInit {
 bookings!: Booking[];
+teamMembers!: TeamMember[];
 
-get bookingsPairs(): Booking[][] {
-  const pairs = [];
-  for (let i = 0; i < this.bookings.length; i += 2) {
-    const pair = [this.bookings[i], this.bookings[i + 1]];
-    pairs.push(pair);
-  }
-  return pairs;
-}
 
-  constructor(private bookingService: BookingService) { }
+constructor(private bookingService: BookingService, 
+private teamMemberService: TeamMemberService, private auth: AuthService) {}
+
+ 
+
 
   ngOnInit(): void {
-    this.bookingService.getBookings().subscribe((bookings)=> {
-      this.bookings = bookings;
+    this.teamMemberService.getTeamMembers().subscribe((teamMembers) => {
+      this.teamMembers = teamMembers;
+
+      
+      const username = this.auth.getfullNameFromToken();
+      const loggedInTeamMember = teamMembers.find((teamMember) => teamMember.userName === username);
+
+      if (loggedInTeamMember) {
+        this.bookingService.getBookings().subscribe((bookings) => {
+          this.bookings = bookings.filter(
+            (booking) => booking.teamMemberId === loggedInTeamMember.teamMemberId
+          );
+        });
+      }
     });
   }
-
 }

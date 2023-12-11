@@ -7,18 +7,28 @@
         <a mat-list-item routerLink="/availabilities">Availabilities</a>
         <a mat-list-item routerLink="/services">Services</a>
         <a mat-list-item routerLink="/dashboard">Analytics</a>
+        
+        <button mat-icon-button class="logout-button" (click)="logout()">
+        <mat-icon>exit_to_app</mat-icon>
+        <span>Logout</span>
+      </button>
+       
       </mat-nav-list>
-    </mat-sidenav>
+
+      
+</mat-sidenav>
+    
 
     <mat-sidenav-content>
       <mat-toolbar color="primary">
         <button mat-icon-button (click)="toggleSidebar()">
           <mat-icon>menu</mat-icon>
         </button>
-        <span>Neat Dashboard</span>
+        <span> Welcome to the Neat Dashboard</span>
+        <span>{{ username }}</span>
       </mat-toolbar>
 
-      <!-- Page content goes here -->
+      
       <ng-content></ng-content>
     </mat-sidenav-content>
   </mat-sidenav-container>

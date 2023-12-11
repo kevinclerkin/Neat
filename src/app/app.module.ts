@@ -39,6 +39,14 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import {MatCardModule} from '@angular/material/card';
 import { ServiceComponent } from './components/service/service.component';
+import { AddServiceDialogComponent } from './components/add-service-dialog/add-service-dialog.component';
+import { EditServiceDialogComponent } from './components/edit-service-dialog/edit-service-dialog.component';
+import { AddAvailabilityDialogComponent } from './components/add-availability-dialog/add-availability-dialog.component';
+import { MatNativeDateModule } from '@angular/material/core';
+import {MatDatepickerModule} from '@angular/material/datepicker';
+import { TimepickerModule } from 'ngx-bootstrap/timepicker';
+import {NgxMaterialTimepickerModule} from 'ngx-material-timepicker';
+import { CalendarModule } from 'primeng/calendar';
 
 
 
@@ -58,6 +66,9 @@ import { ServiceComponent } from './components/service/service.component';
     AvailabilitiesComponent,
     TeamComponent,
     ServiceComponent,
+    AddServiceDialogComponent,
+    EditServiceDialogComponent,
+    AddAvailabilityDialogComponent,
     
    
     
@@ -87,10 +98,16 @@ import { ServiceComponent } from './components/service/service.component';
     MatFormFieldModule,
     MatSnackBarModule,
     MatCardModule,
+    MatNativeDateModule,
+    MatDatepickerModule,
+    TimepickerModule,
+    NgxMaterialTimepickerModule,
+    CalendarModule,
+    
   
   ],
-  providers: [{
-    provide: HTTP_INTERCEPTORS,
+  providers: [
+    {provide: HTTP_INTERCEPTORS,
     useClass: TokenInterceptor,
     //useClass: AuthInterceptor,
     multi: true,
