@@ -28,7 +28,7 @@ export class ServiceComponent implements OnInit {
     });
 
   dialogRef.afterClosed().subscribe(result => {
-      const newService = { ...result, servicePrice: parseInt(result.servicePrice, 10) };
+      const newService = { ...result, servicePrice:(result.servicePrice, 10) };
       this.service.createService(newService).subscribe(createdService => {
       this.services.push(createdService);
     

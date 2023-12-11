@@ -1,4 +1,4 @@
-<div class="outer d-flex align-items-center justify-content-center">
+<mat-card>
 <div class="outer">
     <div class="container">
         <div class="row">
@@ -34,7 +34,7 @@
                             </div>
                             <small *ngIf="signUpForm.controls['password'].dirty && signUpForm.hasError('required','password')" class="text-danger">*Password is required*</small>
   
-                            <button type="submit" class="btn btn-primary btn-block mt-4 w-100">Signup</button>
+                            <button mat-button type="submit" class="btn btn-primary btn-block mt-4 w-100">Sign Up</button>
                             <div class="text-center pt-4 text-muted">Already have an account? <a id="forgot" routerLink="/login" href="#">Login</a> </div>
                         </form>
                     </div>
@@ -44,4 +44,4 @@
         </div>
     </div>
   </div>
-</div>
+</mat-card>

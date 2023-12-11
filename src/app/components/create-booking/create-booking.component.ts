@@ -80,6 +80,7 @@ export class CreateBookingComponent implements OnInit {
     }
 
     addBooking(): void{
+      console.log('Submit button clicked');
       if(this.availabilityForm.valid){
         const selectedAvailabilityId: number = this.availabilityForm.get('selectedAvailability')?.value;
         const selectedAvailability: Availability | undefined = this.availabilities.find(availability => availability.availabilityId === selectedAvailabilityId);
@@ -93,10 +94,13 @@ export class CreateBookingComponent implements OnInit {
           dateTime: selectedAvailability!.dateTime,
         }
   
+        //this.bookingService.addBooking(newBooking).subscribe(() => {
+        //this.availabilityService.deleteAvailability(selectedAvailabilityId)}); //delete the whole object/availability sans id
         
         
         
         this.bookingService.addBooking(newBooking).subscribe;
+        console.log(newBooking);
         console.log(selectedAvailabilityId);
         console.log(selectedAvailability);
         

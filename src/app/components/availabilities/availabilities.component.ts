@@ -6,6 +6,8 @@ import { TeamMemberService } from '../../services/team-member.service';
 import { AuthService } from '../../services/auth.service';
 import { AddAvailabilityDialogComponent } from '../add-availability-dialog/add-availability-dialog.component';
 import { MatDialog } from '@angular/material/dialog';
+import { Calendar } from 'primeng/calendar';
+import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-availabilities',
@@ -13,17 +15,22 @@ import { MatDialog } from '@angular/material/dialog';
   styleUrls: ['./availabilities.component.css']
 })
 export class AvailabilitiesComponent implements OnInit {
-  teamMembers!: TeamMember[];
-  availabilities!: Availability[];
+  teamMembers: TeamMember[] = [];
+  availabilities: Availability[] = [];
+  formGroup!: FormGroup;
 
   constructor(
     private availabilityService: AvailabilityService,
     private teamMemberService: TeamMemberService,
     private auth: AuthService,
-    public dialog: MatDialog
+    public dialog: MatDialog,
+    private fb: FormBuilder,
+    
   ) {}
 
   ngOnInit(): void {
+    this.initializeForm();
+
     this.teamMemberService.getTeamMembers().subscribe((teamMembers) => {
       this.teamMembers = teamMembers;
 
@@ -38,6 +45,40 @@ export class AvailabilitiesComponent implements OnInit {
         });
       }
     });
+  }
+
+  initializeForm(): void {
+    // Initialize the form with a 'date' FormControl
+    this.formGroup = this.fb.group({
+      date: [null, Validators.required],
+    });
+  }
+
+  onSubmit(): void {
+    console.log('Submit button clicked');
+    if (this.formGroup && this.formGroup.get('date')) {
+      const selectedDate = this.formGroup.get('date')?.value;
+      console.log('Selected Date:', selectedDate);
+
+      const loggedInTeamMember = this.teamMembers.find(
+        (teamMember) => teamMember.userName === this.auth.getfullNameFromToken()
+      );
+
+      if (loggedInTeamMember) {
+        const newAvailability: Availability = {
+          dateTime: selectedDate,
+          teamMemberId: loggedInTeamMember.teamMemberId,
+          
+        };
+
+        this.availabilityService.addAvailability(newAvailability).subscribe((addedAvailability) => {
+          this.availabilities.push(addedAvailability);
+          console.log('New Availability:', addedAvailability);
+        });
+      }
+    } else {
+      console.log('Form or form control is null. Please check the form initialization.');
+    }
   }
 
   openAddAvailabilityDialog(): void {
@@ -57,7 +98,6 @@ export class AvailabilitiesComponent implements OnInit {
             teamMemberId: loggedInTeamMember?.teamMemberId
           };
 
-          
           this.availabilityService.addAvailability(availabilityData).subscribe((newAvailability) => {
             this.availabilities.push(newAvailability);
             console.log('New Availability:', newAvailability);
@@ -66,6 +106,8 @@ export class AvailabilitiesComponent implements OnInit {
       });
     }
   }
+
+
 
   deleteAvailabilityById(availability: Availability): void {
     const availabilityId = availability.availabilityId;

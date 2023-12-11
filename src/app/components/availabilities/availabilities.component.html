@@ -1,9 +1,8 @@
 <app-sidebar [mode]="'side'">
 
-    <mat-divider></mat-divider>
-
+  <mat-divider></mat-divider>
 <br>
-<button mat-raised-button color="primary" (click)="openAddAvailabilityDialog()">Add Availability</button>
+
 <mat-card>
     <mat-card-header>
       <mat-card-title>Availabilities:</mat-card-title>
@@ -12,7 +11,7 @@
       <mat-nav-list *ngIf="availabilities && availabilities.length > 0">
         <mat-list-item *ngFor="let availability of availabilities">
           <div matLine>
-            {{ availability.dateTime | date:'medium' }} - Team Member ID: {{ availability.teamMemberId }}
+            {{ availability.dateTime | date:'medium' }}
             <button mat-icon-button (click)="deleteAvailabilityById(availability)">
               <mat-icon>delete</mat-icon>
             </button>
@@ -28,8 +27,12 @@
   <br>
 
 <mat-divider></mat-divider>
-
+<form [formGroup]="formGroup" (ngSubmit)="onSubmit()">
+  <p-calendar formControlName="date" [showTime]="true" [showOtherMonths]="false" [selectOtherMonths]="false"></p-calendar>
+  <button mat-raised-button color="primary" type="submit">Add Availability</button>
+</form>
 <router-outlet></router-outlet>
 </app-sidebar>
+
 
 

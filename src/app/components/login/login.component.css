@@ -1,35 +1,64 @@
-.background{
-    color: #f0f0f0;
+.background {
+  color: #f0f0f0;
 }
 
 .outer {
-    height: 100vh;
-    
-  }
-  
-  .container {
-    margin-top: 20px;
-  }
-  
-  .full-width {
-    width: 100%;
-  }
+  height: 100vh;
+}
 
-  mat-error {
-    color: black;
-  }
-  
-  
-  .input-field.error {
-    color: black; 
-  }
-  
-  
-  .small-error {
-    color: black;
-  } 
-  
-  .pt-3 {
-    text-align: center; 
-    font-weight: bold;
-  }
+.container {
+  margin-top: 20px;
+}
+
+.full-width {
+  width: 100%;
+}
+
+.input-field.error {
+  color: black;
+}
+
+.small-error {
+  color: black;
+}
+
+.pt-3 {
+  text-align: center;
+  font-weight: bold;
+}
+
+
+.form-inline.fr {
+  text-align: center;
+  margin-top: 20px; 
+}
+
+.btn-primary.btn-block {
+  width: auto; 
+  margin-left: auto;
+  margin-right: auto;
+  display: block;
+}
+
+.text-center.pt-4.text-muted {
+  text-align: center;
+  padding-top: 20px; 
+}
+
+
+.text-danger {
+  display: block;
+  text-align: center;
+  margin-top: 5px; 
+}
+
+
+.btn-primary.btn-block {
+  background-color: black;
+  color: white;
+}
+
+
+.mat-button-base {
+  min-width: 0;
+}

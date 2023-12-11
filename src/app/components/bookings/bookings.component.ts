@@ -8,32 +8,34 @@ import { AuthService } from '../../services/auth.service';
 @Component({
   selector: 'app-bookings',
   templateUrl: './bookings.component.html',
-  styleUrl: './bookings.component.css'
+  styleUrls: ['./bookings.component.css']
 })
 export class BookingsComponent implements OnInit {
-bookings!: Booking[];
-teamMembers!: TeamMember[];
+  bookings!: Booking[];
+  teamMembers!: TeamMember[];
 
-
-constructor(private bookingService: BookingService, 
-private teamMemberService: TeamMemberService, private auth: AuthService) {}
-
- 
-
+  constructor(
+    private bookingService: BookingService,
+    private teamMemberService: TeamMemberService,
+    private auth: AuthService
+  ) {}
 
   ngOnInit(): void {
     this.teamMemberService.getTeamMembers().subscribe((teamMembers) => {
       this.teamMembers = teamMembers;
 
-      
       const username = this.auth.getfullNameFromToken();
       const loggedInTeamMember = teamMembers.find((teamMember) => teamMember.userName === username);
 
       if (loggedInTeamMember) {
         this.bookingService.getBookings().subscribe((bookings) => {
-          this.bookings = bookings.filter(
-            (booking) => booking.teamMemberId === loggedInTeamMember.teamMemberId
-          );
+          const today = new Date();
+          today.setHours(0, 0, 0, 0);
+
+          this.bookings = bookings
+            .filter((booking) => booking.teamMemberId === loggedInTeamMember.teamMemberId)
+            .filter((booking) => new Date(booking.dateTime) >= today)
+            .sort((a, b) => new Date(a.dateTime).getTime() - new Date(b.dateTime).getTime());
         });
       }
     });
