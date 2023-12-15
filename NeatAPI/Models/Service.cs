@@ -8,7 +8,6 @@ namespace NeatAPI.Models
     {
         [Key]
         public int ServiceId { get; set; }
-
         [Required]
         public string ServiceName { get; set; }
 

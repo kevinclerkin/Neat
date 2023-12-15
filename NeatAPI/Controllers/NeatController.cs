@@ -23,6 +23,7 @@ namespace NeatAPI.Controllers
             _logger = logger;
         }
 
+        
 
 
 
@@ -96,33 +97,32 @@ namespace NeatAPI.Controllers
 
         //DELETE api/<NeatController>/
 
-    [Authorize]
-    [HttpDelete("{id}")]
-    public IActionResult DeleteBooking(int id)
-    {
-      var deleteBooking = _neatBookingRepository.DeleteBooking(id);
+        [Authorize]
+        [HttpDelete("{id}")]
+        public IActionResult DeleteBooking(int id)
+        {
+           var deleteBooking = _neatBookingRepository.DeleteBooking(id);
+            
+            if(deleteBooking == null)
+            {
+                return BadRequest();
+            }
+            
+            return Ok(deleteBooking);
+        }
 
-      if(deleteBooking == null)
-      {
-        return BadRequest();
-      }
-
-      return Ok(deleteBooking);
-    }
-
-    [HttpGet("Latest")]
-    [ProducesResponseType(typeof(IEnumerable<NeatBooking>), 200)]
-    public IActionResult GetNextBooking()
-    {
-      var latestBooking = _neatBookingRepository.GetNextBooking();
-
-      if (!ModelState.IsValid)
-      {
-         return BadRequest(ModelState);
-      }
-
-         return Ok(latestBooking);
-      }
+        [HttpGet("Latest")]
+        [ProducesResponseType(typeof(IEnumerable<NeatBooking>), 200)]
+        public IActionResult GetNextBooking()
+        {
+           var latestBooking = _neatBookingRepository.GetNextBooking();
+            
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(ModelState);
+            }
+            return Ok(latestBooking);
+        }
 
     }
 }
