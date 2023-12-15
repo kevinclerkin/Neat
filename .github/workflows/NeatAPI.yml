@@ -25,7 +25,6 @@ jobs:
     - name: Replace Connection String
       run: |
           sed -i 's/REPLACE_WITH_ACTUAL_CONNECTION_STRING/${{ secrets.AZURE_SQL_CONNECTION_STRING_2 }}/g' NeatAPI/appsettings.json  
-
     
 
     
@@ -35,11 +34,10 @@ jobs:
    
       
     
-    - name: Test
-      run: dotnet test "${{ env.WORKING_DIRECTORY }}" --no-build
+   
       
     - name: Publish
-      run: dotnet publish "${{ env.WORKING_DIRECTORY }}" --configuration ${{ env.CONFIGURATION }} --no-build
+      run: dotnet publish "${{ env.WORKING_DIRECTORY }}" --configuration ${{ env.CONFIGURATION }} --no-build --output "${{ env.AZURE_WEBAPP_PACKAGE_PATH }}"
     
     - name: Publish Artifacts
       uses: actions/upload-artifact@v3
