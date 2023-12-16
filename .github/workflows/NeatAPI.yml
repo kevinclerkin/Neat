@@ -11,7 +11,7 @@ env:
   AZURE_WEBAPP_PACKAGE_PATH: ./publish
   CONFIGURATION: Release
   DOTNET_CORE_VERSION: 6.0.x
-  WORKING_DIRECTORY: ./Neat
+  WORKING_DIRECTORY: ./NeatAPI
 
 jobs:
   build:
@@ -34,7 +34,7 @@ jobs:
       run: dotnet build "${{ env.WORKING_DIRECTORY }}" --configuration ${{ env.CONFIGURATION }} --no-restore
 
     - name: Publish NeatAPI
-      run: dotnet publish "${{ env.WORKING_DIRECTORY }}./NeatAPI" --configuration ${{ env.CONFIGURATION }} --no-build 
+      run: dotnet publish "${{ env.WORKING_DIRECTORY }}" --configuration ${{ env.CONFIGURATION }} --no-build --property:./NeatAPI=DIR
 
     - name: Publish Artifacts
       uses: actions/upload-artifact@v3
