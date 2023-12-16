@@ -1,48 +1,42 @@
 name: Build and deploy .NET Core application to Web App NeatAPI
-
 on:
   workflow_dispatch:
   push:
     branches:
     - main
-
 env:
   AZURE_WEBAPP_NAME: NeatAPI
-  AZURE_WEBAPP_PACKAGE_PATH: ./publish
+  AZURE_WEBAPP_PACKAGE_PATH_NEATAPI: ./publish/NeatAPI
+  AZURE_WEBAPP_PACKAGE_PATH_NEATAPITESTS: ./publish/NeatAPITests
   CONFIGURATION: Release
   DOTNET_CORE_VERSION: 6.0.x
   WORKING_DIRECTORY: ./NeatAPI
-
 jobs:
   build:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v3
-
     - name: Setup .NET SDK
       uses: actions/setup-dotnet@v3
       with:
         dotnet-version: ${{ env.DOTNET_CORE_VERSION }}
-
     - name: Restore
       run: dotnet restore "${{ env.WORKING_DIRECTORY }}"
-
     - name: Replace Connection String
       run: |
-          sed -i 's/REPLACE_WITH_ACTUAL_CONNECTION_STRING/${{ secrets.AZURE_SQL_CONNECTION_STRING_2 }}/g' NeatAPI/appsettings.json
-
+        sed -i 's/REPLACE_WITH_ACTUAL_CONNECTION_STRING/${{ secrets.AZURE_SQL_CONNECTION_STRING_2 }}/g' NeatAPI/appsettings.json  
     - name: Build
       run: dotnet build "${{ env.WORKING_DIRECTORY }}" --configuration ${{ env.CONFIGURATION }} --no-restore
-
     - name: Publish NeatAPI
-      run: dotnet publish "${{ env.WORKING_DIRECTORY }}" --configuration ${{ env.CONFIGURATION }} --no-build --output "${{ env.AZURE_WEBAPP_PACKAGE_PATH }}/NeatAPI"
+      run: dotnet publish "${{ env.WORKING_DIRECTORY }}" --configuration ${{ env.CONFIGURATION }} --no-build --output "${{ env.AZURE_WEBAPP_PACKAGE_PATH_NEATAPI }}"
+    - name: Publish NeatAPITests
+      run: dotnet publish "${{ env.WORKING_DIRECTORY }}/NeatAPITests" --configuration ${{ env.CONFIGURATION }} --no-build --output "${{ env.AZURE_WEBAPP_PACKAGE_PATH_NEATAPITESTS }}"
 
     - name: Publish Artifacts
       uses: actions/upload-artifact@v3
       with:
         name: webapp
-        path: ${{ env.AZURE_WEBAPP_PACKAGE_PATH }}
-
+        path: ${{ env.AZURE_WEBAPP_PACKAGE_PATH_NEATAPI }}, ${{ env.AZURE_WEBAPP_PACKAGE_PATH_NEATAPITESTS }}
   deploy:
     runs-on: ubuntu-latest
     needs: build
@@ -51,11 +45,10 @@ jobs:
       uses: actions/download-artifact@v3
       with:
         name: webapp
-        path: ${{ env.AZURE_WEBAPP_PACKAGE_PATH }}
-
-    - name: Deploy NeatAPI to Azure WebApp
+        path: ${{ env.AZURE_WEBAPP_PACKAGE_PATH_NEATAPI }}, ${{ env.AZURE_WEBAPP_PACKAGE_PATH_NEATAPITESTS }}
+    - name: Deploy to Azure WebApp
       uses: azure/webapps-deploy@v2
       with:
         app-name: ${{ env.AZURE_WEBAPP_NAME }}
         publish-profile: ${{ secrets.NeatAPI_ED34 }}
-        package: ${{ env.AZURE_WEBAPP_PACKAGE_PATH }}/NeatAPI
+        package: ${{ env.AZURE_WEBAPP_PACKAGE_PATH_NEATAPI }}
