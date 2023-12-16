@@ -97,7 +97,7 @@ namespace NeatAPI.Controllers
 
         //DELETE api/<NeatController>/
 
-        [Authorize]
+        
         [HttpDelete("{id}")]
         public IActionResult DeleteBooking(int id)
         {
