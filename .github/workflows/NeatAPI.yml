@@ -34,7 +34,7 @@ jobs:
       run: dotnet build "${{ env.WORKING_DIRECTORY }}" --configuration ${{ env.CONFIGURATION }} --no-restore
 
     - name: Publish NeatAPI
-      run: dotnet publish "${{ env.WORKING_DIRECTORY }}/NeatAPI/NeatAPI.csproj" --configuration ${{ env.CONFIGURATION }} --no-build --output "${{ env.AZURE_WEBAPP_PACKAGE_PATH }}/NeatAPI"
+      run: dotnet publish "${{ env.WORKING_DIRECTORY }}/NeatAPI.csproj" --configuration ${{ env.CONFIGURATION }} --no-build --output "${{ env.AZURE_WEBAPP_PACKAGE_PATH }}/NeatAPI"
 
     - name: Publish Artifacts
       uses: actions/upload-artifact@v3
