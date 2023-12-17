@@ -12,7 +12,7 @@ using NeatAPI.Data;
 namespace NeatAPI.Migrations
 {
     [DbContext(typeof(DataContext))]
-    [Migration("20231206222043_initial")]
+    [Migration("20231217021712_initial")]
     partial class initial
     {
         /// <inheritdoc />
@@ -170,7 +170,6 @@ namespace NeatAPI.Migrations
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("TeamMemberId"));
 
                     b.Property<string>("CompanyName")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Email")
