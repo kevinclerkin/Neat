@@ -1,3 +1,5 @@
+// Adapted from https://github.com/yshashi/AngularAuthYtAPI
+
 using Microsoft.AspNetCore.Mvc;
 using NeatAPI.Models;
 using System.Text.RegularExpressions;
