@@ -1,0 +1,26 @@
+<app-sidebar [mode]="'side'">
+
+    <mat-divider></mat-divider>
+
+<br>
+
+<mat-card *ngFor="let booking of bookings" class="booking-card">
+  <mat-card-header>
+    <div mat-card-avatar class="example-header-image"></div>
+    <mat-card-title></mat-card-title>
+    <mat-card-subtitle></mat-card-subtitle>
+  </mat-card-header>
+  <mat-card-content>
+    <p>Client Name: {{ booking.clientName }}</p>
+    <p>Client Email: {{ booking.clientEmail }}</p>
+    <p>Date Time: {{ booking.dateTime | date: 'dd/MM/yyyy - HH:mm:00' }}</p>
+  </mat-card-content>
+  <mat-card-actions>
+  </mat-card-actions>
+</mat-card>
+
+<br>
+
+<mat-divider></mat-divider>
+<router-outlet></router-outlet>
+</app-sidebar>
