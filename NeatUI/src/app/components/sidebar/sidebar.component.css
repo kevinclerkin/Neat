@@ -1,0 +1,20 @@
+.sidenav-container {
+    height: 100vh;
+  }
+
+.custom-sidebar {
+    background-color: black;
+    color: white;
+    top: 64px;
+  }
+
+
+
+  mat-sidenav {
+    width: 200px;
+  }
+  mat-sidenav-content {
+    padding: 20px;
+  }
+
+  

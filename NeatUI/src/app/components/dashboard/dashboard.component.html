@@ -1,0 +1,142 @@
+<app-sidebar [mode]="'side'">
+  <mat-divider></mat-divider>
+
+  <div fxLayout="row" fxLayoutAlign="space-between center" fxLayoutGap="20px" class="stats-cards">
+    <!-- Existing cards above the mat divider -->
+    <div fxFlex="50%">
+      <mat-card style="width: 100%; max-width: 200px;" *ngIf="nextBooking">
+        <mat-card-header>
+          <div mat-card-avatar class="example-header-image"></div>
+          <div style="text-align: center; margin-top: 10px;">
+            <div style="font-weight: bold;">Next Client:</div>
+            <div>{{ nextBooking.clientName }}</div>
+          </div>
+        </mat-card-header>
+        <mat-card-content>
+          <div style="text-align: center;">
+            <p>{{ nextBooking.dateTime | date: 'dd/MM/yyyy - HH:mm:00' }}</p>
+            <!-- Additional details if needed -->
+          </div>
+        </mat-card-content>
+        <mat-card-actions>
+          <!-- Additional actions if needed -->
+        </mat-card-actions>
+      </mat-card>
+    </div>
+
+    <div fxFlex="50%">
+      <mat-card style="width: 100%; max-width: 200px;" *ngIf="mostPopularServiceName">
+        <mat-card-header>
+          <div mat-card-avatar class="example-header-image"></div>
+          <div style="text-align: center; margin-top: 10px;">
+            <div style="font-weight: bold;">Most Popular Service</div>
+            <div></div>
+          </div>
+        </mat-card-header>
+        <mat-card-content>
+          <div style="text-align: center;">
+            <p>{{ mostPopularServiceName }}</p>
+            <!-- Additional details if needed -->
+          </div>
+        </mat-card-content>
+        <mat-card-actions>
+          <!-- Additional actions if needed -->
+        </mat-card-actions>
+      </mat-card>
+    </div>
+
+    <div fxFlex="50%">
+      <mat-card style="width: 100%; max-width: 200px;" *ngIf="mostPopularDay">
+        <mat-card-header>
+          <div mat-card-avatar class="example-header-image"></div>
+          <div style="text-align: center; margin-top: 10px;">
+            <div style="font-weight: bold;">Most Popular Day</div>
+            <div></div>
+          </div>
+        </mat-card-header>
+        <mat-card-content>
+          <div style="text-align: center;">
+            <p>{{ mostPopularDay }}</p>
+            <!-- Additional details if needed -->
+          </div>
+        </mat-card-content>
+        <mat-card-actions>
+          <!-- Additional actions if needed -->
+        </mat-card-actions>
+      </mat-card>
+    </div>
+
+    <div fxFlex="50%">
+      <mat-card style="width: 100%; max-width: 200px;" *ngIf="mostPopularTime">
+        <mat-card-header>
+          <div mat-card-avatar class="example-header-image"></div>
+          <div style="text-align: center; margin-top: 10px;">
+            <div style="font-weight: bold;">Most Popular Time</div>
+          </div>
+        </mat-card-header>
+        <mat-card-content>
+          <div style="text-align: center;">
+            <p>{{ mostPopularTime }}</p>
+            <!-- Additional details if needed -->
+          </div>
+        </mat-card-content>
+        <mat-card-actions>
+          <!-- Additional actions if needed -->
+        </mat-card-actions>
+      </mat-card>
+    </div>
+  </div>
+
+  <mat-divider></mat-divider>
+
+  <!-- Cards below the mat divider in a single row -->
+  <div fxLayout="row" fxLayoutAlign="space-between center" fxLayoutGap="20px" class="stats-cards">
+    <div fxFlex="50%" *ngIf="bookings">
+      <mat-card style="width: 100%; max-width: 200px;">
+        <mat-card-header>
+          <div mat-card-avatar class="example-header-image"></div>
+          <div style="text-align: center; margin-top: 10px;">
+            <div style="font-weight: bold;">Total Bookings</div>
+            <div></div>
+          </div>
+        </mat-card-header>
+        <mat-card-content>
+          <div style="text-align: center;">
+            <p>{{ bookings.length }}</p>
+            <!-- Additional details if needed -->
+          </div>
+        </mat-card-content>
+        <mat-card-actions>
+          <!-- Additional actions if needed -->
+        </mat-card-actions>
+      </mat-card>
+    </div>
+
+    <div fxFlex="50%">
+      <mat-card style="width: 100%; max-width: 200px;">
+        <mat-card-header>
+          <div mat-card-avatar class="example-header-image"></div>
+          <div style="text-align: center; margin-top: 10px;">
+            <div style="font-weight: bold;">Total Clients</div>
+            <div></div>
+          </div>
+        </mat-card-header>
+        <mat-card-content>
+          <div style="text-align: center;">
+            <p>{{uniqueClientEmails}}</p>
+            <!-- Additional details if needed -->
+          </div>
+        </mat-card-content>
+        <mat-card-actions>
+          <!-- Additional actions if needed -->
+        </mat-card-actions>
+      </mat-card>
+    </div>
+  
+  
+  
+</div>
+
+
+<router-outlet></router-outlet>
+</app-sidebar>
