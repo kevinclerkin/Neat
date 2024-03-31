@@ -2,9 +2,9 @@ name: Build and deploy .NET Core application to Web App NeatAPI
 
 on:
   workflow_dispatch:
-  push:
-    branches:
-    - main
+  #push:
+    #branches:
+    #- main
 
 env:
   AZURE_WEBAPP_NAME: NeatAPI
